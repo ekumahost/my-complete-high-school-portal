@@ -1,0 +1,14 @@
+##### Prevent Apache from serving .htaccess files:
+<FilesMatch "^\.htaccess">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "(?i)\.(php|php3?|phtml)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<Files *.php>
+Deny from All
+</Files>

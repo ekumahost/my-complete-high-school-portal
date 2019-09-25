@@ -1,0 +1,2 @@
+Something is not right, the network is very slow!</br>
+<a href="admin_configuration.php?action=edit&operator=admin&position=adminArea&page=configindex&do=yes#general">CLICK HERE TO SET WELCOME MESSAGE</a>

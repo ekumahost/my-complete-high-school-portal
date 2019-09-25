@@ -1,0 +1,11 @@
+from and to status
+1 means "Message is Unread"
+0 means "Message is read"
+2 means "Message has been junked"
+3 means "Message has been deleted Completely"
+------------------------------------ depending on the to_status and from_status
+
+from and to starred
+1 means "unstarred"
+0 means "starred"
+------------------------------------ depending on the to_starred and from_starred

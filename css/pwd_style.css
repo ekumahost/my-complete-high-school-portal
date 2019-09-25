@@ -1,0 +1,51 @@
+.GeneratePasswordLink{
+cursor:pointer;
+color:#084B8A;
+font-family:verdana;
+font-size:10px;
+}
+
+.NewPassword{
+color:#000000;
+font-family:verdana;
+font-size:10px;
+}
+
+.neutral{
+width:150px;
+padding:3px;
+color:#000000;
+font-family:verdana;
+font-size:11px;
+text-align:center;
+border:1px solid #000000;
+background-color:#FFFFFF;
+}
+
+.veryweak{
+border:1px solid #000000;
+background-color:#B40404;
+}
+
+.weak{
+border:1px solid #000000;
+background-color:#DF7401;
+}
+
+.medium{
+border:1px solid #000000;
+background-color:#FFFF00;
+}
+
+
+.strong{
+border:1px solid #000000;
+background-color:#9AFE2E;
+}
+
+
+.verystrong{
+border:1px solid #000000;
+background-color:#0B610B;
+color:#FFFFFF;
+}

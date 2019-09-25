@@ -1,0 +1,70 @@
+# Prevent Apache from serving .htaccess files:
+<FilesMatch "^\.htaccess">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+
+## EXPIRES CACHING ##
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresByType image/jpg "access 1 month"
+	ExpiresByType image/jpeg "access 1 month"
+	ExpiresByType image/gif "access 1 month"
+	ExpiresByType image/png "access 1 month"
+	ExpiresByType text/css "access 1 month"
+	ExpiresByType text/html "access 1 month"
+	ExpiresByType application/pdf "access 1 month"
+	ExpiresByType text/x-javascript "access 1 month"
+	ExpiresByType application/x-shockwave-flash "access 1 month"
+	ExpiresByType image/x-icon "access 1 month"
+	ExpiresDefault "access 1 month"
+</IfModule>
+## EXPIRES CACHING ##
+
+<IfModule mod_deflate.c>
+    SetOutputFilter DEFLATE
+    <IfModule mod_setenvif.c>
+        # Netscape 4.x has some problems...
+        BrowserMatch ^Mozilla/4 gzip-only-text/html
+
+        # Netscape 4.06-4.08 have some more problems
+        BrowserMatch ^Mozilla/4\.0[678] no-gzip
+
+        # MSIE masquerades as Netscape, but it is fine
+        # BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+        # NOTE: Due to a bug in mod_setenvif up to Apache 2.0.48
+        # the above regex won't work. You can use the following
+        # workaround to get the desired effect:
+        BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+
+        # Don't compress images
+        SetEnvIfNoCase Request_URI .(?:gif|jpe?g|png)$ no-gzip dont-vary
+    </IfModule>
+
+    <IfModule mod_headers.c>
+        # Make sure proxies don't deliver the wrong content
+        Header append Vary User-Agent env=!dont-vary
+    </IfModule>
+</IfModule>
+
+RewriteEngine On
+# turn on the mod_rewrite engine
+
+
+##### redirect for the removal of php
+RewriteCond %{REQUEST_FILENAME}.php -f
+# IF the request filename with .php extension is a file which exists
+RewriteCond %{REQUEST_URI} !/$
+# AND the request is not for a directory
+RewriteRule (.*) $1\.php [L]
+# redirect to the php script with the requested filename
+
+
+##### Error configuration
+ErrorDocument 400     /404.php
+ErrorDocument 401     /404.php
+ErrorDocument 403     /404.php
+ErrorDocument 404     /404.php
+ErrorDocument 500     /404.php

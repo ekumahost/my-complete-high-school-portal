@@ -1,0 +1,430 @@
+  body  {
+      margin : 0;
+      padding : 0;
+      font-family : verdana, arial, helvetica, sans-serif;
+      color : #333;
+      background-color : white;
+ }
+ h1 {
+      font-size : 20px;
+      font-weight : 900;
+      color : #708090;
+      margin : 0;
+ }
+ h2 {
+      font-size : 15px;
+      font-weight : 900;
+      color : #708090;
+      margin : 0;
+ }
+ h3 {
+      margin : 0 0 15px;
+      padding : 0;
+      font-size : 14px;
+      line-height : 28px;
+      font-weight : 900;
+      color : red;
+ }
+ p {
+      font : 11px/20px verdana, arial, helvetica, sans-serif;
+      margin : 0 0 16px;
+      padding : 0;
+ }
+ p.pform {
+      font : 11px/20px verdana, arial, helvetica, sans-serif;
+      margin : 10px 0 16px;
+      padding : 0;
+      color : #708090;
+ }
+ p.ltxt {
+      font : 13px/20px verdana, arial, helvetica, sans-serif;
+      margin : 10px 0 16px;
+      padding : 0;
+      color : black;
+ }
+ a.aform {
+      color : #708f7e;
+      font-size : 11px;
+      text-decoration : none;
+      font-weight : 600;
+      font-family : verdana, arial, helvetica, sans-serif;
+ }
+ a.aform:link {
+      color : #708f7e;
+ }
+ a.aform:visited {
+      color : #708f7e;
+ }
+ a.aform:hover {
+      background-color : white;
+ }
+ #Content > p {
+      margin : 0;
+ }
+ #Content > p + p {
+      text-indent : 30px;
+ }
+ a {
+      color : navy;
+      font-size : 11px;
+      text-decoration : none;
+      font-weight : 600;
+      font-family : verdana, arial, helvetica, sans-serif;
+ }
+ a:link {
+      color : navy;
+ }
+ a:visited {
+      color : navy;
+ }
+ a:hover {
+      background-color : #eee;
+ }
+ td.paging {
+      font : 13px Verdana, Geneva, Arial, Helvetica, sans-serif;
+ }
+ #Header {
+      margin : 0;
+      padding : 5px 20px 0 0;
+      height : 20px;
+      border-style : solid;
+      border-color : black;
+      border-width : 1px 0;
+      line-height : 11px;
+      background-color : #eee;
+      background-color : #0000ff;
+      font-family : Arial, Helvetica, sans-serif;
+      font-weight : bold;
+      text-align : right;
+      color : #2f4f4f;
+      color : #ffffff;
+      voice-family: "\"}\""; /* IE v5+ VF hack added by Tony Sodano (tonysodano@gmail.com) 05.02.05 */
+   	  voice-family: inherit; /* VF inherit attrib added by Tony Sodano (tonysodano@gmail.com) 05.02.05 */
+ }
+
+ td.forum {
+      font-family : Arial, Helvetica, sans-serif;
+      font-weight : bold;
+      color : #2f4f4f;
+ }
+ #Content {
+      margin : 0 50px 50px 210px;
+      padding : 10px;
+ }
+ #Menu {
+      position : absolute;
+      top : 125px;
+      left : 20px;
+      width : 150px;
+      padding : 10px;
+      background-color : #eee;
+      border : 1px dashed #999;
+      line-height : 17px;
+      voice-family: "\"}\""; /* IE v5+ VF hack added by Tony Sodano (tonysodano@gmail.com) 05.02.05 */
+   	  voice-family: inherit; /* VF inherit attrib added by Tony Sodano (tonysodano@gmail.com) 05.02.05 */
+
+ }
+ #menuSystem {
+      position : absolute;
+      top : 125px;
+      left : 20px;
+      width : 150px;
+      padding : 10px;
+      background-color : #eee;
+      background-color : #0000ff;
+      border : 1px dashed #999;
+      line-height : 17px;
+      voice-family: "\"}\""; /* IE 5+ VF hack -- Tony Sodano (tonysodano@gmail.com) 05.02.05 */
+   	  voice-family: inherit; /* VF inherit attrib added by Tony Sodano (tonysodano@gmail.com) 05.02.05 */
+
+ }
+ #menuSystem table {
+      font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size : 8pt;
+      border-collapse : collapse;
+ }
+ #menuSystem table td {
+      padding : 0;
+ }
+ #mainTable table {
+      border-collapse : collapse;
+ }
+ #mainTable th {
+      background-color : #eee;
+      background-color : #0000ff;
+      padding-left : 1px;
+      padding-right : 3px;
+      text-align : left;
+      color : #000099;
+      color : #ffffff;
+      font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size : 8pt;
+ }
+ #mainTable table td {
+      background-color : #eee;
+      background-color : #0000ff;
+      padding-left : 1px;
+      padding-right : 3px;
+      text-align : left;
+      color : #ffffff;
+      font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size : 8pt;
+ }
+ #mainTable a {
+      background-color : #0000ff;
+      color : #005984;
+      color : #ffffff;
+      padding-left : 1px;
+      padding-right : 3px;
+      font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size : 8pt;
+      text-decoration : none;
+ }
+ #mainTable a:link {
+      background-color : #0000ff;
+      color : #005984;
+      color : #ffffff;
+      padding-left : 1px;
+      padding-right : 3px;
+      font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size : 8pt;
+      text-decoration : none;
+ }
+ #mainTable a:hover {
+      background-color : #0000ff;
+      color : #ffffff;
+      padding-left : 1px;
+      padding-right : 3px;
+      background-color : #003366;
+      font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size : 8pt;
+      text-decoration : none;
+      display : block;
+ }
+ #mainTable td.year {
+      font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size : 8pt;
+      color : black;
+      color : #ffffff;
+      text-align : center;
+      font-weight : bold;
+ }
+ tr.trform {
+      font : bold 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
+      color : #8f7072;
+ }
+ td.tdinput {
+      padding : 3px 0 0 3px;
+      font : 13px/20px verdana, arial, helvetica, sans-serif;
+ }
+ .frmbut {
+      background-color : transparent;
+      font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size : 10px;
+      font-weight : bold;
+      margin-top : 3px;
+      margin-left : 3px;
+ }
+ a.ahead {
+      color : navy;
+      font-size : 14px;
+      text-decoration : none;
+      font-weight : 600;
+      font-family : verdana, arial, helvetica, sans-serif;
+ }
+ a.ahead:link {
+      color : navy;
+ }
+ a.ahead:visited {
+      color : navy;
+ }
+ a.ahead:hover {
+      background-color : white;
+      text-decoration : underline;
+ }
+ tr.tblhead {
+      font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size : 13px;
+      font-weight : bold;
+      color : #708f7f;
+      padding-left : 3px;
+ }
+ tr.tblcont {
+      font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size : 13px;
+      color : black;
+      padding-left : 3px;
+ }
+  .trtblhead { /* added by Tony Sodano (tonysodano@gmail.com) 05.03.05 */
+      font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size : 13px;
+      font-weight : bold;
+      color : #708f7f;
+      padding-left : 3px;
+ }
+ .trtblcont { /* added by Tony Sodano (tonysodano@gmail.com) 05.03.05 */
+      font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size : 13px;
+      color : black;
+      padding-left : 3px;
+ }
+  .thtblhead { /* added by Tony Sodano (tonysodano@gmail.com) 05.03.05 */
+      font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size : 13px;
+      font-weight : bold;
+      color : #708f7f;
+      padding-left : 3px;
+ }
+ .thtblcont { /* added by Tony Sodano (tonysodano@gmail.com) 05.03.05 */
+      font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size : 13px;
+      color : black;
+      padding-left : 3px;
+ }
+ .imma {
+      margin-left : 4px;
+ }
+ #login {
+      font-family : Verdana, Geneva, Arial, sans-serif;
+      background-color : transparent;
+      text-align : center;
+      margin-top : -75px;
+      margin-left : -175px;
+      position : absolute;
+	  padding-top:25px;  /* added by Tony Sodano (tonysodano@gmail.com) 05.02.05 */
+      top : 50%;
+      left : 50%;
+      width : 350px;
+      height : 150px;
+      visibility : visible;
+      border : thin solid black;
+	  clear: both;
+ }
+ #loginmsg {
+      font-family : Verdana, Geneva, Arial, sans-serif;
+      background-color : transparent;
+      margin-top : 77px;
+      margin-left : -175px;
+      position : absolute;
+      text-align : center;
+      top : 55%; /* incremented by 5% -- Tony Sodano (tonysodano@gmail.com) 05.02.05 */
+      left : 50%;
+      width : 400px; /* incremented by 50px -- Tony Sodano (tonysodano@gmail.com) 05.02.05 */
+      height : 70px;
+      visibility : visible;
+      font-size : 13px;
+      font-weight : bold;
+      color : #00008b;
+	  clear: both;
+ }
+ #loginerr {
+      font-family : Verdana, Geneva, Arial, sans-serif;
+      background-color : transparent;
+      margin-top : -110px;
+      margin-left : -175px;
+      position : absolute;
+      text-align : center;
+      top : 50%;
+      left : 50%;
+      width : 350px;
+      height : 70px;
+      visibility : visible;
+      font-size : 13px;
+      font-weight : bold;
+      color : red;
+ }
+ .smlogo {
+      margin-top : 5px;
+      float : left;
+      margin-left : 3px;
+ }
+ .frmlogin {
+      background-color : transparent;
+      font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size : 10px;
+      font-weight : bold;
+      margin-top : 3px;
+      margin-left : 3px;
+      text-align : right;
+ }
+ .msgdisplay {
+      background-color : transparent;
+      font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size : 13px;
+      font-weight : bold;
+      margin-top : 3px;
+      color : #708090;
+ }
+ .toupc {
+      text-transform : uppercase;
+ }
+ .toloc {
+      text-transform : lowercase;
+ }
+ ul#nav {
+      width : 10em;
+      margin : 0;
+      padding : 0.5em;
+      list-style-type : square;
+ }
+ ul#nav ul {
+      margin : 0 0 0 1em;
+      padding : 0;
+ }
+ ul#nav a {
+      text-decoration : none;
+      color : #333;
+ }
+ ul.pde_nav#nav {
+      padding : 0.5em;
+      list-style-type : none;
+ }
+ ul.pde_nav#nav ul {
+      padding : 0;
+      margin : 0;
+ }
+ ul.pde_nav#nav li {
+      margin : 0;
+      padding : 0;
+      height : 1em;
+      list-style-type : none;
+ }
+ html > body ul.pde_nav#nav li {
+      height : auto;
+ }
+ ul.pde_nav a , ul.pde_nav strong {
+      width : 120px;
+      text-decoration : none;
+      color : navy;
+      display : block;
+      padding : 0 0 0 1em;
+ }
+ .pde_hide {
+      display : none;
+ }
+ .pde_show {
+      display : block;
+ }
+ .pde_parent {
+      background : transparent url(images/plus.gif) no-repeat 0 50%;
+ }
+ .pde_active {
+      background : transparent url(images/minus.gif) no-repeat 0 50%;
+ }
+ a.forgot {
+      color : black;
+      font-size : 9px;
+      text-decoration : none;
+      font-weight : normal;
+      font-family : verdana, arial, helvetica, sans-serif;
+ }
+ a.forgot:link {
+      color : black;
+ }
+ a.forgot:visited {
+      color : black;
+ }
+ a.forgot:hover {
+      text-decoration : underline;
+      background-color : transparent;
+ }
