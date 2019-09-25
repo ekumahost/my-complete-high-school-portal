@@ -3,8 +3,8 @@
 This project was developped by Okokoh (http://ekumaly.com)
 and Kelvin (https://kelvin.ugbana.com)
 
-WE DEVELOPED HISP (SECONDARY, nursary, creche, school portal while in school learning programming. ) it is a great tool
-UBEB format, in fact it has all features, and I mean it. starting from admission, scratch cards for admission, 
+WE DEVELOPED HISP (SECONDARY, nursery, creche, school portal while in school learning programming. ) it is a great tool.
+UBEB compliant, in fact it has all features, and I mean it. Starting from admission, scratch cards for admission, 
 online payments, results, attendance, exam, cbt, graduation.. haha, I mean this portal is just an online school.
 it can work for school that have multiple locations, eg. if your school is in many states the students can all be handled here from admission to graduation
 parents, teachers, health attendant, principals, students, admins can login. I dont know how to say it again. it has all features a school can think of/
