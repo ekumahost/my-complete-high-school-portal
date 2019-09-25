@@ -1,6 +1,6 @@
 
 # Intro
-This project was developped by Okokoh (https:ekumaly.com)
+This project was developped by Okokoh (https://ekumaly.com)
 and Kelvin (https://kelvin.ugbana.com)
 
 WE DEVELOPED HISP (SECONDARY, nursary, creche, school portal while in school learning programming. ) it is a great tool
