@@ -21,6 +21,7 @@ if(!isset($_SESSION['UserID']) || (time() - $_SESSION['LAST_ACTIVITY'] > $timeou
 	exit;
 }?>
 
+
 <?php
 $current_year = $_SESSION['CurrentYear'];
 $yea = date('d/m/Y');

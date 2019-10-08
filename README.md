@@ -29,7 +29,7 @@ We have tested on PHP7 Apache web server
 you may see some http://localhost/hisp/ change them to your own website url. ::)
 3. Edit your webserver and set home.php as directory INdex (google it if you dont know) -- you see we did not have that index.php thing, its home.php here
 4. edit /home.php for the Tawk.to Script 
-x. run the sql in TOOLS/sql_fix.txt in your database
+x. run the sql in TOOLS/sql_fix.txt in your database: that is run the code inside it as a fix.
 
 I think you can see some of the features here: https://hisp.kastechnet.com/features
 BOOM you are done, open the site and visit http://mysite.../control to login to admin and start playing around.
