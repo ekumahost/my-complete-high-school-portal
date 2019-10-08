@@ -78,7 +78,7 @@ $pnpairs= 9;
 			if(isset($_POST['myaction']) && $_POST['myaction']=="doit"){	
 				//switch the year
 				//Is the new year already created??  then don't create it, it will be a mess if we do!
-				$tot = $kas_framework->counRestrict1('student_grade_year', 'student_grade_year_year', $next_year);
+				$tot = $kas_framework->countRestrict1('student_grade_year', 'student_grade_year_year', $next_year);
 			//if the new year already exists, error out of script.
 
 		if ($tot > 0) {
@@ -134,7 +134,8 @@ $dbh_sSQL_csgy = $dbh->prepare($create_student_grade_year); $dbh_sSQL_csgy->exec
 //TAKE SOME GOOD MEASURES
 // kill all the students logged on, just kidding, log online students off
 $kill_std_sessions = "UPDATE tbl_app_config SET status='0' WHERE module= 'student_login'";
-$dbh_sSQL_kss = $dbh->prepare($sSQL); $dbh_sSQL_kss->execute(); $kill_std_sessions_mar = $dbh_sSQL_kss->rowCount(); $dbh_sSQL_kss = null;
+//$dbh_sSQL_kss = $dbh->prepare($sSQL); $dbh_sSQL_kss->execute(); $kill_std_sessions_mar = $dbh_sSQL_kss->rowCount(); $dbh_sSQL_kss = null;
+$dbh_sSQL_kss = $dbh->prepare($kill_std_sessions); $dbh_sSQL_kss->execute(); $kill_std_sessions_mar = $dbh_sSQL_kss->rowCount(); $dbh_sSQL_kss = null;
 
 // switch the session forward
 $db_set_current_yr = "UPDATE tbl_config SET current_year='".$nextyear."' WHERE id=1";
@@ -164,9 +165,11 @@ $dbh_sSQL_tc = $dbh->prepare($set_teacher_class); $dbh_sSQL_tc->execute(); $dbh_
 	// 1. set students in finale year to graduates(studentbio.admit SET =2)
 	// look at previous year to find graduates that where not promoted $current_year
 	$oldyearlist_SQL = "SELECT * FROM student_grade_year WHERE student_grade_year_year = '$current_year' AND student_grade_year_grade = '$gradecount'";
-	$dbh_sSQL_olS = $dbh->prepare($oldyearlist_SQL); $dbh_sSQL_olS->execute(); $rowCount_OL = $dbh_sSQL_olS->rowCount(); $dbh_sSQL_olS = null;
+	$dbh_sSQL_olS = $dbh->prepare($oldyearlist_SQL); $dbh_sSQL_olS->execute(); $rowCount_OL = $dbh_sSQL_olS->rowCount();
 	// WE HAVE THE LLIST OF THOSE IN FINALE YEAR HERE
-	
+
+
+
 	if($rowCount_OL != 0){
 	// LOOP THEM ON AND SET STUDENTBIO.ADMIT=2
 		while ($myact = $dbh_sSQL_olS->fetch(PDO::FETCH_ASSOC)) {
@@ -175,7 +178,8 @@ $dbh_sSQL_tc = $dbh->prepare($set_teacher_class); $dbh_sSQL_tc->execute(); $dbh_
 			$dbh_sSQL = $dbh->prepare($SQLite); $dbh_sSQL->execute(); $dbh_sSQL = null;
 	}
 }
-	
+    $dbh_sSQL_olS = null;
+
 // if all are transactions above are permitable without error, then we pay, else roll back our fucking money
 //if($create_student_grade_year and $kill_std_sessions and $db_set_current_yr and $remove_current_term and $switch_to_first_term  and $set_fees)
 

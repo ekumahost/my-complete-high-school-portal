@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 define('configuration', true);
 DEFINE ('_VALID', 1);
 include "lang_en.php";
