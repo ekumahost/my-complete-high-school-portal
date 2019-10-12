@@ -4,6 +4,7 @@
     Deny from all
 </FilesMatch>
 
+DirectoryIndex home.php
 
 ## EXPIRES CACHING ##
 <IfModule mod_expires.c>

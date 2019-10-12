@@ -47,5 +47,5 @@ please feel free to contact us for help and questions..
 but please just be a php developer and do not bother us, look around and fix your issue, this portal was build to be very simple to use
 the datbase already have some dummy data: you will need to shine your eyes and know the ones to remove before running a live production portal
 trying to login to admin and you cannot find the password, you can easily change the password in the database oo
-table = web_users, the password is just MD5 things
+table = web_users, the password is just MD5 things -- git push origin master
 
