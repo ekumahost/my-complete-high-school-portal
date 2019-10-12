@@ -1,5 +1,9 @@
 <?php
 
+
+include_once('../../php.files/classes/pdoDB.php');// custom config to get variables
+include_once('../../php.files/classes/kas-framework.php');// custom config to get variables
+// Include configuration file
 // Include configuration file
 include('tools/config.php');
 

@@ -1,5 +1,8 @@
 <?php
 
+include_once('../../php.files/classes/pdoDB.php');// custom config to get variables
+include_once('../../php.files/classes/kas-framework.php');// custom config to get variables
+// Include configuration file
 // Include configuration file
 include('tools/config.php');
 
@@ -101,7 +104,8 @@ echo '<li>You may want to edit time table </li>
 			<?php if(isset($_POST['myaction']) && $_POST['myaction']=="doit"){	
 				//switch the year
 				//Is the new year already created??  then don't create it, it will be a mess if we do!
-			$tot = $dbh->countRestrict1('student_grade_year', 'student_grade_year_year', $next_year);
+            $dbb = new kas_framework();
+			$tot = $dbb->countRestrict1('student_grade_year', 'student_grade_year_year', $next_year);
 			//if the new year already exists, error out of script.
 
 	if ($tot > 0) {
@@ -167,7 +171,8 @@ $dbh_Query3 = null;
 
 
 $switch_to_first_term = "UPDATE grade_terms SET current='1' WHERE grade_terms_id='1'";
-$dbh_Query4 = $dbh->prepare($Query);
+//$dbh_Query4 = $dbh->prepare($Query);
+$dbh_Query4 = $dbh->prepare($switch_to_first_term);
 $dbh_Query4->execute();
 $switch_to_first_term_mar = $dbh_Query4->rowCount();
 $dbh_Query4 = null;

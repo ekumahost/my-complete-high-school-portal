@@ -2,4 +2,3 @@
 
  SET GLOBAL sql_mode='';
 
-ALTER TABLE `teacher_schedule` ADD `teacher_schedule_subject_grade` VARCHAR(11) NULL DEFAULT NULL AFTER `teacher_schedule_type`;

@@ -23,7 +23,7 @@ php7 was it built on, no framework. this is raw php work with mysql database
 
 # Installation
 We have tested on PHP7 Apache web server
-1. create your mysql database and import /TOOLS/hisp.sql
+1. create your mysql database and import /TOOLS/hisp.sql(with dummy data), fresh_install.sql for fresh school production
 2. edit /php.files/classes/pdoDB.php for your database configurations 
 2. edit /control/includes/configuration.php for your database configurations again and others in the config files 
 2b. edit /php.files/classes/kas-framework.php for some portal url config..
@@ -34,7 +34,7 @@ you may see some http://localhost/hisp/ change them to your own website url. ::)
 x. run the sql in TOOLS/sql_fix.txt in your database: that is run the code inside it as a fix.
 
 I think you can see some of the features here: https://hisp.kastechnet.com/features
-BOOM you are done, open the site and visit http://mysite.../control to login to admin and start playing around.
+BOOM you are done, open the site and visit http://mysite.../control to login to admin as username = admin, password=cejine and start playing around.
 
 
 
