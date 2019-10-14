@@ -1,4 +1,5 @@
 
-
+// run these query in your db aftr install
  SET GLOBAL sql_mode='';
+ALTER TABLE `staff` CHANGE `staff_status` `staff_status` INT(2) NOT NULL DEFAULT '0' COMMENT '0= not aproved, 1 = approved, 2 = Retired';
 

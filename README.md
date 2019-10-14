@@ -29,9 +29,12 @@ We have tested on PHP7 Apache web server
 2b. edit /php.files/classes/kas-framework.php for some portal url config..
 2c. edit /myjs/feccukcontroller.js for the same purpose you edited 2b above in two places.. server_root_dir and one img src there..
 you may see some http://localhost/hisp/ change them to your own website url. ::)
-3. Edit your webserver and set home.php as directory INdex (google it if you dont know) -- you see we did not have that index.php thing, its home.php here
+3. Edit your webserver and set home.php as directory INdex (google it if you dont know) -- you see we did not have that index.php thing, its home.php here, we already did this .htaccess but just incase
 4. edit /home.php for the Tawk.to Script 
-x. run the sql in TOOLS/sql_fix.txt in your database: that is run the code inside it as a fix.
+5. run the sql in TOOLS/sql_fix.txt in your database: that is run the code inside it as a fix.
+6. SET YOUR SMTP DETAILS FOR MAIL SENDING: /php.files/classes/mailing_list.php
+6. set mailHackingReport report email: /php.files/classes/mailing_list.php
+
 
 I think you can see some of the features here: https://hisp.kastechnet.com/features
 BOOM you are done, open the site and visit http://mysite.../control to login to admin as username = admin, password=cejine and start playing around.
