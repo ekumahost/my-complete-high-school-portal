@@ -179,7 +179,7 @@ Year
 			@$exam = trim(addslashes($data[2]));
 			@$ca1 = trim(addslashes($data[3]));
 			@$ca2 = trim(addslashes($data[4]));
-			@$notes = (trim(addslashes($data[5]));		
+			@$notes = trim(addslashes($data[5]));		
 
 
 			//$mystd_ck = $mystd_ck_yr.'/'.$mystd_ck_unn;// reg no // not using this right?

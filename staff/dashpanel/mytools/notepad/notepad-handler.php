@@ -41,7 +41,7 @@ if ($rsn == 'confirmDelete') {
 		$(\'#todoListDiv\').show();
 		</script>';
 	} else {
-		$kas_framework->showWarningCallout('Could not Delete. Please Try Again');
+		$kas_framework->showWarningCallout('Could not Delete. Please Try Again', '');
 	}
 }
 ?>

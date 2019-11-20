@@ -11,7 +11,7 @@ require ('classes/kas-framework.php');
 	$db_handle->execute();
 	$paramGetFields = $db_handle->fetch(PDO::FETCH_OBJ);
 	$db_handle = null;	
-		if (mysql_result($paramGetFields->status == 1) {
+		if ($paramGetFields->status == 1) {
 			print '<script type="text/javascript">
 						$("#button_release").attr("disabled", "disabled");
 					</script>';

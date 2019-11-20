@@ -17,7 +17,7 @@
 		
 		/*translating each individual start time for the selected tasks */
 		$timeInSeconds = strtotime($convertedTime);
-		$timeofNow = $timeInSeconds - time('now')+86400;
+		$timeofNow = $timeInSeconds - time()+86400;
 		$convertToDays = round($timeofNow/(60*60*24));
 			if ($convertToDays == -0) { $convertToDays = '0'; }
 		

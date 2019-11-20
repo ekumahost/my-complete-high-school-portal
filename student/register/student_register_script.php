@@ -17,14 +17,13 @@ if (!isset($byepass)) {
 //class for the pin and the serial
 class check_pin_and_serial extends kas_framework {
 	public function validate_pin_and_serial($pin, $serial) {
-		require ('../../php.files/classes/pdoDB.php');
-		$querySQL = "SELECT * FROM reg_pins_old WHERE codec = :pin AND sn = :serial AND status = '0' LIMIT 1";
+		global $dbh;
+		$querySQL = "SELECT * FROM reg_pins_old WHERE codec = ? AND sn = ? AND status = '0' LIMIT 1";
 		$db_handle = $dbh->prepare($querySQL);
-		$db_handle->bindParam(':pin', $pin);	$db_handle->bindParam(':serial', $serial);
-		$db_handle->execute();
+		$db_handle->execute([$pin, $serial]);
 		$get_rows = $db_handle->rowCount();
 		$db_handle = null;		
-		if ($get_rows == 1) { return true; } else { return false; }
+		return ($get_rows == '1')? true: false;
 	}
 }
 	

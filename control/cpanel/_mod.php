@@ -18,7 +18,7 @@ $kas_framework->countRestrict1('table', 'field', $value);
 $ezr = $dbh->prepare($queryStr);
 $ezr->execute();
 
-define ('', $);
+//define ('', $);
 
 include_once "../../php.files/classes/kas-framework.php";
 

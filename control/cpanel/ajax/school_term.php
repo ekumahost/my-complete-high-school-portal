@@ -18,7 +18,7 @@ $current_year=$_SESSION['CurrentYear'];
 $year=$kas_framework->getValue('school_years_desc', 'school_years', 'school_years_id', $current_year);
 $nextyear=$current_year+1;
 $next_year=$kas_framework->getValue('school_years_desc', 'school_years', 'school_years_id', $nextyear);
-$myterm=$kas_framework->getValue('fieschool_years_descld', 'school_years', 'school_years_id', $nextyear); // we have not selected term from db
+$myterm=$kas_framework->getValue('school_years_desc', 'school_years', 'school_years_id', $nextyear); // we have not selected term from db
 $cterm=$kas_framework->getValue('grade_terms_desc', 'grade_terms', 'current', '1');
 
 ?><br />

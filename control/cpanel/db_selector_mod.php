@@ -19,7 +19,7 @@ define ('CountActiveNonTeachingStaff', $kas_framework->countRestrict2('web_users
 define ('CountNYSC', $kas_framework->countRestrict1('web_users', 'web_users_type', 'Ty'));
 define ('CountPractiseteacher', $kas_framework->countRestrict1('web_users', 'web_users_type', 'Tp'));
 define ('Countadmins', $kas_framework->countRestrict1('web_users', 'web_users_type', 'B'));
-define ('Countlessonteacher', $$kas_framework->countRestrict1('web_users', 'web_users_type', 'Tl'););
+define ('Countlessonteacher', $kas_framework->countRestrict1('web_users', 'web_users_type', 'Tl'));
 define ('CountStaff', $kas_framework->countAll('staff'));
 define ('CountAllMessages', $kas_framework->countAll('tbl_portal_emails'));
 define ('CountAllUnreadMessages', $kas_framework->countRestrict1('tbl_portal_emails', 'status', '0'));
@@ -35,7 +35,7 @@ $query= "SELECT COUNT(*) AS cnt from web_students where status !='1' ";
 	$CountAllInActiveStudents =  $cntVar->cnt;
 define ('CountAllInActiveStudents', $CountAllInActiveStudents);
 
-$query= "SELECT COUNT(*) AS cnt from web_users where web_users_type='T' and web_users_active !='1' ");
+$query= "SELECT COUNT(*) AS cnt from web_users where web_users_type='T' and web_users_active !='1'";
 	$dbh_query = $dbh->prepare($query); $dbh_query->execute();
 	$cntVar = $dbh_query->fetch(PDO::FETCH_OBJ);
 	$CountAllInActiveTeachers = $cntVar->cnt;
@@ -64,7 +64,7 @@ $dbh_feesum = $dbh->prepare($feesum);
 	$dbh_feesum = null;
 define ('SumUpSchoolFee', $SumUpSchoolFee);
 
-$feesum= "SELECT SUM(tution_amount_paid) as mytotal from payment_receipts WHERE tution_paid_type = '5'");
+$feesum= "SELECT SUM(tution_amount_paid) as mytotal from payment_receipts WHERE tution_paid_type = '5'";
 $dbh_feesum = $dbh->prepare($feesum);
 	$dbh_feesum->execute();
 	$vars = $dbh_feesum->fetch(PDO::FETCH_OBJ);
@@ -123,6 +123,7 @@ define ('SumUpHostelFee', $SumUpHostelFee);
 
 
 function GeneratePin(){
+global $dbh;
 $teach = "SELECT * from staff ";
 $nonteach = "SELECT * from web_users where web_users_type='S' ";
 $dbh_teach = $dbh->prepare($teach); $dbh_teach->execute();
@@ -134,6 +135,7 @@ $dbh_nonteach = null; $dbh_teach = null;
 function FormatDateKelvin($dbdate){
 	// not used yet
 	// create the kelvin date format 
+	global $postnamedob;
 	// pick his in db and convert to html5 fomat
 	echo $datefht5 = substr($dbdate, -4).'-'.substr($dbdate, -7, 2).'-'.substr($dbdate, 0, 2);
 	// refomat back before adding to db
@@ -150,6 +152,7 @@ function FormatDateKelvin($dbdate){
 	*/
 
 function GetStudentTermAverage($current_year,$cardterm,$tbl_student){
+	global $dbh, $kas_framework;
 	$examsum= "SELECT SUM(exam_score) as exam_total from grade_history_primary WHERE year = '$current_year' AND quarter ='$cardterm' AND student = '$tbl_student'";
 	$ca1sum= "SELECT SUM(ca_score1) as ca1_total from grade_history_primary WHERE year = '$current_year' AND quarter ='$cardterm' AND student = '$tbl_student'";
 	$ca2sum= "SELECT SUM(ca_score2) as ca2_total from grade_history_primary WHERE year = '$current_year' AND quarter ='$cardterm' AND student = '$tbl_student'";

@@ -90,7 +90,7 @@ if (empty($_FILES['myphoto'])){echo "Error: Your must be manipulating something.
 				$dbh_Query = null;
 					//upgraded by Ultimate Kelvin C - Kastech
 					if ($rowCount == 0) {
-						print 'Error!  Something is not right. Could not Update the Picture. Rename the photo before upload');
+						print 'Error!  Something is not right. Could not Update the Picture. Rename the photo before upload';
 						//echo $randomid;
 						@unlink (@$file);// if the image name is the same, this will trow error
 					} else {	

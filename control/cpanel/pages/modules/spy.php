@@ -147,7 +147,7 @@ $poster__id = $fetchObj_studPost->poster_id;
 			$pullassoutX = "SELECT * FROM student_post ORDER BY id DESC LIMIT $sort_srt, 1000";
 			$dbh_pullassoutX = $dbh->prepare($pullassoutX); $dbh_pullassoutX->execute();
 			$sn = 0;
-				while ($std = $dbh_pullassoutX->fetch(PDO::FETCH_ASSOC) {
+				while ($std = $dbh_pullassoutX->fetch(PDO::FETCH_ASSOC)) {
 
 					$sn = $sn + 1;
 					

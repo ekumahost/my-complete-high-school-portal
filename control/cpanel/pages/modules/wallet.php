@@ -15,7 +15,7 @@ include_once "../includes/configuration.php";
 
 $current_year = $_SESSION['CurrentYear'];
 
-$biototal = $kas_framework->countAll('student_wallet')
+$biototal = $kas_framework->countAll('student_wallet');
 	// since we are displaying 1000 only
 	if($biototal > 1000){
 	//echo "its above 10000";

@@ -59,7 +59,7 @@ $yea = date('d/m/Y');
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
 						</div>
 					</div>
-	 <div id='myhomepage'> <!-- DIV TO BE REPLACED --->
+	 <div id='myhomepage' style="padding:20px"> <!-- DIV TO BE REPLACED --->
 	 <br />
 		<div id='actiontitle' align='left'>
 		  <h3>&nbsp;HyperSchool Launcher (<em><font color="#FF0000">Please handle with care</font></em>) </h3>

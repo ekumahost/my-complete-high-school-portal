@@ -100,6 +100,29 @@ function getValue(string $field, string $table, string $priKeyField, $priKeyValu
 		}
 	}
 
+	function getValueRestrict1(string $field, string $table, string $priKeyField, $priKeyValue, string $prikeyField2, $prikeyValue2) {
+		global $dbh;
+		try {
+			$sql = "SELECT $field FROM {$table} WHERE {$priKeyField} = :priKeyValue AND {$prikeyField2} = :priKeyValue2 LIMIT 1";
+			$db_handle = $dbh->prepare($sql);
+			$check_exec = $db_handle->execute(array(':priKeyValue' => $priKeyValue, ':priKeyValue2' => $prikeyValue2));
+			$rows_affected = $db_handle->rowCount();		//count the number of returned rows
+				if ($check_exec == false) { 
+					$data = ''; 
+				} else if ($rows_affected === 0) { 
+					$data = '';  
+				} else {
+					$fetch_obj = $db_handle->fetch(PDO::FETCH_OBJ);
+					$data = $fetch_obj->$field; 
+				} 
+			$db_handle = null;
+			return $data;	
+		} catch (PDOException $kastech) {
+			echo $kastech->getMessage();
+		}
+	}
+
+
 function curl_download($url) {
     global $portalurl;
     if (!function_exists('curl_init')) {

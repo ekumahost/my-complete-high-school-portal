@@ -102,7 +102,7 @@ include_once('../../tools/public_functions.php');// SOME FUNCTIONS NEEDED
 	// collect the form variables
 	extract($_POST);
 	// update database
-	$postquerycont= "UPDATE staff SET staff_salary_type = '$scale', staff_bank = '$bank', staff_account = '$acc', staff_acc_name = '$acc_name', staff_act_type = '$type', staff_bank_sort = '$sort' WHERE staff_id = '$postid'");
+	$postquerycont= "UPDATE staff SET staff_salary_type = '$scale', staff_bank = '$bank', staff_account = '$acc', staff_acc_name = '$acc_name', staff_act_type = '$type', staff_bank_sort = '$sort' WHERE staff_id = '$postid'";
 	$dbh_sSQL = $dbh->prepare($postquerycont); $dbh_sSQL->execute(); $rowCount = $dbh_sSQL->rowCount(); $dbh_sSQL = null;
 		if ($rowCount == 1){
 			echo '<font color = "green">Changes Saved successfully</font>'."<br>";

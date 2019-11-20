@@ -1,9 +1,7 @@
 
 # Intro
 
-This project was developped by Okokoh (http://ekumaly.com)
-
-and Kelvin (https://kelvin.ugbana.com)
+This project was developed by Okokoh (http://ekumaly.com) and Kelvin (https://kelvin.ugbana.com)
 
 WE DEVELOPED HISP (SECONDARY, nursery, creche, school portal while in school learning programming. ) it is a great tool.
 UBEB compliant, in fact it has all features, and I mean it. Starting from admission, scratch cards for admission, 
@@ -31,7 +29,7 @@ We have tested on PHP7 Apache web server
 you may see some http://localhost/hisp/ change them to your own website url. ::)
 3. Edit your webserver and set home.php as directory INdex (google it if you dont know) -- you see we did not have that index.php thing, its home.php here, we already did this .htaccess but just incase
 4. edit /home.php for the Tawk.to Script 
-5. run the sql in TOOLS/sql_fix.txt in your database: that is run the code inside it as a fix.
+5. run the sql in /TOOLS/sql_fix.txt in your database: that is run the code inside it as a fix.
 6. SET YOUR SMTP DETAILS FOR MAIL SENDING: /php.files/classes/mailing_list.php
 6. set mailHackingReport report email: /php.files/classes/mailing_list.php
 
@@ -51,4 +49,11 @@ but please just be a php developer and do not bother us, look around and fix you
 the datbase already have some dummy data: you will need to shine your eyes and know the ones to remove before running a live production portal
 trying to login to admin and you cannot find the password, you can easily change the password in the database oo
 table = web_users, the password is just MD5 things -- git push origin master
+
+# Are we awesome?
+please donate BITCOINS :)
+1DHHPQeggnDcr9NNm6uhhyEcA16GQPa8iJ
+OR USDT (ERC20)
+0x68c62c0c6e5d1e21c448133bccfc7fcb5d244f86
+
 

@@ -10,8 +10,7 @@ exit;
 }
 
 include_once "../includes/common.php";
-//Initiate database functions
-include_once "../includes/ez_sql.php";
+
 // config
 include_once "../includes/configuration.php";
 
@@ -21,14 +20,14 @@ include_once "../includes/configuration.php";
   <a class="btn btn-small" href="year_simulator" target="_blank"><strong>Simulate/Change Session</strong> </a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
              <?php   
-$current_year=$_SESSION['CurrentYear'];
-$cardterm = $_SESSION['CurrentTerm'];
-			 if(isset($_GET['report_init'])){
+			$current_year=$_SESSION['CurrentYear'];
+			$cardterm = $_SESSION['CurrentTerm'];
+			 if (isset($_GET['report_init'])){
 			 // check if the report card is created
-			 $querylr =query("select * from std_report_cards WHERE session = '$current_year' AND term = '$cardterm'");
-							$ckeckerr = mysql_num_rows($querylr);
-							if($ckeckerr > 0){echo '<div class="alert alert-error">
-							<button type="button" class="close" data-dismiss="alert">×</button>
+			 $querylr = $dbh->prepare("select * from std_report_cards WHERE session = '$current_year' AND term = '$cardterm'");
+			$querylr->execute(); $ckecker = $querylr->rowCount();
+							if($ckecker > 0){echo '<div class="alert alert-error">
+							<button type="button" class="close" data-dismiss="alert">ï¿½</button>
 							<strong>Something is wrong!</strong> What are you doing, click on logo above.
 						</div>';}else{
 			 
@@ -36,9 +35,9 @@ $cardterm = $_SESSION['CurrentTerm'];
 
 // get the id of all student in current year from student grade year table
 
-$set_report = mysql_query("INSERT INTO std_report_cards (student,session,grade,term) SELECT student_grade_year_student,student_grade_year_year,student_grade_year_grade,$cardterm AS student_grade_year_id FROM student_grade_year WHERE student_grade_year_year = '$current_year'");
+$set_report = $dbh->prepare("INSERT INTO std_report_cards (student,session,grade,term) SELECT student_grade_year_student,student_grade_year_year,student_grade_year_grade,$cardterm AS student_grade_year_id FROM student_grade_year WHERE student_grade_year_year = '$current_year'");
 
-if($set_report){
+if ($set_report->execute()){
 	$myp->AlertSuccess('Well Done! ', 'You have successfully Initialized the report cards.');
 } else {
 	$myp->AlertError('Something is wrong! ', 'Please call admin.');
@@ -47,8 +46,8 @@ if($set_report){
 }
 
 // check if the report card is initializec
-$queryl =query("select * from std_report_cards WHERE session = '$current_year' AND term = '$cardterm'");
-				$ckecker = mysql_num_rows($queryl);
+$queryl = $dbh->prepare("select * from std_report_cards WHERE session = '$current_year' AND term = '$cardterm'"); $queryl->execute();
+				$ckecker = $queryl->rowCount();
 				if($ckecker > 0){
 				echo "<i>Report Card is Created for this term, if a particular student is not found, tell admin to add the student to report card</i>";
 				} else {?>
@@ -65,9 +64,9 @@ $queryl =query("select * from std_report_cards WHERE session = '$current_year' A
 	 $myp->AlertError('Sorry! ', 'You are not commenting here, Only Principal thanks');
   }
   
-	 $queryj = query("select * from grades");	  
+	 $queryj = $dbh->prepare("select * from grades"); $queryj->execute();  
 		//upgraded by Ultimate Kelvin C - Kastech
-		while ($get_grades = mysql_fetch_object($queryj)) {
+		while ($get_grades = $queryj->fetch(PDO::FETCH_OBJ)) {
 			print '<a class="btn btn-sm btn-default" style="margin:4px" href="results?page=report_cards&gid='.$get_grades->grades_id.'">'.$get_grades->grades_desc.'</a>';
 		}
 	    
@@ -80,7 +79,7 @@ $queryl =query("select * from std_report_cards WHERE session = '$current_year' A
 					$cardgrade = $_GET['gid'];
 				}
 				
-		$gradename= $db->get_var("SELECT grades_desc FROM grades WHERE grades_id='$cardgrade'");//		
+		$gradename = getValue('grades_desc', 'grades', 'grades_id', $cardgrade);
 ?>
 </div>
 <div class="row-fluid sortable">
@@ -109,13 +108,16 @@ $queryl =query("select * from std_report_cards WHERE session = '$current_year' A
 				
 				
 	// count number students
-	$querybio=query("SELECT * FROM std_report_cards WHERE session = '$current_year' AND term = '$cardterm' AND grade = '$cardgrade'");
+	$querybio = $dbh->prepare("SELECT * FROM std_report_cards WHERE session = '$current_year' AND term = '$cardterm' AND grade = '$cardgrade'");
+	$querybio->execute(); $biototal = $querybio->rowCount();
+
 	$nothing = NULL;
 	// how many have been signed
-$querybiosigned=query("SELECT * FROM std_report_cards WHERE session = '$current_year' AND term = '$cardterm' AND grade = '$cardgrade' AND c_principal != '$nothing'");
-$biototalsigned =  mysql_num_rows($querybiosigned);
+	$querybiosigned = $dbh->prepare("SELECT * FROM std_report_cards WHERE session = '$current_year' AND term = '$cardterm' AND grade = '$cardgrade' AND c_principal != '$nothing'");
+	$querybiosigned->execute(); $biototalsigned =  $querybiosigned->rowCount();
 
-$biototal =  mysql_num_rows($querybio);
+
+
 	// since we are displaying 100 only
 	if($biototal > 100){
 	//echo "its above 10000";
@@ -134,71 +136,73 @@ $biototal =  mysql_num_rows($querybio);
 				 $sort_srt = 0; 
 				 }// end for wallet
 			
-$pullassout = mysql_query("SELECT * FROM std_report_cards WHERE session = '$current_year' AND term = '$cardterm' AND grade = '$cardgrade' ORDER BY id DESC LIMIT $sort_srt, 100");
-							
-		$num = 0;
+	$pullassout = $dbh->prepare("SELECT * FROM std_report_cards WHERE session = '$current_year' AND term = '$cardterm' AND grade = '$cardgrade' ORDER BY id DESC LIMIT $sort_srt, 100");
+	$pullassout->execute(); $num = 0;
 
 	//$sn = 0;
-	while ($std = mysql_fetch_array($pullassout)) {
+	while ($std = $pullassout->fetch(PDO::FETCH_ASSOC)) {
 	$num = $num + 1;
 
-// the main id
-		$sn = $std['id'];
-		$tbl_student = $std['student'];
-		$tbl_session = $std['session'];
-		$tbl_term = $std['term'];
-		$tbl_grade = $std['grade'];
-		$tbl_cteacher = $std['c_form_teacher'];
-		$tbl_cprincipal = $std['c_principal'];
-		
-		
-		$stdbio_id = $tbl_student; //reasigned to handle the ones bellow
-		$regno=$db->get_var("SELECT studentbio_internalid FROM studentbio WHERE studentbio_id = '$stdbio_id'");//
-		$myfirstn=$db->get_var("SELECT studentbio_fname FROM studentbio WHERE studentbio_id = '$stdbio_id'");//
-		$mylastn=$db->get_var("SELECT studentbio_lname FROM studentbio WHERE studentbio_id = '$stdbio_id'");//
-		 $mymiddlen=$db->get_var("SELECT studentbio_mname FROM studentbio WHERE studentbio_id = '$stdbio_id'");//
-		 $gender=$db->get_var("SELECT studentbio_gender FROM studentbio WHERE studentbio_id = '$stdbio_id'");//
+	// the main id
+	$sn = $std['id'];
+	$tbl_student = $std['student'];
+	$tbl_session = $std['session'];
+	$tbl_term = $std['term'];
+	$tbl_grade = $std['grade'];
+	$tbl_cteacher = $std['c_form_teacher'];
+	$tbl_cprincipal = $std['c_principal'];
+	
+	
+	$stdbio_id = $tbl_student; //reasigned to handle the ones bellow
+	$getStdInfo = $dbh->prepare("SELECT * FROM studentbio WHERE studentbio_id = '$stdbio_id'"); $getStdInfo->execute();
+	$getData = $getStdInfo->fetch(PDO::FETCH_OBJ);
+	$regno = $getData->studentbio_internalid;
+	$myfirstn = $getData->studentbio_fname;
+	$mylastn = $getData->studentbio_lname;
+	$mymiddlen = $getData->studentbio_mname;
+	$gender = $getData->studentbio_gender;
 
 
-			//get the idiot username from web_students
-	$username=$db->get_var("SELECT user_n FROM web_students WHERE identify='$regno'");//we can also use stdbio_id
+	//get the idiot username from web_students
+	$username = getValue('user_n', 'web_students', 'identify', $regno); 
 	// select the idiots class at the current year // We should be able to echo 
-	$std_grade_yr =$db->get_var("SELECT student_grade_year_grade FROM student_grade_year WHERE student_grade_year_student='$stdbio_id' AND student_grade_year_year = '$current_year'");//
-			// so what is his grade now
-				$std_grade =$db->get_var("SELECT grades_desc FROM grades WHERE grades_id='$std_grade_yr'");//
-// what if the guy is graduate
-				if($std_grade==NULL){$std_grade='<u>Graduate</u>';}
+	//$std_grade_yr =$db->get_var("SELECT student_grade_year_grade FROM student_grade_year WHERE student_grade_year_student='$stdbio_id' AND student_grade_year_year = '$current_year'");//
+	$std_grade_yr = getValueRestrict1('student_grade_year_grade', 'student_grade_year', 'student_grade_year_student', $stdbio_id, 'student_grade_year_year', $current_year);
+	// so what is his grade now
+	//$std_grade =$db->get_var("SELECT grades_desc FROM grades WHERE grades_id='$std_grade_yr'");//
+	$std_grade = getValue('grades_desc', 'grades', 'grades_id', $std_grade_yr);
+	// what if the guy is graduate
+		if ($std_grade==NULL) { $std_grade='<u>Graduate</u>';}
 
+	// get the student status
+ 	//$mystatus=$db->get_var("SELECT admin FROM web_students WHERE identify='$regno'");//we can also use stdbio_id
+	//$mystatus=$db->get_var("SELECT admit FROM studentbio WHERE studentbio_id='$stdbio_id'");//we can also use stdbio_id
 
-			
-// get the student status
- 				//$mystatus=$db->get_var("SELECT admin FROM web_students WHERE identify='$regno'");//we can also use stdbio_id
-
-$mystatus=$db->get_var("SELECT admit FROM studentbio WHERE studentbio_id='$stdbio_id'");//we can also use stdbio_id
-	 if($mystatus =='1'){
+	$mystatus = getValue('admit', 'studentbio', 'studentbio_id', $stdbio_id);
+	 if ($mystatus =='1'){
 	 $mystatus = '<span class="label label-success">Current</span>';
 	 //label-warning for pending
 		// 0=not admited, 1=admited, 2= Graduate, 3= suspended, 4= expelled, 5= transferd, 6 = withdrwn, 7 = deceased
 
-	 }else if($mystatus =='2'){	
+	 } else if($mystatus =='2'){	
 	  $mystatus = '<span class="label label-info">Graduate</span>';
 	 
-	 }else if($mystatus =='3'){
+	 } else if($mystatus =='3'){
 	 $mystatus = '<span class="label label-warning">Suspended</span>';
 	 
-	 }else if($mystatus =='4'){
+	 } else if($mystatus =='4'){
 	 
 	 $mystatus = '<span class="label label-important">Expelled</span>';
-	 }else if($mystatus =='5'){
+	 } else if($mystatus =='5'){
 	 
 	 $mystatus = '<span class="label label-info">Transfered</span>';
-	 }else if($mystatus =='6'){
+	 } else if($mystatus =='6'){
 	 
 	 $mystatus = '<span class="label label-info">Withdrawn</span>';
-	 }else if($mystatus =='7'){
+	 } else if($mystatus =='7'){
 	 
 	 $mystatus = '<span class="label label-important">Deceased</span>';
-	 }else{
+	 } else{
 	 
 	 $mystatus = '<span class="label label-important">Unknown</span>';
 	 }
@@ -207,13 +211,14 @@ $mystatus=$db->get_var("SELECT admit FROM studentbio WHERE studentbio_id='$stdbi
 // select the student picture
 
 
-$picture=$db->get_var("SELECT studentbio_pictures FROM studentbio WHERE studentbio_id='$stdbio_id'");//we can also use stdbio_id
+//$picture=$db->get_var("SELECT studentbio_pictures FROM studentbio WHERE studentbio_id='$stdbio_id'");//we can also use stdbio_id
+$picture = getValue('studentbio_pictures', 'studentbio', 'studentbio_id', $stdbio_id);
 if($picture==NULL){
 $picture = 'avatar_default.png';
 }
 // the date of birth
-$std_yob=$db->get_var("SELECT studentbio_dob FROM studentbio WHERE studentbio_id='$stdbio_id'");//we can also use stdbio_id
-
+//$std_yob=$db->get_var("SELECT studentbio_dob FROM studentbio WHERE studentbio_id='$stdbio_id'");//we can also use stdbio_id
+$std_yob = getValue('studentbio_dob', 'studentbio', 'studentbio_id', $stdbio_id);
 $age = date('Y') - (substr($std_yob, -4)+1);
 //added by the ultimate keliv
 $age = ($age > 100)? 'X': $age;
@@ -288,8 +293,16 @@ $(document).ready(function()
 Form master Comment: <font color="green">
 <?php 
 // display the form master comment
-$form_m_comment =$db->get_var("SELECT c_form_teacher FROM std_report_cards WHERE student = '$tbl_student' AND session = '$current_year' AND term='cardterm' AND grade='$cardgrade'");//
-echo $form_m_comment;
+$sql_query = "SELECT c_form_teacher FROM std_report_cards WHERE student = '$tbl_student' AND session = '$current_year' AND term='cardterm' AND grade='$cardgrade'";
+$getFormTeachersComment = $dbh->prepare($sql_query);//
+$getFormTeachersComment->execute(); 
+	if ($getFormTeachersComment->rowCount() == 0) {
+		echo '<br /> No Comments Yet';
+	} else {
+		$form_m_comment = $getFormTeachersComment->fetch(PDO::FETCH_OBJ);
+		echo $form_m_comment->c_form_teacher;
+	}
+
 ?>
 </font>
 <br />
@@ -335,4 +348,4 @@ echo 'Total Student to comment in this Grade: <strong>'.number_format($biototal-
   </div>
   <!--/span-->
 </div>
-<p><strong><font color="#993300">How to see first position</font></strong>: The last in this least is the first position, Double click on Position Average to arrange as first position first</p>
+<p style="padding: 10px;"><strong><font color="#993300">How to see first position</font></strong>: The last in this least is the first position, Double click on Position Average to arrange as first position first</p>

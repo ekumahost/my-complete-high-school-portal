@@ -1,11 +1,11 @@
 
-		<?php if(!isset($no_visible_elements) || !$no_visible_elements)	{ ?>
+		<?php // if(!isset($no_visible_elements) || !$no_visible_elements)	{ ?>
 			<!-- content ends -->
-			</div><!--/#content.span10-->
-		<?php } ?>
-		</div><!--/fluid-row-->
-		<?php if(!isset($no_visible_elements) || !$no_visible_elements)	{ ?>
-		
+			<!-- </div><!--/#content.span10-->
+		<?php // } ?>
+		<!-- </div><!--/fluid-row-->
+		<?php // if(!isset($no_visible_elements) || !$no_visible_elements)	{ ?>
+		<!--
 		<hr>
 
 		<div class="modal hide fade" id="myModal">
@@ -19,4 +19,5 @@
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal">Close</a>
 			</div>
-		</div>
+		</div> 
+		-->

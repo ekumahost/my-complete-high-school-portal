@@ -1,12 +1,13 @@
 <?php
 	require ('pdoDB.php');
+	/*
 	$querySQL = ;
 	$db_handle = $dbh->prepare($querySQL);
 	$db_handle->execute();
 	$get_rows = $db_handle->rowCount();
 	$paramObj = $db_handle->fetch(PDO::FETCH_OBJ);
 	$db_handle = null;
-
+	*/
 	//if (($mcx = mc_get('count-bday')) !== false)
 	//	return $mcx;
 

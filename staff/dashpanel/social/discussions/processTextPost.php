@@ -17,7 +17,7 @@ if (!isset($_POST['byepass'])) {
 		print '<pre><code>Please type in Something in the TextBox</code></pre>';
 	} else {
 		$text_field = htmlentities($text_field);
-		$insertPost = "INSERT INTO staff_post (poster_id, post_text, post_date) VALUES ('".$web_users_relid."', '".nl2br($text_field)."', '".date('d/m/Y')."')");
+		$insertPost = "INSERT INTO staff_post (poster_id, post_text, post_date) VALUES ('".$web_users_relid."', '".nl2br($text_field)."', '".date('d/m/Y')."')";
 			$db_insertPost = $dbh->prepare($insertPost);
 			$db_insertPost->execute();
 			$get_insertPost_rows = $db_insertPost->rowCount();

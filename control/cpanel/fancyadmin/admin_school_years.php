@@ -59,7 +59,7 @@ switch ($action){
 		// loop thrice and add grade term days
 			for($t=1;$t<=3;$t++){
 			// gariki, Akwute junction beach keke
-				$SQLi = "INSERT INTO grade_terms_days (grade_terms_days_session, grade_terms_days_term, grade_terms_days_no_of_days) VALUES ($catchsession, $t, 60)";
+				$SQLi = "INSERT INTO grade_terms_days (grade_terms_days_session, grade_terms_days_term, grade_terms_days_no_of_days) VALUES ($catchsession, $t, '60')";
 				$dbh_sSQL = $dbh->prepare($SQLi); $dbh_sSQL->execute(); $dbh_sSQL = null;
 			}
 		
