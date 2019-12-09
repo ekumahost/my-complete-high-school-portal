@@ -1,6 +1,6 @@
 <?php
 //*
-$title = "Manage sunjects";
+$title = "Manage subjects";
 // config
 include_once "../../includes/configuration.php";
 //Include paging class

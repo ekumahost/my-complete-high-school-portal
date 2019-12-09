@@ -394,7 +394,8 @@ class kas_framework {
 	
 	public function countRestrict1(string $table, string $datafieldname, $value) : string {
 		global $dbh;
-		$sql_query = "SELECT COUNT(*) AS cnt FROM {$table} WHERE {$datafieldname} = '{$value}'";
+		//$sql_query = "SELECT COUNT(*) AS cnt FROM {$table} WHERE {$datafieldname} = '{$value}'";
+		$sql_query = "SELECT COUNT(*) AS cnt FROM $table WHERE $datafieldname = $value";
 		$db_handle = $dbh->prepare($sql_query);
 		$db_handle->execute();
 		$fetch_obj = $db_handle->fetch(PDO::FETCH_OBJ);

@@ -3,27 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f03e20ea-db89-4ba7-b7b9-ab92d8cbee29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_upgradeLOG.php" beforeDir="false" afterPath="$PROJECT_DIR$/_upgradeLOG.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/cpanel/_mod.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/cpanel/_mod.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/cpanel/ajax/parents/upload_picture.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/cpanel/ajax/parents/upload_picture.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/cpanel/ajax/school_term.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/cpanel/ajax/school_term.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/cpanel/ajax/staff/prcprofile_2.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/cpanel/ajax/staff/prcprofile_2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/cpanel/db_selector_mod.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/cpanel/db_selector_mod.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/cpanel/div_admin/pop_ups.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/cpanel/div_admin/pop_ups.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/cpanel/fancyadmin/admin_school_years.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/cpanel/fancyadmin/admin_school_years.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/cpanel/install.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/cpanel/install.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/cpanel/pages/main/uploadcsv.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/cpanel/pages/main/uploadcsv.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/cpanel/pages/modules/spy.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/cpanel/pages/modules/spy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/cpanel/pages/modules/wallet.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/cpanel/pages/modules/wallet.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/cpanel/pages/results/report_cards.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/cpanel/pages/results/report_cards.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/includes/configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/includes/configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myjs/feccukcontroller.js" beforeDir="false" afterPath="$PROJECT_DIR$/myjs/feccukcontroller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php.files/maintenance_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/php.files/maintenance_check.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff/dashpanel/mytools/notepad/notepad-handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff/dashpanel/mytools/notepad/notepad-handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff/dashpanel/social/discussions/processTextPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff/dashpanel/social/discussions/processTextPost.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student/dashboard/mytools/calendar/retrieve-task+counter.php" beforeDir="false" afterPath="$PROJECT_DIR$/student/dashboard/mytools/calendar/retrieve-task+counter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student/register/student_register_script.php" beforeDir="false" afterPath="$PROJECT_DIR$/student/register/student_register_script.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/control/cpanel/fancyadmin/admin_subjects.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/cpanel/fancyadmin/admin_subjects.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php.files/classes/kas-framework.php" beforeDir="false" afterPath="$PROJECT_DIR$/php.files/classes/kas-framework.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,57 +14,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="399">
-                <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myjs/feccukcontroller.js">
+        <entry file="file://$PROJECT_DIR$/control/cpanel/fancyadmin/admin_subjects.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7050">
-              <caret column="41" selection-start-column="41" selection-end-column="41" />
+            <state relative-caret-position="253">
+              <caret line="44" column="41" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/control/includes/lang_en.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="1027" column="8" selection-start-line="1027" selection-start-column="8" selection-end-line="1027" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php.files/classes/kas-framework.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-13697">
-              <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+            <state relative-caret-position="240">
+              <caret line="397" column="79" selection-start-line="397" selection-start-column="79" selection-end-line="397" selection-end-column="79" />
               <folding>
-                <element signature="e#189#196#1" expanded="true" />
-                <element signature="e#186#193#1" expanded="true" />
-                <element signature="e#166#173#1" expanded="true" />
-                <element signature="e#164#171#1" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/control/includes/configuration.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1035">
-              <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/control/.~lock.Bens Admin Documentation.docx#">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -133,12 +93,13 @@
         <option value="$PROJECT_DIR$/control/cpanel/pages/results/report_cards.php" />
         <option value="$PROJECT_DIR$/control/cpanel/div_admin/pop_ups.php" />
         <option value="$PROJECT_DIR$/TOOLS/fresh_install.sql" />
-        <option value="$PROJECT_DIR$/TOOLS/sql_fix.txt" />
         <option value="$PROJECT_DIR$/php.files/classes/pdoDB.php" />
         <option value="$PROJECT_DIR$/control/includes/configuration.php" />
-        <option value="$PROJECT_DIR$/php.files/classes/kas-framework.php" />
         <option value="$PROJECT_DIR$/myjs/feccukcontroller.js" />
+        <option value="$PROJECT_DIR$/TOOLS/sql_fix.txt" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/control/cpanel/fancyadmin/admin_subjects.php" />
+        <option value="$PROJECT_DIR$/php.files/classes/kas-framework.php" />
       </list>
     </option>
   </component>
@@ -149,10 +110,10 @@
     <other-services-enabled>false</other-services-enabled>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="36" />
-    <option name="y" value="150" />
-    <option name="width" value="1440" />
-    <option name="height" value="850" />
+    <option name="x" value="124" />
+    <option name="y" value="106" />
+    <option name="width" value="1228" />
+    <option name="height" value="746" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -170,7 +131,20 @@
             <path>
               <item name="hisp" type="b2602c69:ProjectViewProjectNode" />
               <item name="hisp" type="462c0819:PsiDirectoryNode" />
-              <item name="myjs" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hisp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hisp" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="cpanel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hisp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hisp" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="cpanel" type="462c0819:PsiDirectoryNode" />
+              <item name="fancyadmin" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -221,18 +195,24 @@
       <workItem from="1574231385240" duration="2026000" />
       <workItem from="1574240335300" duration="213000" />
       <workItem from="1574256290914" duration="1505000" />
-      <workItem from="1574270423893" duration="380000" />
+      <workItem from="1574270423893" duration="1668000" />
+      <workItem from="1574872333298" duration="92000" />
+      <workItem from="1574872450159" duration="6000" />
+      <workItem from="1574872571554" duration="44000" />
+      <workItem from="1574872616785" duration="46000" />
+      <workItem from="1574872679426" duration="17000" />
+      <workItem from="1575868064459" duration="334000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32420000" />
+    <option name="totallyTimeSpent" value="34247000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="850" extended-state="0" />
+    <frame x="169" y="296" width="1228" height="746" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29756796" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22934233" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -245,7 +225,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.28627968" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.18654434" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="GraphQL" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -259,41 +239,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/control/robot.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control/cpanel/installer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="174" column="49" selection-start-line="174" selection-start-column="49" selection-end-line="174" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#6#0" expanded="true" />
-            <element signature="e#6#12#0" expanded="true" />
-            <element signature="e#12#18#0" expanded="true" />
-            <element signature="e#0#6#0" expanded="true" />
-            <element signature="e#6#12#0" expanded="true" />
-            <element signature="e#12#18#0" expanded="true" />
-            <element signature="e#0#6#0" expanded="true" />
-            <element signature="e#6#12#0" expanded="true" />
-            <element signature="e#12#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control/home.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/staff/register/staff_register_script.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1710">
@@ -486,13 +431,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/control/cpanel/pages/results/reportcarddummy.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="335" column="193" selection-start-line="335" selection-start-column="193" selection-end-line="335" selection-end-column="193" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/control/cpanel/pages/results/reportcarddummy.php" />
     <entry file="file://$PROJECT_DIR$/control/cpanel/pages/main/cards.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
@@ -519,13 +458,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/control/cpanel/pages/results/report_cards.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/control/cpanel/div_admin/pop_ups.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -535,13 +467,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/control/cpanel/pages/main/book.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TOOLS/sql_fix.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TOOLS/fresh_install.sql">
       <provider selected="true" editor-type-id="text-editor">
@@ -553,17 +478,21 @@
     <entry file="file://$PROJECT_DIR$/TOOLS/hisp.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/hisp.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/hisp.sql" />
     <entry file="file://$PROJECT_DIR$/php.files/classes/pdoDB.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="759">
           <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/.~lock.Bens Admin Documentation.docx#">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/HISP-SCREEN-SHOTS/Archive/TOOLS/sql_fix.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="20" selection-end-line="5" selection-end-column="270" />
         </state>
       </provider>
     </entry>
@@ -574,39 +503,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/control/.~lock.Bens Admin Documentation.docx#">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php.files/classes/kas-framework.php">
+    <entry file="file://$PROJECT_DIR$/TOOLS/sql_fix.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13697">
-          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-          <folding>
-            <element signature="e#189#196#1" expanded="true" />
-            <element signature="e#186#193#1" expanded="true" />
-            <element signature="e#166#173#1" expanded="true" />
-            <element signature="e#164#171#1" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="23">
+          <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/cpanel/pages/results/report_cards.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="25" column="51" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myjs/feccukcontroller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7050">
+        <state>
           <caret column="41" selection-start-column="41" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Updates">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="399">
-            <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+          <first_editor>
+            <caret line="31" column="32" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="32" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/includes/lang_en.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="1027" column="8" selection-start-line="1027" selection-start-column="8" selection-end-line="1027" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/cpanel/fancyadmin/admin_subjects.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="44" column="41" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php.files/classes/kas-framework.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="397" column="79" selection-start-line="397" selection-start-column="79" selection-end-line="397" selection-end-column="79" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
