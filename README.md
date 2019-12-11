@@ -20,7 +20,7 @@ HISP Cloud School is school management system with all features a school can thi
 php7 was it built on, no framework. this is raw php work with mysql database
 
 # Installation
-We have tested on PHP7 Apache web server
+We have tested on PHP 7.3.7 Apache web server
 1. create your mysql database and import /TOOLS/hisp.sql(with dummy data), fresh_install.sql for fresh school production
 2. edit /php.files/classes/pdoDB.php for your database configurations 
 2. edit /control/includes/configuration.php for your database configurations again and others in the config files 
@@ -50,10 +50,13 @@ the datbase already have some dummy data: you will need to shine your eyes and k
 trying to login to admin and you cannot find the password, you can easily change the password in the database oo
 table = web_users, the password is just MD5 things -- git push origin master
 
-# Are we awesome?
-please donate BITCOINS :)
+# Are we awesome please donate?
+BITCOINS :)
+
 1DHHPQeggnDcr9NNm6uhhyEcA16GQPa8iJ
+
 OR USDT (ERC20)
+
 0x68c62c0c6e5d1e21c448133bccfc7fcb5d244f86
 
 
