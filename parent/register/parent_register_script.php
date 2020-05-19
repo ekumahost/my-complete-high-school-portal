@@ -76,6 +76,9 @@ if ($kas_framework->strIsEmpty($firstname) or $kas_framework->strIsEmpty($lastna
 	 //the mailing sequence.
 	$school_mail = $kas_framework->getValue('email', 'tbl_school_profile', 'id', '1');
 	$send_mail = $mailing_list->SendUserConfirmationEmail($email, $web_parents_username, $school_mail, $confirmation_code, $kas_framework->returnUserSchool(''), 'parent');
+	
+	$send_mail = true; // Remove on Production
+	
 	if ($send_mail == false) {
 	  	$kas_framework->buttonController('#signup', 'enable');
 	  exit($kas_framework->showDangerCallout('Could not send mail <a href="'.$kas_framework->help_url('?topic=query-failed').'" target="blank">&raquo;Explanation?</a>'));

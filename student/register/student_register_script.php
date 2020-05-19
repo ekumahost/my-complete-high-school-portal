@@ -157,12 +157,15 @@ if ($kas_framework->strIsEmpty($surname) or $kas_framework->strIsEmpty($lastname
 	 
 	 //the mailing sequence.
 	 $school_mail = $kas_framework->getValue('email', 'tbl_school_profile', 'id', '1');
-	/* $send_mail = $mailing_list->SendUserConfirmationEmail($email, $user_username, $school_mail, $confirmation_code, $kas_framework->returnUserSchool(''), 'student');
-		 if ($send_mail == false) {
-			$kas_framework->buttonController('#signup', 'enable');
-			exit($kas_framework->showDangerCallout('Could not Send Mail <a href="'.$kas_framework->help_url('?topic=query-failed').'" target="blank">&raquo;Explanation?</a>'));
-		 }
-	*/
+	 $send_mail = $mailing_list->SendUserConfirmationEmail($email, $user_username, $school_mail, $confirmation_code, $kas_framework->returnUserSchool(''), 'student');
+		
+	$send_mail = true; //Remove on Production
+
+	if ($send_mail == false) {
+		$kas_framework->buttonController('#signup', 'enable');
+		exit($kas_framework->showDangerCallout('Could not Send Mail <a href="'.$kas_framework->help_url('?topic=query-failed').'" target="blank">&raquo;Explanation?</a>'));
+	}
+
 	if ($get_rows1 > 0 and $get_rows2 > 0 and $get_rows3 > 0 and $get_rows4 > 0 and $get_rows5 > 0 and $get_rows6 > 0 /* and ($send_mail == true) */ ) {
 	//at this point, we try commit
 		$dbh->commit();
