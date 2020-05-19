@@ -117,7 +117,7 @@ echo '<div class="alert alert-info">
 	if ($_POST['passcode'] != $_POST['catchcode']) {
 		
 		echo'
-<div class="alert alert-info">
+		<div class="alert alert-info">
 			<button type="button" class="close" data-dismiss="alert">*</button>
 			<strong>Out of idea!</strong> You cannot install without doing what is required.
 		</div>';	
@@ -197,10 +197,10 @@ echo '<div class="alert alert-success">
 	</div>';
 ?>
 <div style="margin-left:30px"><strong><h3>Your Success List:</h3></strong><br />
-<li>2. Default School Fee were copied from default fees  </li>
-<li>3. Portal was launched </li>
-<li>5. School term was set to first term</li>
-<li>10. The Portal Cache was Cleared</li>
+<li>1. Default School Fee were copied from default fees  </li>
+<li>2. Portal was launched </li>
+<li>3. School term was set to first term</li>
+<li>4. The Portal Cache was Cleared</li>
 
 <br />
 <div style="margin-left:10px"><strong><h3>This is a list of what you should Do next </h3></strong><br />
@@ -214,8 +214,10 @@ echo '<div class="alert alert-success">
 </div>
 <?php
 
-@unlink('install.php');
-@unlink('installer.php');
+$kas_framework->showDangerCallout('This File have been deleted from the server. Please click on Dashboard to proceed. Do not refresh!');
+
+//@unlink('install.php');
+//@unlink('installer.php');
 
 } else {
 	$dbh->rollBack(); 

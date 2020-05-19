@@ -3,16 +3,16 @@
 class configurations {
 
 	public function url_root($flink) {
-		return "http://127.0.0.1/hisp.kastechnet.com/". $flink;
+		return "http://127.0.0.1/hisp.portal.com/". $flink;
 	}
 	
 	public function help_url($flink) {
-		return "http://127.0.0.1/hisp.kastechnet.com/help+faq". $flink;
+		return "http://127.0.0.1/hisp.portal.com/help+faq". $flink;
 	}
 	
 	public function pageReferer($referPage) {
 		/* this will house the raw link without the http://, https:// and www. for clarity purpose */
-		return (substr_count(@$_SERVER['HTTP_REFERER'], '127.0.0.1/hisp.kastechnet.com/'.$referPage) == 0)? false: true;
+		return (substr_count(@$_SERVER['HTTP_REFERER'], '127.0.0.1/hisp.portal.com/'.$referPage) == 0)? false: true;
 	}
 
 	public function checkAuthStudent() {

@@ -1,4 +1,4 @@
-url_root = 'http://127.0.0.1/hisp.kastechnet.com/';
+url_root = 'http://127.0.0.1/hisp.portal.com/';
 
 window_width = $(document).innerWidth() + 17;
 body_height = $('body').innerHeight();
