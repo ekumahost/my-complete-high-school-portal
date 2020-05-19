@@ -8,11 +8,11 @@ require ('../php.files/classes/kas-framework.php');
 	if (@$_GET['ref'] == 'newuser') {
 			$kas_framework->setCookie('hold_username', '', 30);
 			$kas_framework->setCookie('hold_image', '', 30);
-			print '<script type="text/javascript">self.location = "'.$kas_framework->server_root_dir('student').'" </script>';
+			print '<script type="text/javascript">self.location = "'.$kas_framework->url_root('student').'" </script>';
 	}
 	
 	if (($kas_framework->getCookie('hold_username') == '') and ($kas_framework->getCookie('hold_image') == '')) {
-		print '<script type="text/javascript"> self.location = "'.$kas_framework->server_root_dir('student').'" </script>';
+		print '<script type="text/javascript"> self.location = "'.$kas_framework->url_root('student').'" </script>';
 	}
 	
 	$held_image = $kas_framework->getCookie('hold_image');

@@ -4,7 +4,7 @@ class tableFundamental extends kas_framework{
 		while ($viewMyStds = $parameter->fetch(PDO::FETCH_OBJ)) {
 			$stdImage = $viewMyStds->studentbio_pictures;
 			$stdSex = $viewMyStds->studentbio_gender;
-			$imgUrl = $this->imageDynamic($stdImage, $stdSex, $this->server_root_dir('pictures/'));
+			$imgUrl = $this->imageDynamic($stdImage, $stdSex, $this->url_root('pictures/'));
 				print '<tr>
 						<td>'.$viewMyStds->studentbio_internalid.'</td>
 						<td>'.$this->getValue('title_desc', 'tbl_titles', 'title_id', $viewMyStds->studentbio_title).' 

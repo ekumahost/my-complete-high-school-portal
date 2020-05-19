@@ -1,5 +1,5 @@
 <?php
-	/*
+	/**/
 		if (!defined('MC')) {
 			define('MC', 1);
 			function mc_connect() {
@@ -26,7 +26,7 @@
 				return $mc->set($key, $value, 0, $ttl);
 			}
 		}
-	*/
+	
     $dbh = false;
     $database_host = 'localhost';
     $database_user = 'root';

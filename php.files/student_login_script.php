@@ -26,7 +26,7 @@ if ($kas_framework->strIsEmpty($username) or $kas_framework->strIsEmpty($passwor
 
 	if ($get_rows == 1 and $loginObj->pass == md5($password)) {		
 		if ($loginObj->status != '1') {
-			$kas_framework->showDangerCallout('This Account is not Active or has been Blocked. <a href="'.$kas_framework->server_root_dir('student/confirmreg').'">Activate?</a> 
+			$kas_framework->showDangerCallout('This Account is not Active or has been Blocked. <a href="'.$kas_framework->url_root('student/confirmreg').'">Activate?</a> 
 				<br /><a href="'.$kas_framework->help_url('?topic=blocked-check-in').'" target="_blank">&raquo;Explanation?</a>');
 				$kas_framework->buttonController('#signin', 'disable');
 		} else {
@@ -74,7 +74,7 @@ if ($kas_framework->strIsEmpty($username) or $kas_framework->strIsEmpty($passwor
 				$db_handle = $dbh->prepare($querySQL);
 				$db_handle->execute();
 				$db_handle = null;				
-				print '<script type="text/javascript"> self.location = "'.$kas_framework->server_root_dir('redirect?httptrack='). $salt. '"</script>';
+				print '<script type="text/javascript"> self.location = "'.$kas_framework->url_root('redirect?httptrack='). $salt. '"</script>';
 			}
 		
 		}

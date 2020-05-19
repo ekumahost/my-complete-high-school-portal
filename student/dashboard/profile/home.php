@@ -75,7 +75,7 @@ require (constant('tripple_return').'php.files/student_details.php');
 							
                                 </div>
                                 <div class="icon">
-                       <?php $dynamicimage = $student->imageDynamic($userpicturepath, $usergender, $kas_framework->server_root_dir('pictures/'));
+                       <?php $dynamicimage = $student->imageDynamic($userpicturepath, $usergender, $kas_framework->url_root('pictures/'));
 					print '<img src="'.$dynamicimage.'" href="'.$dynamicimage.'" class="fancybox fancybox.image" alt="User Image" style="border:1px solid #000; height:100px; margin:-40px 0 0 0; cursor:pointer" />';
 					?>
                                 </div>

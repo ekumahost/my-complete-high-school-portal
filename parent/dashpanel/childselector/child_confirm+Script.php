@@ -42,7 +42,7 @@ class cx extends kas_framework {
 		$db_del = null;
 			if ($get_db_del_rows == 1) {
 				$this->showinfoCallout('Child Succesfully Deleted.');
-				print '<script type="text/javascript"> self.location = "'.$this->server_root_dir('parent/dashpanel/childselector').'" </script>';
+				print '<script type="text/javascript"> self.location = "'.$this->url_root('parent/dashpanel/childselector').'" </script>';
 				exit();
 			} else {
 				$this->showWarningCallout('Action was not Successfull. Please Try later');
@@ -80,12 +80,12 @@ class cx extends kas_framework {
 				
 				if ($admit_status == '0') {
 					$_SESSION['tapp_prostd_username'] = $username;
-					print '<script type="text/javascript"> self.location = "'.$this->server_root_dir('prospectStudent/dashboard/').'" </script>';
+					print '<script type="text/javascript"> self.location = "'.$this->url_root('prospectStudent/dashboard/').'" </script>';
 				
 				} else if ($admit_status == '1' or $admit_status == '2') {
 					$_SESSION['tapp_std_username'] = $username;
 					$_SESSION['BasicPlanStudent'] = 'Classic';
-					print '<script type="text/javascript"> self.location = "'.$this->server_root_dir('student/dashboard/').'" </script>';
+					print '<script type="text/javascript"> self.location = "'.$this->url_root('student/dashboard/').'" </script>';
 				
 				} else if ($admit_status == '3') { /* meaning that student is suspended */
 					$this->showDangerCallout('Student have been Suspended From School. Please Wait until the Ban is Lifted.');

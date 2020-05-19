@@ -39,7 +39,7 @@
 				<tr><td colspan="2">';
 				/* detect wether its a file or a text written. first of all, we check if its a file */
 				if ($get_Homework->notepad_text == '') {
-					print 'This Homework was Uploaded as a File. <a href="'.$kas_framework->server_root_dir('files/homework_files/'). $get_Homework->homework_file.'"><div class="btn btn-success btn-file">
+					print 'This Homework was Uploaded as a File. <a href="'.$kas_framework->url_root('files/homework_files/'). $get_Homework->homework_file.'"><div class="btn btn-success btn-file">
                                     <i class="fa fa-cloud-download"></i> Download
                       </div></a>';
 				} else {

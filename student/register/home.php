@@ -53,7 +53,7 @@ require ('../../php.files/classes/kas-framework.php');
 			<?php 
 			if ($kas_framework->app_config_setting('student_registration') == false) {
 			$kas_framework->showDangerCallout('<center> Sorry! Student Registration has been closed. See the School Administrator for this.  But Teranig have a question for you... How did you get here? Your IP has been Logged. </center>
-						<br /><br /><center><a href="'.$kas_framework->server_root_dir('').'" class="btn bg-custom text-white btn-block" style="width:50%">
+						<br /><br /><center><a href="'.$kas_framework->url_root('').'" class="btn bg-custom text-white btn-block" style="width:50%">
 							<i class="fa fa-dashboard text-white"></i> Visit Dashboard </a></center>');
 							
 					require (constant('double_return').'php.files/classes/PHPMailer/PHPMailerAutoload.php');
@@ -151,7 +151,7 @@ require ('../../php.files/classes/kas-framework.php');
 			</div>   <!-- /.row -->
 				 <div class="box-footer" align="center" style="max-width:300px; margin:0 auto;">
 					<button type="submit" id="signup" name="signup" class="btn bg-custom text-white btn-block">Check me up</button>
-					<a href="<?php print constant('single_return') ?>" class="text-center">Already have an Account</a> &laquo; &raquo; <a href="<?php print $kas_framework->server_root_dir('') ?>" class="text-center">Navigate Avay</a>
+					<a href="<?php print constant('single_return') ?>" class="text-center">Already have an Account</a> &laquo; &raquo; <a href="<?php print $kas_framework->url_root('') ?>" class="text-center">Navigate Avay</a>
 				</div>
 			<?php } ?>
 		</section><!-- /.content -->

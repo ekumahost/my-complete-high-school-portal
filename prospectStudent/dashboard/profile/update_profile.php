@@ -28,7 +28,7 @@ class update_profile extends kas_framework {
 		if ($get_updatePIQuery_rows == 1) {
 			$this->showInfoCallout('Your Personal Information was Succesfully Updated');
 		} else {
-			echo mysql_error();
+			//echo mysql_error();
 			$this->showWarningCallout('Update Failed. <a href="'.$this->help_url('?topic=query-failed').'" target="blank">Explanation?</a>');
 		}
 	}
@@ -48,7 +48,7 @@ class update_profile extends kas_framework {
 				} elseif ($get_querySQL_rows == 1) {
 				$this->showInfoCallout('Password Changed Successfully');
 				unset($_SESSION['tapp_std_username']);
-				print '<script type="text/javascript"> self.location = "'.$this->server_root_dir('').'"</script>';	
+				print '<script type="text/javascript"> self.location = "'.$this->url_root('').'"</script>';	
 				}
 			} else {
 			$this->showWarningCallout('Passwords do not Match');

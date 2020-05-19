@@ -7,11 +7,13 @@ if(!isset($_SESSION['UserID']) || @$_SESSION['UserType'] != "A")  {
 }
 (file_exists('../../php.files/classes/kas-framework.php'))? include ('../../php.files/classes/kas-framework.php'): include ('../../../php.files/classes/kas-framework.php');
 // Include configuration file
-include('../tools/config.php');// custom config to get variables
+
 //Include global functions
 include_once "../../includes/common.php";
 // config
 include_once "../../includes/configuration.php";
+
+include('../tools/config.php');// custom config to get variables
 
 extract($_POST);
 //print_r($_POST);
@@ -25,6 +27,7 @@ $dbh_Query = null;
 
 
 function add_sms_history($category, $others, string $message_body) : bool {
+	global $dbh;
     $insert = "INSERT INTO bulk_sms_store (`category`, `others`, `message_body`, `date_sent`)
       VALUES ('".$category."', '".$others."', '".$message_body."', '".date('d-m-Y')."')";
 	  $dbh_sSQL = $dbh->prepare($insert); $dbh_sSQL->execute(); $rowCount = $dbh_sSQL->rowCount(); $dbh_sSQL = null;
@@ -77,9 +80,7 @@ if ($transfer == "check_server") {
 			if ($parent_col->student_parents_mobile1 == "" and $parent_col->student_parents_mobile2 == "") { //then do nothing
 			} else {  $general_parent_numbers .= ($parent_col->student_parents_mobile1 == "")? $parent_col->student_parents_mobile2: $parent_col->student_parents_mobile1. ", ";
 				$general_all_number = $general_all_number + 1; }
-		}
-		$dbh_Query = null;
-
+		} 
 		//select all the staff numbers;
 		$staff_phone_collector = "SELECT * FROM staff WHERE staff_status = '1'";
 		$dbh_Query_S = $dbh->prepare($staff_phone_collector);$dbh_Query_S->execute();
@@ -87,9 +88,8 @@ if ($transfer == "check_server") {
 			if ($staff_col->staff_mobile == "") { //then do nothing
 			} else {  $general_staff_numbers .= $staff_col->staff_mobile. ", ";
 				$general_all_number = $general_all_number + 1;  }
-		}
-		$dbh_Query_S = null;
-		
+		} 
+
 		//select all the students numbers
 		$student_phone_collector = "SELECT * FROM studentbio WHERE admit = '1'";
 		$dbh_Query_SP = $dbh->prepare($student_phone_collector);$dbh_Query_SP->execute();
@@ -97,8 +97,7 @@ if ($transfer == "check_server") {
 			if ($student_col->std_bio_mobile == "") { //then do nothing
 			} else {  $general_student_numbers .= $student_col->std_bio_mobile. ", ";
 				$general_all_number = $general_all_number + 1;  }
-		}
-		 $dbh_Query_SP = null;
+		} 
 		 
 		//okk... lets collate all the numbers together now and get rid of the last comma. then store it in a session for the bulk sms sender.
 		$everybody_no = $general_parent_numbers.$general_staff_numbers.$general_student_numbers;
@@ -115,7 +114,7 @@ if ($transfer == "check_server") {
 				 $general_parent_numbers = ""; $general_all_number = 0;
 				//working parameters {grade_selecter, sex_selecter}
 				function get_parents_from_grade_selector($grade, $sex) {
-				global $general_all_number; global $general_parent_numbers;
+				global $general_all_number; global $general_parent_numbers, $dbh;
 				  //print $deduced_grades_obj->grades_id. '<br />'; now, we have gotten the grade levels: lets deal with it as a single grade
 						$each_grade = "SELECT * FROM student_grade_year WHERE student_grade_year_grade = '".$grade."'
 							AND student_grade_year_year = '".$_SESSION['CurrentYear']."' ";
@@ -182,7 +181,7 @@ if ($transfer == "check_server") {
 			    $general_all_number = 0;
 				 
 			function get_student_from_grade_selector($grade, $sex, $group) {
-				global $general_all_number;
+				global $general_all_number, $dbh;
 				global $general_student_numbers;
 				  //print $deduced_grades_obj->grades_id. '<br />'; now, we have gotten the grade levels: lets deal with it as a single grade
 					$each_grade = "SELECT * FROM student_grade_year AS sgy, studentbio AS sb WHERE sgy.student_grade_year_grade = '".$grade."'
@@ -296,7 +295,8 @@ if ($transfer == "check_server") {
             $others .= ($sendto_selecter == "Everybody")? "Sent To Everybody": "Sent to ".$category_selecter;
             $others .= ($sex_selecter == "%%")? "<br />All Sex": "<br />Sent to: ".$sex_selecter;
             if (is_numeric($grade_selecter)) {
-                $grade_selecter = mysql_result(mysql_query("SELECT * FROM grades WHERE grades_id = '".$grade_selecter."'"), 0, 'grades_desc');
+				$grade_selecter = $kas_framework->getValue('grades_desc', 'grades', 'grades_id', $grade_selecter);
+               // $grade_selecter = mysql_result(mysql_query("SELECT * FROM grades WHERE grades_id = '".$grade_selecter."'"), 0, 'grades_desc');
             } else  { $grade_selecter = $grade_selecter; }
 				
 				if (strpos($http_request, "a:5") !== false) { 

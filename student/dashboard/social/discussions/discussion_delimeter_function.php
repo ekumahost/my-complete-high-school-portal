@@ -17,7 +17,7 @@ class discussionz extends kas_framework {
 	  require ('../../../../php.files/classes/pdoDB.php');
 		$picxPstrlc = $this->getValue('studentbio_pictures', 'studentbio', 'studentbio_id', $show_post->poster_id);
 		$picxPstrSex = $this->getValue('studentbio_gender', 'studentbio', 'studentbio_id', $show_post->poster_id);
-		$pstr_img_url = $this->imageDynamic($picxPstrlc, $picxPstrSex, $this->server_root_dir('pictures/'));
+		$pstr_img_url = $this->imageDynamic($picxPstrlc, $picxPstrSex, $this->url_root('pictures/'));
 		
 		/* getting the users details */
 		$pstr_details = "SELECT * FROM studentbio WHERE studentbio_id = '".$show_post->poster_id."' LIMIT 1";
@@ -55,7 +55,7 @@ class discussionz extends kas_framework {
 				($restrict_post_count == 'true')? $this->controlTextShowMore($show_post->id, $show_post->post_text, 300): $show_post->post_text;
 					} else if ($show_post->post_text == '') {
 					/* Means it is a photo field */
-					print '<img src="'.$this->server_root_dir('pictures/'). $show_post->post_image.'" href="'.$this->server_root_dir('pictures/'). $show_post->post_image.'" style="cursor:pointer" data-fancybox-group="gallery" class="fancybox fancybox.image margin" alt="..." width="230" />';
+					print '<img src="'.$this->url_root('pictures/'). $show_post->post_image.'" href="'.$this->url_root('pictures/'). $show_post->post_image.'" style="cursor:pointer" data-fancybox-group="gallery" class="fancybox fancybox.image margin" alt="..." width="230" />';
 					}
 						print '</div>
 						<div class="discussion-footer">   

@@ -130,7 +130,7 @@ if(isset($_POST['takeaction'])){
 		$dbh_pullassout = $dbh->prepare($pullassout); $dbh_pullassout->execute(); 
 		//studentbio_entry_grade  
 		$sn = 0;
-		while ($std = $dbh_pullassout->fetch(PDO::FETCH_OBJ)) {
+		while ($std = $dbh_pullassout->fetch(PDO::FETCH_ASSOC)) {
 			$sn = $sn + 1;
 			$rowid = $std['id'];
 			$badge = $std['badge_name'];

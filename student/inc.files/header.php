@@ -24,7 +24,7 @@
 	?>
  <!-- header logo: style can be found in header.less -->
         <header class="header" style="position:fixed;">
-            <a href="<?php print $kas_framework->server_root_dir('student/dashboard'); ?>" class="logo">
+            <a href="<?php print $kas_framework->url_root('student/dashboard'); ?>" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
               KaSP -> Student 
             </a>
@@ -68,23 +68,23 @@
 					<li class="header">What Happened Today?</li>
 					  <li>
 					   <ul class="menu">
-							<li class="click_ult"><a href="<?php print $kas_framework->server_root_dir('student/dashboard/social/birthdays/') ?>">
+							<li class="click_ult"><a href="<?php print $kas_framework->url_root('student/dashboard/social/birthdays/') ?>">
 									<i class=" fa fa-gift bg-red"></i> Total Birthday Today (<?php print $kas_framework->birthdayCountHeader() ?>)
 							</a></li>
 					<!-------------------------------------------------->
-							<li class="click_ult"><a href="<?php print $kas_framework->server_root_dir('student/dashboard/social/discussions/') ?>">
+							<li class="click_ult"><a href="<?php print $kas_framework->url_root('student/dashboard/social/discussions/') ?>">
 									<i class="fa fa-comments bg-blue"></i> Total Post Today (<?php print $totalPost ?>)
 							</a></li>
 					<!-------------------------------------------------->
-							<li class="click_ult"><a href="<?php print $kas_framework->server_root_dir('student/dashboard/mytools/calendar/') ?>">
+							<li class="click_ult"><a href="<?php print $kas_framework->url_root('student/dashboard/mytools/calendar/') ?>">
 									<i class="fa fa-calendar bg-maroon"></i>My Events Today (<?php print $myEventsToday ?>)
 							</a></li>
 					<!-------------------------------------------------->
-							<li class="click_ult"><a href="<?php print $kas_framework->server_root_dir('student/dashboard/#schoolCalendar') ?>">
+							<li class="click_ult"><a href="<?php print $kas_framework->url_root('student/dashboard/#schoolCalendar') ?>">
 									<i class="fa fa-calendar-o bg-fuchsia"></i> School Events Today (<?php print $schoolEvents ?>)
 							</a></li>
 					<!-------------------------------------------------->
-					<li class="click_ult"><a href="<?php print $kas_framework->server_root_dir('student/dashboard/mailbox?folder=inbox') ?>">
+					<li class="click_ult"><a href="<?php print $kas_framework->url_root('student/dashboard/mailbox?folder=inbox') ?>">
 							<i class="fa fa-envelope bg-olive"></i> Mail Transactions Total (<?php print $totalMailTrans ?>)
 					</a></li>
 						</ul>
@@ -115,7 +115,7 @@
 						</ul>
 					</li>
 					<li class="footer click_ult">
-						<a href="<?php print $kas_framework->server_root_dir('student/dashboard/mytools/calendar#eventTable') ?>">View all tasks</a>
+						<a href="<?php print $kas_framework->url_root('student/dashboard/mytools/calendar#eventTable') ?>">View all tasks</a>
 					</li>
 				</ul>
 			</li>	
@@ -134,7 +134,7 @@
 						<?php print $internalMailEx->getMessageForHeader(); ?>
 						</ul>
 					</li>
-			 <li class="footer click_ult"><a href="<?php print $kas_framework->server_root_dir('student/dashboard/mailbox/?folder=inbox') ?>">
+			 <li class="footer click_ult"><a href="<?php print $kas_framework->url_root('student/dashboard/mailbox/?folder=inbox') ?>">
 			 See All Messages</a></li>
 				</ul>
 			</li>
@@ -150,7 +150,7 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-custom">
-				<?php $dynamicimage = $kas_framework->imageDynamic($userpicturepath, $usergender, $kas_framework->server_root_dir('pictures/'));
+				<?php $dynamicimage = $kas_framework->imageDynamic($userpicturepath, $usergender, $kas_framework->url_root('pictures/'));
 					print '<img src="'.$dynamicimage.'" class="img-circle" alt="User Image" />'; ?>
 						 <p>
                             <?php print ucfirst($userfirstname) ?> - Student
@@ -160,10 +160,10 @@
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                         <a href="<?php print $kas_framework->server_root_dir('student/dashboard/profile/'); ?>" class="btn btn-default btn-flat click_ult">Profile</a>
+                                         <a href="<?php print $kas_framework->url_root('student/dashboard/profile/'); ?>" class="btn btn-default btn-flat click_ult">Profile</a>
                                     </div>
                                    <div class="pull-left" style="margin-left:5px">
-                                        <a href="<?php print $kas_framework->server_root_dir('student/dashboard/wallet/'); ?>" class="btn btn-default btn-flat click_ult">Wallet</a>
+                                        <a href="<?php print $kas_framework->url_root('student/dashboard/wallet/'); ?>" class="btn btn-default btn-flat click_ult">Wallet</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="#check_out" class="btn btn-default btn-flat" id="signout">Check Out</a>

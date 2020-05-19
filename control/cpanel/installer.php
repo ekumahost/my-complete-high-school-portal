@@ -36,7 +36,7 @@ $msgFormErr="";
 
 // used to restore admin session when all sessions are destroyed
 $user_id = $_SESSION['UserID'];
-$year_name=$kas_framework->getValue('school_years_desc', 'school_years', 'school_years_id', $current_year);
+$year_name = $kas_framework->getValue('school_years_desc', 'school_years', 'school_years_id', $current_year);
 // generate random passcode
 $numbers = '0123456789';
 $pnpairs= 9;
@@ -52,17 +52,14 @@ $pnpairs= 9;
 		<div class="row-fluid">
 		
 			<?php include("div_admin/left_bar.php")?>
-			
-						<?php include("tools/no_script.php")?>
 
+			<?php include("tools/no_script.php")?>
 			
 			<div id="content" class="span10">
 			<!-- content starts -->
-	
 
 			<?php include('div_admin/bread_crumb.php')?>
-						<?php //include('div_admin/summary.php')?>
-
+			<?php //include('div_admin/summary.php')?>
 			
 			<div class="row-fluid">
 				<div class="box span12">
@@ -79,18 +76,18 @@ $pnpairs= 9;
 		<div id='actiontitle' align='left'><h3>&nbsp;HyperSchool Installer </h3></div>
 <?php 
 
-if($current_year>0){
+if($current_year > 0){
 echo '<div class="alert alert-info">
 		<button type="button" class="close" data-dismiss="alert">*</button>
 		<strong>Heads up! Out of Idea!</strong> This install process is already effected
 	</div>';
-echo '<li>You may want to edit time table </li>
-<li> You may want to edit teacher class</li>
-<li> You may want to create more school years</li>
-<li> Write welcome messages for students/staff/parent, click on configuration</li>
+	echo '<li>You may want to edit time table </li>
+	<li> You may want to edit teacher class</li>
+	<li> You may want to create more school years</li>
+	<li> Write welcome messages for students/staff/parent, click on configuration</li>
 
-<li>Finally enable Students log on(Students can check in) <a target="_blank" href="main?page=schoolapp&tools=login#mainsetting">here</a> </li>
-<li>Lastly if the portal was set to Maintenance Mode, Please <a href="main?page=schoolapp&tools#mainsetting" target="_blank">Deactivate</a></li>';
+	<li>Finally enable Students log on(Students can check in) <a target="_blank" href="main?page=schoolapp&tools=login#mainsetting">here</a> </li>
+	<li>Lastly if the portal was set to Maintenance Mode, Please <a href="main?page=schoolapp&tools#mainsetting" target="_blank">Deactivate</a></li>';
 	exit;
 }
 ?>
@@ -216,6 +213,9 @@ echo '<div class="alert alert-success">
 
 </div>
 <?php
+
+@unlink('install.php');
+@unlink('installer.php');
 
 } else {
 	$dbh->rollBack(); 

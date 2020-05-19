@@ -12,13 +12,13 @@ class prospectStudent extends kas_framework {
 		
 		if ($paramGetFields->status == '0') {
 			unset($_SESSION['tapp_prostd_username']); //destroy the prospective student session
-			print '<script> self.location = "'.$this->server_root_dir('').'" </script>';
+			print '<script> self.location = "'.$this->url_root('').'" </script>';
 		}
 	}
 
 	public function check_profile_completeness($percentage) {
 		if ($percentage < 94) {
-			$link = $this->server_root_dir('prospectStudent/dashboard/profile/editprofile?complete');
+			$link = $this->url_root('prospectStudent/dashboard/profile/editprofile?complete');
 			print '<script type="text/javascript"> self.location = "'.$link.'" </script>';
 		}
 	}

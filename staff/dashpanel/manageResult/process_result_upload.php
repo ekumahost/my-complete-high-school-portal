@@ -102,7 +102,7 @@ if (!isset($byepass)) {
 						while ($viewMyStds = $db_get_students_details_for_result->fetch(PDO::FETCH_OBJ)) {
 							$stdImage = $viewMyStds->studentbio_pictures;
 							$stdSex = $viewMyStds->studentbio_gender;
-							$imgUrl = $newGeneral->imageDynamic($stdImage, $stdSex, $newGeneral->server_root_dir('pictures/'));
+							$imgUrl = $newGeneral->imageDynamic($stdImage, $stdSex, $newGeneral->url_root('pictures/'));
 							$student_deduced_id = $viewMyStds->studentbio_id;
 							
 							$sn = $sn + 1;
@@ -238,7 +238,7 @@ if (!isset($byepass)) {
 								while ($reproduceResult = $db_dripQuery->fetch(PDO::FETCH_OBJ)) {
 									$stdImage = $reproduceResult->studentbio_pictures;
 									$stdSex = $reproduceResult->studentbio_gender;
-									$imgUrl = $newGeneral->imageDynamic($stdImage, $stdSex, $newGeneral->server_root_dir('pictures/'));
+									$imgUrl = $newGeneral->imageDynamic($stdImage, $stdSex, $newGeneral->url_root('pictures/'));
 									$student_deduced_id = $reproduceResult->studentbio_id;
 									
 									$sn = $sn + 1;

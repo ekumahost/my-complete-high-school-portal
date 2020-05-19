@@ -24,7 +24,7 @@ class handleStudentList extends kas_framework {
 		while ($viewMyStds = $parameter->fetch(PDO::FETCH_OBJ)) {
 			$stdImage = $viewMyStds->studentbio_pictures;
 			$stdSex = $viewMyStds->studentbio_gender;
-			$imgUrl = $this->imageDynamic($stdImage, $stdSex, $this->server_root_dir('pictures/'));
+			$imgUrl = $this->imageDynamic($stdImage, $stdSex, $this->url_root('pictures/'));
 			$student_deduced_id = $viewMyStds->studentbio_id;
 			
 			/* deducing the class of the student */

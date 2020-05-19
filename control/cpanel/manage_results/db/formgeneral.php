@@ -1,4 +1,6 @@
 <?php 
+
+/* 
 class general {
 	
 	public function databaseconn($server, $username, $password, $databasename) {
@@ -13,7 +15,7 @@ class general {
 		} 
 	}
 	
-	public function server_root_dir($flink) {
+	public function url_root($flink) {
 		//return "http://localhost/myschoolapp/std/". $flink;
 	}
 	
@@ -23,7 +25,7 @@ class general {
 	
 	public function displaySchoolLogo($width, $shape, $margin) {
 		if ($shape == 'circle') { $plug = 'class="img-circle"';	} else if ($shape == 'square') { $plug = ''; }
-		$img_location = $this->server_root_dir('img/sch_logo.png');
+		$img_location = $this->url_root('img/sch_logo.png');
 		print '<img src="'.$img_location.'" width="'.$width.'" '.$plug.' style="margin:'.$margin.'" />';
 	}
 	
@@ -145,4 +147,6 @@ $general = new general;
 
 $kas_framework->databaseconn($db_server, $db_user, $db_password, $db_name);
 //$kas_framework->phpRedirect();
+
+*/
 ?>

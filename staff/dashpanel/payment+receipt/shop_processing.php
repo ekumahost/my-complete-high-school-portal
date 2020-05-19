@@ -27,14 +27,14 @@ class processShop extends kas_framework {
 	public function deleteItem($id) {
 		/*$delQ = mysql_query("DELETE FROM school_item_price WHERE id = '".$id."' LIMIT 1");
 			if (mysql_affected_rows() == 1) {
-				$this->showInfoCallout('Record Deleted Successfully. Please <a href="'.$this->server_root_dir('staff/dashpanel/payment+receipt/manageShop').'">Click Here</a> to See Changes...');
+				$this->showInfoCallout('Record Deleted Successfully. Please <a href="'.$this->url_root('staff/dashpanel/payment+receipt/manageShop').'">Click Here</a> to See Changes...');
 			} else {
 				$this->showDangerCallout('Delete Failed. <a href="'.$this->help_url('?topic=query-failed').'" target="new">Explanation?</a>');
 				//print mysql_error();
 			}
 		*/
 		$this->showInfoCallout('This functionality is deprecated. Please turn the status Off and make it invisible. This Item has been Indexed already. 
-		Please <a href="'.$this->server_root_dir('staff/dashpanel/payment+receipt/manageShop?act=edit&item='.$this->saltifyID($id).'').'">Click Here</a> to deactive this Item');
+		Please <a href="'.$this->url_root('staff/dashpanel/payment+receipt/manageShop?act=edit&item='.$this->saltifyID($id).'').'">Click Here</a> to deactive this Item');
 	}
 	
 	public function updateItem() {
@@ -50,7 +50,7 @@ class processShop extends kas_framework {
 				$get_rawUpdateQuery_rows = $db_rawUpdateQuery->rowCount();
 				$db_rawUpdateQuery = null;
 				if ($get_rawUpdateQuery_rows == 1) {
-					$this->showInfoCallout('Item Updated Succesfully. Please <a href="'.$this->server_root_dir('staff/dashpanel/payment+receipt/manageShop#shoptable').'">Click here</a>');
+					$this->showInfoCallout('Item Updated Succesfully. Please <a href="'.$this->url_root('staff/dashpanel/payment+receipt/manageShop#shoptable').'">Click here</a>');
 					$this->buttonController('#updateItemButton', 'enable');
 				} else {
 					$this->showDangerCallout('Update Failed. <a href="'.$this->help_url('?topic=query-failed').'" target="new">Explanation?</a>');
@@ -78,7 +78,7 @@ class processShop extends kas_framework {
 				$get_rawAddItemQuery_rows = $db_rawAddItemQuery->rowCount();
 				$db_rawAddItemQuery = null;
 				if ($get_rawAddItemQuery_rows == 1) {
-					$this->showInfoCallout('Item Added Succesfully. Please <a href="'.$this->server_root_dir('staff/dashpanel/payment+receipt/manageShop#shoptable').'">Click here</a>');
+					$this->showInfoCallout('Item Added Succesfully. Please <a href="'.$this->url_root('staff/dashpanel/payment+receipt/manageShop#shoptable').'">Click here</a>');
 					$this->buttonController('#addItemButton', 'enable');
 					$this->formReset('#addItemForm');
 				} else {
@@ -104,7 +104,7 @@ class processShop extends kas_framework {
 				$get_rawAddItemQuery_rows = $db_rawAddItemQuery->rowCount();
 				$db_rawAddItemQuery = null;
 				if ($get_rawAddItemQuery_rows == 1) {
-					$this->showInfoCallout('Sales Location Added Succesfully. Please <a href="'.$this->server_root_dir('staff/dashpanel/payment+receipt/managelocations#shoptable').'">Click here</a>');
+					$this->showInfoCallout('Sales Location Added Succesfully. Please <a href="'.$this->url_root('staff/dashpanel/payment+receipt/managelocations#shoptable').'">Click here</a>');
 					$this->buttonController('#addDomainButton', 'enable');
 					$this->formReset('#addDomainForm');
 				} else {
@@ -126,7 +126,7 @@ class processShop extends kas_framework {
 				$get_rawUpdateQuery_rows = $db_rawUpdateQuery->rowCount();
 				$db_rawUpdateQuery = null;
 				if ($get_rawUpdateQuery_rows == 1) {
-					$this->showInfoCallout('Sales Location Updated Succesfully. Please <a href="'.$this->server_root_dir('staff/dashpanel/payment+receipt/managelocations#shoptable').'">Click here</a>');
+					$this->showInfoCallout('Sales Location Updated Succesfully. Please <a href="'.$this->url_root('staff/dashpanel/payment+receipt/managelocations#shoptable').'">Click here</a>');
 					$this->buttonController('#updateDomainButton', 'enable');
 				} else {
 					$this->showDangerCallout('Update Failed. <a href="'.$this->help_url('?topic=query-failed').'" target="new">Explanation?</a>');
@@ -139,14 +139,14 @@ class processShop extends kas_framework {
 	public function deleteDomain($id) {
 		/*$delQ = mysql_query("DELETE FROM tuition_codes_domain WHERE tuition_codes_domain_id = '".$id."' LIMIT 1");
 			if (mysql_affected_rows() == 1) {
-				$this->showInfoCallout('Domain Deleted Successfully. Please <a href="'.$this->server_root_dir('staff/dashpanel/payment+receipt/manageShop').'">Click Here</a> to See Changes...');
+				$this->showInfoCallout('Domain Deleted Successfully. Please <a href="'.$this->url_root('staff/dashpanel/payment+receipt/manageShop').'">Click Here</a> to See Changes...');
 			} else {
 				$this->showDangerCallout('Delete Failed. <a href="'.$this->help_url('?topic=query-failed').'" target="new">Explanation?</a>');
 				//print mysql_error();
 			}
 		*/
 		$this->showInfoCallout('This functionality is deprecated. The Only Option here is to rename this Location to an Existing one.
-		Please <a href="'.$this->server_root_dir('staff/dashpanel/payment+receipt/managelocations?action=edit&code='.$this->saltifyID($id).'').'">Click Here</a> to Update this Sales Location...');
+		Please <a href="'.$this->url_root('staff/dashpanel/payment+receipt/managelocations?action=edit&code='.$this->saltifyID($id).'').'">Click Here</a> to Update this Sales Location...');
 	}
 	
 }

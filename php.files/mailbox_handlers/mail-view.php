@@ -60,7 +60,7 @@ if ($get_rows == 0) {
 			if ($msg_attachment == '') {
 				print 'No Attachment';
 			} else {
-				print 'Click on Attachment to Start Download: <a href="'.$kas_framework->server_root_dir('files/mailattach/').''.$msg_attachment.'"><div class="btn btn-success btn-file">
+				print 'Click on Attachment to Start Download: <a href="'.$kas_framework->url_root('files/mailattach/').''.$msg_attachment.'"><div class="btn btn-success btn-file">
                                     <i class="fa fa-cloud-download"></i> Attachment
                       </div></a>';
 			}
@@ -80,7 +80,7 @@ if ($get_rows == 0) {
 			if ($msg_attachment == '') {
 				print 'No Attachment';
 			} else {
-				print 'Click on Attachment Download: <a href="'.$kas_framework->server_root_dir('files/mailattach/').''.$msg_attachment.'">
+				print 'Click on Attachment Download: <a href="'.$kas_framework->url_root('files/mailattach/').''.$msg_attachment.'">
 				<div class="btn btn-success btn-file"><i class="fa fa-cloud-download"></i> Attachment
                       </div></a>';
 			}

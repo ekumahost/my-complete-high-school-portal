@@ -5,13 +5,16 @@ if(!isset($_SESSION['UserID']) || @$_SESSION['UserType'] != "A")  {
     exit;
 }
 (file_exists('../../php.files/classes/kas-framework.php'))? include ('../../php.files/classes/kas-framework.php'): include ('../../../php.files/classes/kas-framework.php');
-// Include configuration file
-include('../tools/config.php');// custom config to get variables
+
 //Include global functions
 include_once "../../includes/common.php";
 // config
 include_once "../../includes/configuration.php";
 //clearing the default for storing the bulk sms numbers...
+
+// Include configuration file
+include('../tools/config.php');// custom config to get variables
+
 $_SESSION['sendto_nos'] = "";
 ?>
 <!doctype html>

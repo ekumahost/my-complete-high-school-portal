@@ -4,7 +4,7 @@
 	if (isset($_SESSION['tapp_std_username'])) {
 		print '<script type="text/javascript"> self.location = "dashboard/" </script>';
 	} else if (isset($_SESSION['tapp_prostd_username'])) {
-		print '<script type="text/javascript"> self.location = "'.$kas_framework->server_root_dir('prospectStudent/dashboard/').'" </script>';
+		print '<script type="text/javascript"> self.location = "'.$kas_framework->url_root('prospectStudent/dashboard/').'" </script>';
 	}
 	
 	if (($kas_framework->getCookie('hold_username') != '') and ($kas_framework->getCookie('hold_image') != '')) {
@@ -56,7 +56,7 @@
 
 		<?php if ($kas_framework->app_config_setting('student_login') == false) {
 		$kas_framework->showDangerCallout('<font color="black"><center> Sorry! Student Login has been closed. See the School Administrator for this.  But Teranig have a question for you... How did you get here? Your IP has been Logged. </font></center>
-					<br /><br /><center><a href="'.$kas_framework->server_root_dir('').'" class="btn bg-custom text-white btn-block" style="width:50%">
+					<br /><br /><center><a href="'.$kas_framework->url_root('').'" class="btn bg-custom text-white btn-block" style="width:50%">
 						<i class="fa fa-dashboard text-white"></i> Go Home </a></center>');
 					
 					require (constant('single_return').'php.files/classes/PHPMailer/PHPMailerAutoload.php');

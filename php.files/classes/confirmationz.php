@@ -52,7 +52,7 @@ class confirmationz extends kas_framework {
 			if($get_rows == 0) {
 				$this->showalertwarningwithPaleYellow('Could not verify this account.<a href="'.$this->help_url('?topic=cant-verify-account').'">Why did this happen?</a>');
 			} else {
-				$this->showsuccesswithGreen('Your Account has been Activated '.$user_user_n.'. You can now <a href="'.$this->server_root_dir('student/').'">Log In</a>');
+				$this->showsuccesswithGreen('Your Account has been Activated '.$user_user_n.'. You can now <a href="'.$this->url_root('student/').'">Log In</a>');
 				/*$this->SendUserWelcomeEmail($user_email); */
 			}
 		}
@@ -83,7 +83,7 @@ class confirmationz extends kas_framework {
 			if($get_rowsUs == 0) {
 					$this->showalertwarningwithPaleYellow('Could not verify this account.<a href="'.$this->help_url('?topic=cant-verify-account').'">Why did this happen?</a>');
 			} else {
-				$this->showsuccesswithGreen('Your Account has been Activated '.$web_users_username.'. You can now <a href="'.$this->server_root_dir('staff/').'">Log In</a>');
+				$this->showsuccesswithGreen('Your Account has been Activated '.$web_users_username.'. You can now <a href="'.$this->url_root('staff/').'">Log In</a>');
 				/*$this->SendUserWelcomeEmail($user_email); */
 			}
 		}
@@ -94,7 +94,7 @@ class confirmationz extends kas_framework {
     public function UpdateDBRecForConfirmationParent($cidp) {
         global $dbh;
 		$result = "SELECT * FROM web_parents WHERE web_parents_active = '".$cidp."' LIMIT 1";  
-		$db_handle = $dbh->prepare($querySQL);
+		$db_handle = $dbh->prepare($result);
 		$db_handle->execute();
 		$get_rows = $db_handle->rowCount();
 		
@@ -113,7 +113,7 @@ class confirmationz extends kas_framework {
 			if($get_rowsWP == 0) {
 				$this->showalertwarningwithPaleYellow('Could not verify this account.<a href="'.$this->help_url('?topic=cant-verify-account').'">Why did this happen?</a>');
 			} else {
-				$this->showsuccesswithGreen('Your Account has been Activated '.$web_parents_username.'. You can now <a href="'.$this->server_root_dir('parent/').'">Log In</a>');
+				$this->showsuccesswithGreen('Your Account has been Activated '.$web_parents_username.'. You can now <a href="'.$this->url_root('parent/').'">Log In</a>');
 				/*$this->SendUserWelcomeEmail($user_email); */
 			}
 		}
@@ -189,7 +189,7 @@ class confirmationz extends kas_framework {
 			$get_rows = $db_handleX->rowCount();
 			$db_handleX = null;
 			
-		if (mysql_num_rows($getDetails) == 0) {
+		if ($db_handleX->rowCount() == 0) {
 			$this->showalertwarningwithPaleYellow('This Username was not Found. If you have forgotten your Username, meet the School Admin</a>');
 		} else {
 			$cmplx_query = "SELECT * FROM web_parents AS wu, student_parents AS sp WHERE wu.web_parents_relid = sp.student_parents_id AND wu.web_parents_username = '".$username_supplied."' LIMIT 1";
@@ -213,7 +213,7 @@ class confirmationz extends kas_framework {
 	public function confirm_reset_student($email, $password) {
 		global $dbh;
 		$lnk_query = "SELECT * FROM web_students WHERE email = '".$email."' AND pass = '".$password."' LIMIT 1";
-		$db_handleX = $dbh->prepare($querySQL);
+		$db_handleX = $dbh->prepare($lnk_query);
 		$db_handleX->execute();
 		$get_rows = $db_handleX->rowCount();
 		$db_handleX = null;
@@ -258,7 +258,7 @@ class confirmationz extends kas_framework {
 					if ($get_rows == 0) {
 						$this->showDangerCallout('Fatal Error Occurred. <a href="'.$this->help_url('?topic=query-failed').'" target="blank">&raquo;Explanation?</a>');
 					} else if ($get_rows == 1) {
-						$this->showInfoCallout('Password Changed Successfully. <a href="'.$this->server_root_dir('student/').'">Log in Now to Confirm</a>');	
+						$this->showInfoCallout('Password Changed Successfully. <a href="'.$this->url_root('student/').'">Log in Now to Confirm</a>');	
 					}
 				} else {
 						$this->showDangerCallout('Passwords do not Match. Please Retype Again');
@@ -295,7 +295,7 @@ class confirmationz extends kas_framework {
 				if ($get_rows == 0) {
 						$this->showWarningCallout('Could not Change Password. Your Previous password is not Correct');
 					} elseif ($get_rows == 1) {
-						$this->showInfoCallout('Password Changed Successfully. <a href="'.$this->server_root_dir('staff/').'">Log in Now to Confirm</a>');
+						$this->showInfoCallout('Password Changed Successfully. <a href="'.$this->url_root('staff/').'">Log in Now to Confirm</a>');
 					}
 				} else {
 					$this->showWarningCallout('Passwords do not Match');
@@ -333,7 +333,7 @@ class confirmationz extends kas_framework {
 					if ($get_rows == 0) {
 							$this->showWarningCallout('Could Not Change Password. Your Previous password is not Correct');
 						} else if ($get_rows == 1) {
-							$this->showInfoCallout('Password Changed Successfully. <a href="'.$this->server_root_dir('parent/').'">Log in Now to Confirm</a>');
+							$this->showInfoCallout('Password Changed Successfully. <a href="'.$this->url_root('parent/').'">Log in Now to Confirm</a>');
 						}
 					} else {
 						$this->showWarningCallout('Passwords do not Match');

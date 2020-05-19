@@ -87,7 +87,7 @@ require (constant('quad_return').'php.files/classes/staff.php');
 						$kas_framework->showalertwarningwithPaleYellow('Please Complete your profile before you can view this Gallery.
 						Your Fistname and lastname which is Important to this Gallery is Missing. Your Picture will not appear in the Gallery
 						<br />
-						 <a href="'.$kas_framework->server_root_dir('secure/profile/editprofile').'">Complete your Profile</a> OR
+						 <a href="'.$kas_framework->url_root('secure/profile/editprofile').'">Complete your Profile</a> OR
 						 <a href="'.$kas_framework->help_url('?topic=incomplete-profile').'" target="blank">Explanation?</a>');
 					} else {
 						/*Proceed ang get the images of everybody*/
@@ -105,10 +105,10 @@ require (constant('quad_return').'php.files/classes/staff.php');
 
 							for ($i=0; $i<=30; $i++) {
 								while ($showPicx = $db_runGalleryPicx->fetch(PDO::FETCH_OBJ)) {
-									print '<img src="'.$kas_framework->server_root_dir('pictures/').$showPicx->staff_image.'" 
+									print '<img src="'.$kas_framework->url_root('pictures/').$showPicx->staff_image.'" 
 									alt="'.$showPicx->staff_fname .' '. $showPicx->staff_lname.'" 
 									title="'.$showPicx->staff_lname .' '. $showPicx->staff_fname.'"
-									href="'.$kas_framework->server_root_dir('pictures/').$showPicx->staff_image.'" data-fancybox-group="gallery" style="cursor:pointer" class="fancybox fancybox.image margin" />';
+									href="'.$kas_framework->url_root('pictures/').$showPicx->staff_image.'" data-fancybox-group="gallery" style="cursor:pointer" class="fancybox fancybox.image margin" />';
 								}
 							}
 							$db_runGalleryPicx = null;

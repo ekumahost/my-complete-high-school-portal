@@ -1,5 +1,9 @@
 <?php 
+
+/*
 class general {
+
+
 	
 	public function databaseconn($server, $username, $password, $databasename) {
 
@@ -13,7 +17,7 @@ class general {
 		} 
 	}
 	
-	public function server_root_dir($flink) {
+	public function url_root($flink) {
 		//return "http://localhost/myschoolapp/std/". $flink;
 	}
 	
@@ -23,7 +27,7 @@ class general {
 	
 	public function displaySchoolLogo($width, $shape, $margin) {
 		if ($shape == 'circle') { $plug = 'class="img-circle"';	} else if ($shape == 'square') { $plug = ''; }
-		$img_location = $this->server_root_dir('img/sch_logo.png');
+		$img_location = $this->url_root('img/sch_logo.png');
 		print '<img src="'.$img_location.'" width="'.$width.'" '.$plug.' style="margin:'.$margin.'" />';
 	}
 	
@@ -149,7 +153,7 @@ class general {
 	
 	public function phpRedirect() {
 		if (substr($_SERVER['REQUEST_URI'], -4) == '.php') {
-			print '<script type="text/javascript">self.location = "'.$this->server_root_dir('404').'" </script>';
+			print '<script type="text/javascript">self.location = "'.$this->url_root('404').'" </script>';
 		}
 	}
 	
@@ -180,6 +184,7 @@ class general {
 		print '<script type="text/javascript">  alert("'.$text.'");  </script>';
 	}
 	
+	/*
 	public function countRestrict1($table, $datefieldname, $value) {
 		$cc = mysql_query("SELECT * FROM `$table` WHERE `$datefieldname` = '".$value."'");
 		return mysql_num_rows($cc);
@@ -190,6 +195,7 @@ class general {
 		return mysql_num_rows($cc);
 	
 	}
+
 	
 	public function controlTextShowMore($id, $text, $showToEnd) {
 		$brappears = substr_count($text, '<br />');
@@ -203,13 +209,13 @@ class general {
 	
 	public function checkAuthParent() {
 		if (!isset($_SESSION['tapp_par_username'])) {
-			print '<script type="text/javascript"> self.location = "'.$this->server_root_dir('parent?ref=bounce').'"</script>';
+			print '<script type="text/javascript"> self.location = "'.$this->url_root('parent?ref=bounce').'"</script>';
 		}
 	}
 	
 	public function checkAuthStudent() {
 		if (!isset($_SESSION['tapp_std_username'])) {
-			print '<script type="text/javascript"> self.location = "'.$this->server_root_dir('student?ref=bounce').'"</script>';
+			print '<script type="text/javascript"> self.location = "'.$this->url_root('student?ref=bounce').'"</script>';
 		}
 	}
 	
@@ -227,4 +233,7 @@ $general = new general;
 
 $kas_framework->databaseconn($db_server, $db_user, $db_password, $db_name);
 $kas_framework->phpRedirect();
+
+*/
+
 ?>

@@ -190,7 +190,93 @@ if(isset($_SESSION['adbatch'])){// we have a class to pull data from?>
 	$dbh_pullassout = null;
 	// end of the  loop ?>
         </tbody>
+	  </table>
+	
+	
+	<?php 
+	  if(isset($_POST['take_past_action'])){
+	@$id = $_POST['id'];
+
+	$dowhat = $_POST['take_past_action'];
+	switch($dowhat){
+
+	case 'pause':
+	$Query = "UPDATE tbl_admission SET active = '0' WHERE id='$id'";
+	$dbh_Query = $dbh->prepare($Query); $dbh_Query->execute(); $dbh_Query = null;
+	break;
+	
+	case 'activate':
+	$Query = "UPDATE tbl_admission SET active = '1' WHERE id='$id'";
+	$dbh_Query = $dbh->prepare($Query); $dbh_Query->execute(); $rowCount = $dbh_Query->rowCount(); $dbh_Query = null;
+	// add the student 
+			if($rowCount == 1) {
+				$myp->AlertInfo('Good! ', 'Action Successful. ');
+			} else {
+				$myp->AlertError('Error! ', 'Something is not right');
+			}
+		}
+	}// switching
+	?>
+		<hr />
+      <p><strong>Past Admission batches </strong></p>
+      <table class="table table-striped table-bordered bootstrap-datatable datatable" width="100%">
+        <thead>
+          <tr style="color:blue;">
+            <th width="3%">S/N<i class="icon icon-color icon-arrow-n-s"></i></th>
+            <th width="14%">Admission batch name </th>
+            <th width="18%">Reg Start </th>
+            <th width="14%">Reg Ends </th>
+            <th width="20%">Status</th>
+            <th width="20%">Detail <i class="icon icon-color icon-arrow-n-s"></i></th>
+            <th width="9%">Action<i class="icon-trash icon-red"></i></th>
+          </tr>
+        </thead>
+        <tbody>
+         
+	 <?php 
+		$pullassout = "SELECT * FROM tbl_admission ORDER BY id DESC";
+		$dbh_pullassout = $dbh->prepare($pullassout); $dbh_pullassout->execute(); 
+		//studentbio_entry_grade  
+		$sn = 0;
+		while ($std = $dbh_pullassout->fetch(PDO::FETCH_ASSOC)) {
+			$sn = $sn + 1;
+			$rowid = $std['id'];
+			$badge = $std['badge_name'];
+			$start = $std['application_starts'];
+			$stop = $std['application_ends'];
+			$interview_dt = $std['interview_date'];
+			$interview_time = $std['interview_time'];
+			$active = $std['active'];
+			$instr = $std['instruction'];
+			$txactive = $active;
+			 if($active =='1'){
+				 $active = '<span class="label label-success" style="padding:7px 5px">Open</span>';
+				 //label-warning for pending
+				 } else {	$active = '<span class="label label-important" style="padding:7px 5px">Closed</span>';}
+	 //$start=$db->get_var("SELECT date_format(reg_date, '%D %M %Y') as date FROM web_students WHERE stdbio_id='$rowid'");//we can also use stdbio_id
+	?>
+		 
+  <tr>
+	<td><?php echo $sn;?></td>
+	<td><?php echo $badge;?></td>
+	<td class="center"><?php echo $start;?> </td>
+	<td class="center"><?php echo $stop;?> </td>
+	<td class="center"><?php echo $active;?> </td>
+	<td class="center">Interview Time: <?php echo $interview_time.' '.$interview_time;?><br />Instructions:<?php echo $instr;?></td>
+	
+	<td class="center">
+	<form action="" method="post">
+	<input type="hidden" name="take_past_action" value="<?php if($txactive ==1){echo 'pause';}else{echo'activate';}?>" />
+	<input type="hidden" name="id" value="<?php echo $rowid;?>" />
+	
+   <input class="btn btn-<?php if($txactive ==1){echo 'danger';}else{echo'success';}?>" type="submit" value="<?php if($txactive ==1){echo 'Close Application';}else{echo'Reactivate Application';}?>"> </input></form>			</td>
+  </tr>
+	<?php }
+		$dbh_pullassout = null;
+	// end of the  loop ?>
+        </tbody>
       </table>
+
     </div>
   </div>
   

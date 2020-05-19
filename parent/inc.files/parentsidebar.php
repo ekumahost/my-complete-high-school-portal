@@ -5,7 +5,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-			<?php $dynamicimage = $parent->imageDynamic($student_parents_image, $student_parents_sex, $kas_framework->server_root_dir('pictures/'));
+			<?php $dynamicimage = $parent->imageDynamic($student_parents_image, $student_parents_sex, $kas_framework->url_root('pictures/'));
 						print '<img src="'.$dynamicimage.'" class="img-circle" alt="User Image" />'; ?>
             </div>
             <div class="pull-left info">
@@ -27,19 +27,19 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="click_ult">
-                <a href="<?php print $kas_framework->server_root_dir('parent/dashpanel/'); ?>">
+                <a href="<?php print $kas_framework->url_root('parent/dashpanel/'); ?>">
                     <i class="fa fa-dashboard text-green"></i> <span>DashPanel</span>
                 </a>
             </li>
 			<?php if ($parent->BasicPlanParent() == false) { ?>
 				 <li class="click_ult">
-					<a href="<?php print $kas_framework->server_root_dir('parent/dashpanel/childselector/'); ?>">
+					<a href="<?php print $kas_framework->url_root('parent/dashpanel/childselector/'); ?>">
 						<i class="fa fa-users text-maroon"></i> <span>Child Selection</span>
 					</a>
 				</li>
 			<?php } ?>
             <li class="treeview">
-                <a href="<?php print $kas_framework->server_root_dir('parent/dashpanel/profile/'); ?>">
+                <a href="<?php print $kas_framework->url_root('parent/dashpanel/profile/'); ?>">
                     <i class="fa fa-user text-ult_custom5"></i>
                     <span>Profile</span>
 					 <?php if ($completeness < 50) { $badge = '<small class="badge pull-right bg-red">'.$completeness.'%</small>';
@@ -49,18 +49,18 @@
                      <i class="fa fa-angle-left pull-right"></i>
                    </a>
                 <ul class="treeview-menu">
-                    <li class="click_ult"><a href="<?php print $kas_framework->server_root_dir('parent/dashpanel/profile/'); ?>"><i class="fa fa-cogs text-ult_custom5"></i>View Profile <?php print $badge ?></a></li>
-                    <li class="click_ult"><a href="<?php print $kas_framework->server_root_dir('parent/dashpanel/profile/editprofile'); ?>"><i class="fa fa-edit text-ult_custom6"></i>Edit Profile</a></li>
+                    <li class="click_ult"><a href="<?php print $kas_framework->url_root('parent/dashpanel/profile/'); ?>"><i class="fa fa-cogs text-ult_custom5"></i>View Profile <?php print $badge ?></a></li>
+                    <li class="click_ult"><a href="<?php print $kas_framework->url_root('parent/dashpanel/profile/editprofile'); ?>"><i class="fa fa-edit text-ult_custom6"></i>Edit Profile</a></li>
                 </ul>
             </li>
             <li class="click_ult">
-                <a href="<?php print $kas_framework->server_root_dir('parent/dashpanel/library/'); ?>">
+                <a href="<?php print $kas_framework->url_root('parent/dashpanel/library/'); ?>">
                     <i class="fa fa-desktop text-fuchsia"></i> <span>School Library</span><small class="badge pull-right bg-green"><?php print $kas_framework->countAll('media_codes') ?></small>
                 </a>
             </li>
 			<?php if ($parent->BasicPlanParent() == false) { ?>
 				<li class="click_ult">
-					<a href="<?php print $kas_framework->server_root_dir('parent/dashpanel/mailbox/?folder=inbox'); ?>">
+					<a href="<?php print $kas_framework->url_root('parent/dashpanel/mailbox/?folder=inbox'); ?>">
 						<i class="fa fa-envelope text-ult_custom4"></i> <span>Mailbox</span>
 						<?php  if ($internalMailEx->countUnread() != 0) {
 							print '<small class="badge pull-right bg-red">'.$internalMailEx->countUnread().'</small>';
@@ -75,14 +75,14 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="click_ult"><a href="<?php print $kas_framework->server_root_dir('parent/dashpanel/complaints/'); ?>"><i class="fa fa-bug text-blue"></i>Tapp the Admin</a></li>
+                    <li class="click_ult"><a href="<?php print $kas_framework->url_root('parent/dashpanel/complaints/'); ?>"><i class="fa fa-bug text-blue"></i>Tapp the Admin</a></li>
                     <li><a href="<?php print $kas_framework->help_url(''); ?>" target="_blank"><i class="fa fa-question-circle text-red"></i>I Need Help</a></li>
                     
               </ul>
             </li>
 			
              <li class="click_ult">
-                <a href="<?php print $kas_framework->server_root_dir('parent/dashpanel/weather/'); ?>">
+                <a href="<?php print $kas_framework->url_root('parent/dashpanel/weather/'); ?>">
                     <i class="fa fa-cloud text-green"></i> <span>Weather Update</span>
                     <small class="badge pull-right bg-green">Free</small>
                 </a>

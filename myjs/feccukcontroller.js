@@ -1,4 +1,4 @@
-server_root_dir = 'http://localhost/hisp/';
+url_root = 'http://127.0.0.1/hisp.kastechnet.com/';
 
 window_width = $(document).innerWidth() + 17;
 body_height = $('body').innerHeight();
@@ -17,7 +17,7 @@ var loadingInit = $("<div id='still_loading' />").css({
     "z-index": "10899737",
     "box-shadow": "4px 4px 14px #000",
     "border": "2px solid #000"
-}).html("Loading Content... <img src='http://localhost/hisp/img/ajax-loader.gif' width='32' alt='Please Wait...' />");
+}).html("Loading Content... <img src='"+ url_root +"img/ajax-loader.gif' width='32' alt='Please Wait...' />");
 
 /* still loading and remover */
 $("body").append(loadingInit);
@@ -84,25 +84,25 @@ $(document).ready(function(e) {
 
     /* signout loader for students */
     $('#signout').click(function(e) {
-        $('#signoutspan').load(server_root_dir + 'php.files/students_signout');
+        $('#signoutspan').load(url_root + 'php.files/students_signout');
         return false;
     });
 
     /* signout loader for parents*/
     $('#signout_par').click(function(e) {
-        $('#signoutspan').load(server_root_dir + 'php.files/parents_signout');
+        $('#signoutspan').load(url_root + 'php.files/parents_signout');
         return false;
     });
 
     /* signout loader for staff*/
     $('#signout_tea').click(function(e) {
-        $('#signoutspan').load(server_root_dir + 'php.files/staff_signout');
+        $('#signoutspan').load(url_root + 'php.files/staff_signout');
         return false;
     });
 
     /* signout loader for prospect Students*/
     $('#signout_prosStd').click(function(e) {
-        $('#signoutspan').load(server_root_dir + 'php.files/prospectStudent_signout');
+        $('#signoutspan').load(url_root + 'php.files/prospectStudent_signout');
         return false;
     });
 

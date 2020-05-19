@@ -12,7 +12,7 @@ class staff extends kas_framework {
 		$db_handle = null;	
 		if ($paramGetFields->status == '0') {
 			unset($_SESSION['tapp_staff_username']); //destroy the staff session
-			print '<script> self.location = "'.$this->server_root_dir('').'" </script>';
+			print '<script> self.location = "'.$this->url_root('').'" </script>';
 		}
 	}
 	
@@ -32,7 +32,7 @@ class staff extends kas_framework {
 	
 	public function authConfirm($status) {
 	($status != '1')?$this->showdangerwithRed('Alert: The School has not Confirmed you as a Staff. Advanced Modules have been Hidden from you.
-		Please <b><a href="'.$this->server_root_dir('staff/dashpanel/profile/editprofile').'">Complete Your Profile</a></b> 
+		Please <b><a href="'.$this->url_root('staff/dashpanel/profile/editprofile').'">Complete Your Profile</a></b> 
 		so that the admin can approve your account &raquo; <a href="'.$this->help_url('?topic=not-yet-authenticated-yet').'" target="_blank">Why did this Happen?</a>'): '';	
 	}
 	
@@ -50,7 +50,7 @@ class staff extends kas_framework {
 
 	public function checkBasicPlan() {
 		if ($this->basicPlan() === true) { 
-			exit($this->showWarningCallout('For Advanced Plans Only. Please Wait so that your Account will be confirmed by the Admin... <a href="'.$this->server_root_dir('staff/dashpanel/profile/editprofile').'">complete your profile</a> for easy confirmation'));
+			exit($this->showWarningCallout('For Advanced Plans Only. Please Wait so that your Account will be confirmed by the Admin... <a href="'.$this->url_root('staff/dashpanel/profile/editprofile').'">complete your profile</a> for easy confirmation'));
 		}
 	}
 	

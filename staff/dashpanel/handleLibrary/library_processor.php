@@ -28,7 +28,7 @@ class library_processor extends kas_framework {
 				$get_insertQuery_rows = $db_insertQuery->rowCount();
 				$db_insertQuery = null;
 					if ($get_insertQuery_rows == 1) {
-						$this->showInfoCallout('Books Inserted Succesfully. <a href="'.$this->server_root_dir('staff/dashpanel/handleLibrary/').'">Refresh</a> to See Changes..');
+						$this->showInfoCallout('Books Inserted Succesfully. <a href="'.$this->url_root('staff/dashpanel/handleLibrary/').'">Refresh</a> to See Changes..');
 						$this->buttonController('#addBook', 'enable');
 						$this->formReset('#addBooksForm');
 					} else {
@@ -49,7 +49,7 @@ class library_processor extends kas_framework {
 			$get_rawUpdateQuery_rows = $db_rawUpdateQuery->rowCount();
 			$db_rawUpdateQuery = null;
 				if ($get_rawUpdateQuery_rows == 1) {
-					$this->showInfoCallout('Book Updated Succesfully. <a href="'.$this->server_root_dir('staff/dashpanel/handleLibrary/#example1').'">Click Here</a> to See Changes...');
+					$this->showInfoCallout('Book Updated Succesfully. <a href="'.$this->url_root('staff/dashpanel/handleLibrary/#example1').'">Click Here</a> to See Changes...');
 					$this->buttonController('#updateBooks', 'enable');
 				} else {
 					$this->showWarningCallout('Update Failed. <a href="'.$this->help_url('?topic=query-failed').'" target="new">Explanation?</a>');
@@ -67,7 +67,7 @@ class library_processor extends kas_framework {
 			$get_delQ_rows = $db_delQ->rowCount();
 			$db_delQ = null;
 			if ($get_delQ_rows == 1) {
-				$this->showInfoCallout('Book Deleted. <a href="'.$this->server_root_dir('staff/dashpanel/handleLibrary/#example1').'">Click Here</a> to See Changes...');
+				$this->showInfoCallout('Book Deleted. <a href="'.$this->url_root('staff/dashpanel/handleLibrary/#example1').'">Click Here</a> to See Changes...');
 			} else {
 				$this->showWarningCallout('Update Failed. <a href="'.$this->help_url('?topic=query-failed').'" target="new">Explanation?</a>');
 				//print mysql_error();

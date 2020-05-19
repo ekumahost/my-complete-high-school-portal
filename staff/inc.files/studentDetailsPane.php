@@ -7,7 +7,7 @@
 							<form role="form" action="" method="post" id="update_contactForm">
 								<div class="box-body">
 								<table width="100%" border="0" cellpadding="4">
-									<?php $userImg = $kas_framework->imageDynamic($studentObj->studentbio_pictures, $studentObj->studentbio_gender, $kas_framework->server_root_dir('pictures/')); 
+									<?php $userImg = $kas_framework->imageDynamic($studentObj->studentbio_pictures, $studentObj->studentbio_gender, $kas_framework->url_root('pictures/')); 
 											print '<center><img src="'.$userImg.'" width="150" style="margin:10px; border:4px double #000" /></center>';
 									?>
 									<tr><td><b>Current Grade</b> <i class="fa fa-hand-o-right"></i></td><td><?php print $kas_framework->getValue('grades_desc', 'grades', 'grades_id', $studentObj->student_grade_year_grade) ?></td></tr>

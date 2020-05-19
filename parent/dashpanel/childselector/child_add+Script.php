@@ -34,7 +34,7 @@ if (!isset($byepass)) {
 		
 			if ($get_insertion_rows == 1) {
 				$kas_framework->showInfoCallout('Child Selection Succesfull. Ownership will be Confirmed by the School');
-				print '<script type="text/javascript"> self.location = "'.$kas_framework->server_root_dir('parent/dashpanel/childselector').'" </script>';
+				print '<script type="text/javascript"> self.location = "'.$kas_framework->url_root('parent/dashpanel/childselector').'" </script>';
 			} else {
 				$kas_framework->showWarningCallout('Error Processing Request. <a href="'.$kas_framework->help_url('?topic=query-failed').'">Explanation?</a>');
 			}

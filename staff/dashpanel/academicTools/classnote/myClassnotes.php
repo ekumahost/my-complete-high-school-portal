@@ -132,7 +132,7 @@ require (constant('quad_return').'php.files/classes/staff.php');
 											$serial = 0;
 												while ($obj__TT = $db_hwQuery->fetch(PDO::FETCH_OBJ)) {
 													$serial = $serial + 1;
-													$file_loc = $kas_framework->server_root_dir('files/classnote_files/'). $obj__TT->classnote_file;
+													$file_loc = $kas_framework->url_root('files/classnote_files/'). $obj__TT->classnote_file;
 													print '<tr>
 														<td>'.$serial.'</td>
 														<td>'.$kas_framework->getValue('grade_subject_desc', 'grade_subjects', 'grade_subject_id', $obj__TT->subject).'</td>

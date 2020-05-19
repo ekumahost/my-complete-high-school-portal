@@ -38,7 +38,7 @@
 				
 				$weekEvent[$initCount] =  '
 					<li>
-						<a href="'.$kas_framework->server_root_dir('staff/dashpanel/mytools/calendar#eventTable').'">
+						<a href="'.$kas_framework->url_root('staff/dashpanel/mytools/calendar#eventTable').'">
 							<h3>
 							   '.$reveal->event_name.'
 								<small class="pull-right">'.$reveal->start_date.'</small>

@@ -67,9 +67,9 @@ require (constant('quad_return').'php.files/student_details.php');
 				$db_handle_receipt_details = null;
 				
 				if ($get_rowsX == 0) {
-							$kas_framework->showDangerCallout('You Just Committed an Offense that is Punishable. You Just tried Hijacking a URL. A report has been Sent for Scrutiny. This Page have been Freezed. <a href="'.$kas_framework->server_root_dir('student/dashboard/').'">Visit the DashPanel</a> or <a href="'.$kas_framework->help_url('?topic=invalid-url-parameter').'" target="new">Explanation? <a>');
-								print '<center><img src="'.$kas_framework->server_root_dir('img/restricted.png').'" width="60%"/>
-								<img src="'.$kas_framework->server_root_dir('img/sorry.png').'" width="50%"/></center>';
+							$kas_framework->showDangerCallout('You Just Committed an Offense that is Punishable. You Just tried Hijacking a URL. A report has been Sent for Scrutiny. This Page have been Freezed. <a href="'.$kas_framework->url_root('student/dashboard/').'">Visit the DashPanel</a> or <a href="'.$kas_framework->help_url('?topic=invalid-url-parameter').'" target="new">Explanation? <a>');
+								print '<center><img src="'.$kas_framework->url_root('img/restricted.png').'" width="60%"/>
+								<img src="'.$kas_framework->url_root('img/sorry.png').'" width="50%"/></center>';
 									
 								require (constant('quad_return').'php.files/classes/PHPMailer/PHPMailerAutoload.php');
 									require (constant('quad_return').'php.files/classes/mailing_list.php');
@@ -127,7 +127,7 @@ require (constant('quad_return').'php.files/student_details.php');
 						</address>
 					</div><!-- /.col -->
 					<div class="col-sm-4 invoice-col">
-				<?php $dynamicimage = $kas_framework->imageDynamic($userpicturepath, $usergender, $kas_framework->server_root_dir('pictures/'));
+				<?php $dynamicimage = $kas_framework->imageDynamic($userpicturepath, $usergender, $kas_framework->url_root('pictures/'));
 				print '<img src="'.$dynamicimage.'" width="120" alt="User Image" />';
 				?>
 					</div><!-- /.col -->

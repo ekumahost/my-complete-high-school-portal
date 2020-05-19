@@ -13,7 +13,7 @@ class student extends kas_framework {
 		if ($paramGetFields->status == '0') {
 			unset($_SESSION['tapp_std_username']); //destroy the users session
 			unset($_SESSION['BasicPlanStudent']); // destroys the basic users account too
-			print '<script> self.location = "'.$this->server_root_dir('').'" </script>';
+			print '<script> self.location = "'.$this->url_root('').'" </script>';
 		}
 	}
 	
@@ -73,8 +73,8 @@ class student extends kas_framework {
 	public function checkBasicPlanStudent() {
 		if ($this->BasicPlanStudent() === true) { 
 				exit('<center>
-				<img src="'.$this->server_root_dir('img/restricted.png').'" width="60%"/>
-				<img src="'.$this->server_root_dir('img/sorry.png').'" width="50%"/>
+				<img src="'.$this->url_root('img/restricted.png').'" width="60%"/>
+				<img src="'.$this->url_root('img/sorry.png').'" width="50%"/>
 				'.$this->showDangerCallout('Your Current Package do not have the Priviledge to View this Page. Looks like you are on Kastech Classic Plan. This Page is for Premium Package Users Only').'</center>');
 			}
 	}

@@ -69,7 +69,7 @@ if ($student_wallet_status == '0') {
         /*we commit the query and then shows you success*/
 		$dbh->commit();
         $kas_framework->showInfoCallout('You have paid for this Term. You will only check your result 5 times. Print your receipt
-					<a class="click_ult" href="'.$kas_framework->server_root_dir('student/dashboard/payment/receipt/?print=').$salted_id_fix.'">Here</a> or at your Wallet payment History. Click <b>View Result</b> again to see Result.');
+					<a class="click_ult" href="'.$kas_framework->url_root('student/dashboard/payment/receipt/?print=').$salted_id_fix.'">Here</a> or at your Wallet payment History. Click <b>View Result</b> again to see Result.');
         print '<script type="text/javascript">$(\'#user_classic_balance\').html(\''.number_format($new_student_balance).'\')</script>';
         $kas_framework->buttonController('#result_wallet_button', 'disable');
     } else {

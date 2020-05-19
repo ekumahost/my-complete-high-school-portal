@@ -65,9 +65,9 @@ body {
 
     <font color="red"><?php echo $error_msg; ?></font><br />
 <?php if (USE_USERNAME) echo ':<br /><input type="hidden" name="access_login" value="admin_timeout" style="font-size:20px; padding: 4px; padding-left: 3px; border:2px; solid: #857561; width:270px; border-color:red" placeholder="Username" /><br />:<br />'; ?>
-    <input type="hidden" name="access_password" value="time_outer" style="font-size:20px; padding: 4px; padding-left: 3px; border:2px; solid: #857561; width:270px; border-color:red" placeholder="" />
+    <input type="hidden" name="access_password" value="time_outer" style="font-size:20px; padding: 4px; padding-left: 3px; border:2px solid #857561; width:270px; border-color:red" placeholder="" />
 	
-	<input type="text" name="nothing" value="" style="font-size:20px; padding: 4px; padding-left: 3px; border:2px; solid: #857561; width:270px; border-color:red" placeholder="surmname" />
+	<input type="text" name="nothing" value="" style="font-size:20px; padding: 4px; padding-left: 3px; border:2px solid #857561; width:270px; border-color:red" placeholder="surmname" />
 	
 	<p></p><input type="submit" name="Submit" value="Continue to DashBoard" />
   </form>

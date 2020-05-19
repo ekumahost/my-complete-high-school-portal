@@ -79,7 +79,7 @@ require (constant('tripple_return').'php.files/student_details.php');
 								<br />Caution: If you dont have a previous school, fill in the Current School');
 							} else {
 							//the todo logic and application goes here
-							$dynamicimage = $student->imageDynamic($userpicturepath, $usergender, $kas_framework->server_root_dir('pictures/'));
+							$dynamicimage = $student->imageDynamic($userpicturepath, $usergender, $kas_framework->url_root('pictures/'));
 								print '<img src="'.$dynamicimage.'" class="img-circle" alt="User Image" style="width:110px; margin:10px; float:left" />';
 								$summary = '';
 								$summary .= '<blockquote>My Summary</blockquote>';

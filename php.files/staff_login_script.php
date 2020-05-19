@@ -26,14 +26,14 @@ if ($kas_framework->strIsEmpty($username) or $kas_framework->strIsEmpty($passwor
 	if ($get_rows == 1 and $loginObj->web_users_password == md5($password)) {
 		
 		if ($loginObj->web_users_active != '1') {
-			$kas_framework->showDangerCallout('Account not Activated.  <a href="'.$kas_framework->server_root_dir('staff/confirmreg').'">Activate?</a> 
+			$kas_framework->showDangerCallout('Account not Activated.  <a href="'.$kas_framework->url_root('staff/confirmreg').'">Activate?</a> 
 				<br /><a href="'.$kas_framework->help_url('?topic=blocked-check-in').'" target="_blank">&raquo;Explanation?</a>');
 				$kas_framework->buttonController('#signin', 'disable');
 		} else {
 			$kas_framework->showInfoCallout('Logged in. Please wait...');
 			$_SESSION['tapp_staff_username'] = $loginObj->web_users_username;
 			$_SESSION['loadDiscussionData'] = 0;
-			print '<script type="text/javascript"> self.location = "'.$kas_framework->server_root_dir('redirect?httptrack='). $kas_framework->generateRandomString(20). $kas_framework->generateRandomString(20). $kas_framework->generateRandomString(20). '&press=sf"</script>'; //other browsers
+			print '<script type="text/javascript"> self.location = "'.$kas_framework->url_root('redirect?httptrack='). $kas_framework->generateRandomString(20). $kas_framework->generateRandomString(20). $kas_framework->generateRandomString(20). '&press=sf"</script>'; //other browsers
 			exit();
 		}
 		

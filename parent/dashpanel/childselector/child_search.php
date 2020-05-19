@@ -32,7 +32,7 @@ if (!isset($byepass)) {
 					/*trying to get the image of the users*/
 					$picx = $rslt->studentbio_pictures;
 					/*trying to get the image of the users, we get the sub query as*/
-					$childImgz = $kas_framework->imageDynamic($picx, $rslt->studentbio_gender, $kas_framework->server_root_dir('pictures/'));
+					$childImgz = $kas_framework->imageDynamic($picx, $rslt->studentbio_gender, $kas_framework->url_root('pictures/'));
 						print '<tr>
 							<td>Name: '. $rslt->studentbio_fname .' '. $rslt->studentbio_lname .'<br /> Gender: '.$rslt->studentbio_gender.', and Hails from '.$kas_framework->getValue('ethnicity_desc', 'ethnicity', 'ethnicity_id', $rslt->studentbio_ethnicity).' Tribe 
 							<br /> Date Of Birth: '.$rslt->studentbio_dob.'<br />School ID Number: '.$rslt->studentbio_internalid.'<br />Mobile: '.$rslt->std_bio_mobile.'</td>

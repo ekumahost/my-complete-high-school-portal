@@ -88,7 +88,7 @@
                             </address>
                         </div><!-- /.col -->
                         <div class="col-sm-3 invoice-col">
-					<?php $dynamicimage = $kas_framework->imageDynamic($userpicturepath, $usergender, $kas_framework->server_root_dir('pictures/'));
+					<?php $dynamicimage = $kas_framework->imageDynamic($userpicturepath, $usergender, $kas_framework->url_root('pictures/'));
 					print '<img src="'.$dynamicimage.'" width="120" alt="User Image" />';
 					?>
                         </div><!-- /.col -->

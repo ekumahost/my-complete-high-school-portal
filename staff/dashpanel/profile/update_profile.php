@@ -144,7 +144,7 @@ class update_profile extends kas_framework {
 				} else if ($get_passwordQ_rows==1) {
 					$this->showInfoCallout('Password Changed Successfully');
 					unset($_SESSION['tapp_staff_username']);
-					print '<script type="text/javascript"> self.location = "'.$this->server_root_dir('').'" </script>';	
+					print '<script type="text/javascript"> self.location = "'.$this->url_root('').'" </script>';	
 				}
 			} else {
 				$this->showWarningCallout('Passwords do not Match');

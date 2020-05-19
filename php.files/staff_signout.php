@@ -22,7 +22,7 @@
 	if ($get_rows == 1) {
 		//log you out
 		print 'Checking Out...'; unset($_SESSION['tapp_staff_username']);
-		print '<script type="text/javascript">self.location = "'.$kas_framework->server_root_dir('redirect').'" </script>';
+		print '<script type="text/javascript">self.location = "'.$kas_framework->url_root('redirect').'" </script>';
 		exit;
 	} else {
 		print '<font color="red">Sign Out Failed!</font>';

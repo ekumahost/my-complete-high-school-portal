@@ -26,7 +26,7 @@
 			print 'Checking Out...';
 			unset($_SESSION['tapp_prostd_username']);
 			/* unset($_SESSION['loadDiscussionData']); */
-			print '<script type="text/javascript">self.location = "'.$kas_framework->server_root_dir('redirect').'" </script>';
+			print '<script type="text/javascript">self.location = "'.$kas_framework->url_root('redirect').'" </script>';
 			exit;
 		}  else {
 			print '<font color="red">Sign Out Failed!</font>';

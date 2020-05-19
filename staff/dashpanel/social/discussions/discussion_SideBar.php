@@ -47,11 +47,11 @@
 						$db_getImgQuery = null;
 			
 							if ($get_getImgQuery_rows == 0) {
-								$randImgLoc = $kas_framework->server_root_dir('img/user_bg.jpg');
+								$randImgLoc = $kas_framework->url_root('img/user_bg.jpg');
 							} else {
 								$usrImg = $paramObj->staff_image;
 								$usrSex = $paramObj->staff_sex;
-								$randImgLoc = $kas_framework->imageDynamic($usrImg, $usrSex, $kas_framework->server_root_dir('pictures/'));
+								$randImgLoc = $kas_framework->imageDynamic($usrImg, $usrSex, $kas_framework->url_root('pictures/'));
 							}
 							print '<center><img src="'.$randImgLoc.'" href="'.$randImgLoc.'" class="fancybox fancybox.image" style="width:150px; margin:0 auto; border:1px solid #333;cursor:pointer" /></center>';
 							

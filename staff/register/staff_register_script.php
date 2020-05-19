@@ -124,7 +124,7 @@ if ($kas_framework->strIsEmpty($firstname) or $kas_framework->strIsEmpty($lastna
 		$kas_framework->showsuccesswithGreen('Sign Up Successful. Please Complete your Profile now... Loading...');
 		$_SESSION['tapp_staff_username'] = $web_users_username;
 		// redirect to the complete profile panel 
-		print '<script type="text/javascript"> self.location = "'.$kas_framework->server_root_dir('staff/dashpanel/profile/editprofile?uploadpicx').'" </script>';
+		print '<script type="text/javascript"> self.location = "'.$kas_framework->url_root('staff/dashpanel/profile/editprofile?uploadpicx').'" </script>';
 		$kas_framework->buttonController('#signup', 'disable');
 		
 	} else {

@@ -18,10 +18,10 @@ $startLimit = $load * 20;
 		$get_galleryPicx_rows = $db_galleryPicx->rowCount();
 	
 			while ($showPicx = $db_galleryPicx->fetch(PDO::FETCH_OBJ)) {
-				print '<img src="'.$kas_framework->server_root_dir('pictures/').$showPicx->staff_image.'" 
+				print '<img src="'.$kas_framework->url_root('pictures/').$showPicx->staff_image.'" 
 				alt="'.$showPicx->staff_fname .' '. $showPicx->staff_lname.'" 
 				title="'.$showPicx->staff_lname .' '. $showPicx->staff_fname.'"
-				href="'.$kas_framework->server_root_dir('pictures/').$showPicx->staff_image.'" data-fancybox-group="gallery" style="cursor:pointer" class="fancybox fancybox.image margin" />';
+				href="'.$kas_framework->url_root('pictures/').$showPicx->staff_image.'" data-fancybox-group="gallery" style="cursor:pointer" class="fancybox fancybox.image margin" />';
 			}
 		$db_galleryPicx = null;
 ?>

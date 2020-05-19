@@ -63,8 +63,8 @@ require ('discussion_delimeter_function.php');
 	<div class="row"> 
 		<?php	if ($kas_framework->app_config_setting('staff_discussion') == false) {
 			$kas_framework->showDangerCallout('<center> Sorry! Discussion has been Closed has been closed due to some reasons the Admin dim fit.');
-			print '<center><img src="'.$kas_framework->server_root_dir('img/restricted.png').'" width="60%"/>
-					<img src="'.$kas_framework->server_root_dir('img/sorry.png').'" width="50%"/></center>';
+			print '<center><img src="'.$kas_framework->url_root('img/restricted.png').'" width="60%"/>
+					<img src="'.$kas_framework->url_root('img/sorry.png').'" width="50%"/></center>';
 				} else { ?>
 		<style type="text/css">
 			#commentText { max-width: 500px; width: 75%; height: 50px; padding:5px; }
@@ -94,9 +94,9 @@ require ('discussion_delimeter_function.php');
 				
 				$discussions->updateViewdPost($passingID); 
 					if ($get_getAllPosts_rows == 0) {
-							$kas_framework->showDangerCallout('You Just Committed an Offense that is Punishable. You Just tried Hijacking a URL. A report has been Sent for Scrutiny. This Page have been Freezed. <a href="'.$kas_framework->server_root_dir('staff/dashpanel/').'">Visit the DashPanel</a> or <a href="'.$kas_framework->help_url('?topic=invalid-url-parameter').'" target="new">Explanation? <a>');
-								print '<center><img src="'.$kas_framework->server_root_dir('img/restricted.png').'" width="60%"/>
-								<img src="'.$kas_framework->server_root_dir('img/sorry.png').'" width="50%"/></center>';
+							$kas_framework->showDangerCallout('You Just Committed an Offense that is Punishable. You Just tried Hijacking a URL. A report has been Sent for Scrutiny. This Page have been Freezed. <a href="'.$kas_framework->url_root('staff/dashpanel/').'">Visit the DashPanel</a> or <a href="'.$kas_framework->help_url('?topic=invalid-url-parameter').'" target="new">Explanation? <a>');
+								print '<center><img src="'.$kas_framework->url_root('img/restricted.png').'" width="60%"/>
+								<img src="'.$kas_framework->url_root('img/sorry.png').'" width="50%"/></center>';
 																		
 						require (constant('quad_return').'php.files/classes/PHPMailer/PHPMailerAutoload.php');
 							require (constant('quad_return').'php.files/classes/mailing_list.php');
@@ -120,7 +120,7 @@ require ('discussion_delimeter_function.php');
 		
 		$picxPstrlc = $param_db_pstr_details_Obj->staff_image;
 		$picxPstrSex = $param_db_pstr_details_Obj->staff_sex;
-		$pstr_img_url = $kas_framework->imageDynamic($picxPstrlc, $picxPstrSex, $kas_framework->server_root_dir('pictures/'));
+		$pstr_img_url = $kas_framework->imageDynamic($picxPstrlc, $picxPstrSex, $kas_framework->url_root('pictures/'));
 		
 		/*getting the total comments and  total likes*/
 		$ttl_comments_on_post = $kas_framework->countRestrict1('staff_post_reply', 'id', $show_post->id);
@@ -148,7 +148,7 @@ require ('discussion_delimeter_function.php');
 					print $show_post->post_text;
 				} else if ($show_post->post_text == '') {
 				/* Means it is a photo field */
-				print '<img src="'.$kas_framework->server_root_dir('pictures/').$show_post->post_image.'" href="'.$kas_framework->server_root_dir('pictures/').$show_post->post_image.'" style="cursor:pointer" class="fancybox fancybox.image margin" alt="..." width="230" />';
+				print '<img src="'.$kas_framework->url_root('pictures/').$show_post->post_image.'" href="'.$kas_framework->url_root('pictures/').$show_post->post_image.'" style="cursor:pointer" class="fancybox fancybox.image margin" alt="..." width="230" />';
 				}
 					print '</div>
 					<div class="discussion2-footer">
@@ -177,7 +177,7 @@ require ('discussion_delimeter_function.php');
 			while ($view_comment = $db_query->fetch(PDO::FETCH_OBJ)) {
 				$cmtrPicx = $view_comment->staff_image;
 				$cmtrSex = $view_comment->staff_sex;
-				$cmtrPixLoc = $kas_framework->imageDynamic($cmtrPicx, $cmtrSex, $kas_framework->server_root_dir('pictures/'));
+				$cmtrPixLoc = $kas_framework->imageDynamic($cmtrPicx, $cmtrSex, $kas_framework->url_root('pictures/'));
 				
 					print ' <li>
 					<div class="discussion2-item">

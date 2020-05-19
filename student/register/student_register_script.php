@@ -170,7 +170,7 @@ if ($kas_framework->strIsEmpty($surname) or $kas_framework->strIsEmpty($lastname
 		$_SESSION['tapp_std_username'] = $user_username;
 		$_SESSION['loadDiscussionData'] = 0;
 		/* redirect to the complete profile panel*/
-		print '<script type="text/javascript"> self.location = "'.$kas_framework->server_root_dir('student/dashboard/profile/editprofile').'" </script>';
+		print '<script type="text/javascript"> self.location = "'.$kas_framework->url_root('student/dashboard/profile/editprofile').'" </script>';
 		$kas_framework->buttonController('#signup', 'disable');
 		
 	} else {

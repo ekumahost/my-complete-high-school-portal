@@ -78,7 +78,7 @@ if (!isset($_POST['byepass'])) {
 			if ($get_rows_insertImg == 0) {
 				print '<pre><code>Could not Update File Upload Process. <a href="'.$kas_framework->help_url('?topic=query-failed').'" target="_blank">Explanation?</a></code></pre>';
 			} else {
-				print '<center>Crushing and Resizing Image. Please Wait...<img src="'.$kas_framework->server_root_dir('/img/ajax-loader.gif').'" width="35" /></center>';
+				print '<center>Crushing and Resizing Image. Please Wait...<img src="'.$kas_framework->url_root('/img/ajax-loader.gif').'" width="35" /></center>';
 				//print '<pre><code>Image Uploaded. Please Wait 30s more. If the Image dosent appear, hit the button below</code></pre>';
 			}				
 	}

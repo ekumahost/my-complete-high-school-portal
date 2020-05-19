@@ -10,7 +10,7 @@ if (file_exists(constant('single_return').'php.files/mailbox_handlers/retrieve-m
 ?>
  <!-- header logo: style can be found in header.less -->
         <header class="header" style="position:fixed;">
-            <a href="<?php print $kas_framework->server_root_dir('parent/dashpanel/'); ?>" class="logo">
+            <a href="<?php print $kas_framework->url_root('parent/dashpanel/'); ?>" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 KaSP -> Parent
             </a>
@@ -40,7 +40,7 @@ if (file_exists(constant('single_return').'php.files/mailbox_handlers/retrieve-m
 									<?php print $internalMailEx->getMessageForHeader(); ?>
                                     </ul>
                                 </li>
-                         <li class="footer click_ult"><a href="<?php print $kas_framework->server_root_dir('parent/dashpanel/mailbox/?folder=inbox') ?>">
+                         <li class="footer click_ult"><a href="<?php print $kas_framework->url_root('parent/dashpanel/mailbox/?folder=inbox') ?>">
                          See All Messages</a></li>
                             </ul>
                         </li>
@@ -55,7 +55,7 @@ if (file_exists(constant('single_return').'php.files/mailbox_handlers/retrieve-m
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-custom">
-								   <?php $dynamicimage = $parent->imageDynamic($student_parents_image, $student_parents_sex, $kas_framework->server_root_dir('pictures/'));
+								   <?php $dynamicimage = $parent->imageDynamic($student_parents_image, $student_parents_sex, $kas_framework->url_root('pictures/'));
 								print '<img src="'.$dynamicimage.'" class="img-circle" alt="User Image" />'; ?><p>
                             <?php print ucfirst($web_parents_flname) ?> - Parents/Guardian
 							<small>	<?php print date('l\, jS F Y'); ?><br />
@@ -64,8 +64,8 @@ if (file_exists(constant('single_return').'php.files/mailbox_handlers/retrieve-m
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                         <a href="<?php print $kas_framework->server_root_dir('parent/dashpanel/profile/'); ?>" class="btn btn-default btn-flat click_ult">Profile</a>
-										<a href="<?php print $kas_framework->server_root_dir('parent/dashpanel/childselector/'); ?>" class="btn btn-default btn-flat click_ult">Child</a>
+                                         <a href="<?php print $kas_framework->url_root('parent/dashpanel/profile/'); ?>" class="btn btn-default btn-flat click_ult">Profile</a>
+										<a href="<?php print $kas_framework->url_root('parent/dashpanel/childselector/'); ?>" class="btn btn-default btn-flat click_ult">Child</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="#signout" class="btn btn-default btn-flat" id="signout_par">Sign out</a>

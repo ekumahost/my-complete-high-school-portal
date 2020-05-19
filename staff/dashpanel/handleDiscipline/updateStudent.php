@@ -8,7 +8,7 @@
 	require (constant('tripple_return').'php.files/classes/staff.php'); 
 	
 		if (!isset($_GET['click']) or !isset($_GET['stdid']) or !isset($_GET['ref'])) {
-			$redirect = ($web_users_type == 'T')? $kas_framework->server_root_dir('staff/dashpanel/myStudents/?myStudents'): $kas_framework->server_root_dir('staff/dashpanel/handleDiscipline/');
+			$redirect = ($web_users_type == 'T')? $kas_framework->url_root('staff/dashpanel/myStudents/?myStudents'): $kas_framework->url_root('staff/dashpanel/handleDiscipline/');
 			print '<script type="text/javascript">self.location = "'.$redirect.'" </script>';
 		}
 ?>
@@ -76,9 +76,9 @@
 					$get_getStdDetails_rows = $db_getStdDetails->rowCount();
 					
 						if ($get_getStdDetails_rows == 0) {
-							$kas_framework->showDangerCallout('You Just Committed an Offense that is Punishable. You Just tried Hijacking a URL. A report has been Sent for Scrutiny. This Page have been Freezed. <a href="'.$kas_framework->server_root_dir('staff/dashpanel/').'">Visit the DashPanel</a> or <a href="'.$kas_framework->help_url('?topic=invalid-url-parameter').'" target="new">Explanation? <a>');
-								print '<center><img src="'.$kas_framework->server_root_dir('img/restricted.png').'" width="60%"/>
-								<img src="'.$kas_framework->server_root_dir('img/sorry.png').'" width="50%"/></center>';
+							$kas_framework->showDangerCallout('You Just Committed an Offense that is Punishable. You Just tried Hijacking a URL. A report has been Sent for Scrutiny. This Page have been Freezed. <a href="'.$kas_framework->url_root('staff/dashpanel/').'">Visit the DashPanel</a> or <a href="'.$kas_framework->help_url('?topic=invalid-url-parameter').'" target="new">Explanation? <a>');
+								print '<center><img src="'.$kas_framework->url_root('img/restricted.png').'" width="60%"/>
+								<img src="'.$kas_framework->url_root('img/sorry.png').'" width="50%"/></center>';
 									
 						require (constant('tripple_return').'php.files/classes/PHPMailer/PHPMailerAutoload.php');
 							require (constant('tripple_return').'php.files/classes/mailing_list.php');

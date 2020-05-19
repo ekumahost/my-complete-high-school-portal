@@ -163,7 +163,7 @@ if ($kas_framework->strIsEmpty($surname) or $kas_framework->strIsEmpty($lastname
 		$_SESSION['loadDiscussionData'] = 0; 
 		
 		/*redirect to the complete profile panel */
-		print '<script type="text/javascript"> self.location = "'.$kas_framework->server_root_dir('prospectStudent/dashboard/profile/editprofile?complete').'" </script>';
+		print '<script type="text/javascript"> self.location = "'.$kas_framework->url_root('prospectStudent/dashboard/profile/editprofile?complete').'" </script>';
 		$kas_framework->buttonController('#signup', 'disable');
 		
 	} else {

@@ -67,7 +67,7 @@ if (!isset($_POST['byepass'])) {
 			/*we commit the query and then shows you success*/
 			$dbh->commit();
 			$kas_framework->showInfoCallout('School Fees Paid Succesfully. You can Print your Receipt 
-			<a class="click_ult" href="'.$kas_framework->server_root_dir('student/dashboard/payment/receipt/?print=').$salted_id_fix.'">Here</a> or at your Wallet History anytime');
+			<a class="click_ult" href="'.$kas_framework->url_root('student/dashboard/payment/receipt/?print=').$salted_id_fix.'">Here</a> or at your Wallet History anytime');
 			print '<script type="text/javascript">$(\'#user_classic_balance\').html(\''.number_format($new_student_balance).'\')</script>';
 			print '<script type="text/javascript">$(\'#user_classic_balance_mod\').html(\''.number_format($new_student_balance).'\')</script>';
 			$kas_framework->buttonController('#paybutton', 'disable');

@@ -155,7 +155,7 @@ $set_fees = "INSERT INTO school_fees (component,grades,grades_term,school_year,p
 $dbh_sSQL_sfees = $dbh->prepare($set_fees); $dbh_sSQL_sfees->execute(); $set_fees_mar = $dbh_sSQL_sfees->rowCount(); $dbh_sSQL_sfees = null;
 
 	// copy teacher schedule from the old scedule to new year
-$set_teacher_schedule = "INSERT INTO teacher_schedule (teacher_schedule_teacherid, teacher_schedule_year, teacher_schedule_schoolid, teacher_schedule_subjectid, teacher_schedule_termid, teacher_schedule_classperiod, teacher_schedule_days, teacher_schedule_room, teacher_schedule_type, teacher_schedule_subject_grade) SELECT teacher_schedule_teacherid, $nextyear AS teacher_schedule_year, teacher_schedule_schoolid, teacher_schedule_subjectid, teacher_schedule_termid, teacher_schedule_classperiod, teacher_schedule_days, teacher_schedule_room, teacher_schedule_type, teacher_schedule_subject_grade FROM teacher_schedule WHERE teacher_schedule_year = $current_year";
+$set_teacher_schedule = "INSERT INTO teacher_schedule (teacher_schedule_teacherid, teacher_schedule_year, teacher_schedule_schoolid, teacher_schedule_subjectid, teacher_schedule_termid, teacher_schedule_classperiod, teacher_schedule_days, teacher_schedule_room, teacher_schedule_type, teacher_schedule_grade) SELECT teacher_schedule_teacherid, $nextyear AS teacher_schedule_year, teacher_schedule_schoolid, teacher_schedule_subjectid, teacher_schedule_termid, teacher_schedule_classperiod, teacher_schedule_days, teacher_schedule_room, teacher_schedule_type, teacher_schedule_grade FROM teacher_schedule WHERE teacher_schedule_year = $current_year";
 $dbh_sSQL_t = $dbh->prepare($set_teacher_schedule); $dbh_sSQL_t->execute(); $dbh_sSQL_t = null;	
 
 // copy teacher grade year
@@ -169,8 +169,6 @@ $dbh_sSQL_tc = $dbh->prepare($set_teacher_class); $dbh_sSQL_tc->execute(); $dbh_
 	$dbh_sSQL_olS = $dbh->prepare($oldyearlist_SQL); $dbh_sSQL_olS->execute(); $rowCount_OL = $dbh_sSQL_olS->rowCount();
 	// WE HAVE THE LLIST OF THOSE IN FINALE YEAR HERE
 
-
-
 	if($rowCount_OL != 0){
 	// LOOP THEM ON AND SET STUDENTBIO.ADMIT=2
 		while ($myact = $dbh_sSQL_olS->fetch(PDO::FETCH_ASSOC)) {
@@ -179,12 +177,13 @@ $dbh_sSQL_tc = $dbh->prepare($set_teacher_class); $dbh_sSQL_tc->execute(); $dbh_
 			$dbh_sSQL = $dbh->prepare($SQLite); $dbh_sSQL->execute(); $dbh_sSQL = null;
 	}
 }
-    $dbh_sSQL_olS = null;
+
+$dbh_sSQL_olS = null;
 
 // if all are transactions above are permitable without error, then we pay, else roll back our fucking money
 //if($create_student_grade_year and $kill_std_sessions and $db_set_current_yr and $remove_current_term and $switch_to_first_term  and $set_fees)
 
-if(($create_student_grade_year_mar >0) and ($kill_std_sessions_mar >0) and ($db_set_current_yr_mar >0) and ($remove_current_term_mar >0) and ($switch_to_first_term_mar >0)  and ($set_fees_mar >0))
+if(($create_student_grade_year_mar > 0) and ($kill_std_sessions_mar >0) and ($db_set_current_yr_mar >0) and ($remove_current_term_mar >0) and ($switch_to_first_term_mar >0)  and ($set_fees_mar >0))
 
 // this permits launching the portal
 //if(($db_set_current_yr_mar >0) and $kill_std_sessions and ($remove_current_term_mar >0) and ($switch_to_first_term_mar >0)  and ($set_fees_mar >0))

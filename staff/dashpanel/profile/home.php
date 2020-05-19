@@ -70,7 +70,7 @@ require (constant('tripple_return').'php.files/classes/staff.php');
 					
 						</div>
 						<div class="icon">
-						   <?php $dynamicimage = $kas_framework->imageDynamic($staff_image, $staff_sex, $kas_framework->server_root_dir('pictures/'));
+						   <?php $dynamicimage = $kas_framework->imageDynamic($staff_image, $staff_sex, $kas_framework->url_root('pictures/'));
 								print '<img href="'.$dynamicimage.'" src="'.$dynamicimage.'" class="fancybox fancybox.image" alt="User Image" style="border:1px solid #000; height:100px; margin:-40px 0 0 0; cursor:pointer" />';
 							?>
 						</div>

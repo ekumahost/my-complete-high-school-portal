@@ -68,15 +68,15 @@
 				/* maKing sure that the user is a teacher */
 				if ($staff->checkTeacher($web_users_type) == false){
 				$kas_framework->showDangerCallout('This Panel is for Teachers Only. Please <a href="'.constant('single_return').'">Visit the Dashboard</a>');
-				print '<center><img src="'.$kas_framework->server_root_dir('img/restricted.png').'" width="60%"/>
-					<img src="'.$kas_framework->server_root_dir('img/sorry.png').'" width="50%"/></center>';
+				print '<center><img src="'.$kas_framework->url_root('img/restricted.png').'" width="60%"/>
+					<img src="'.$kas_framework->url_root('img/sorry.png').'" width="50%"/></center>';
 					//exit();
 				} else { 
 					
 				if ($kas_framework->app_config_setting('student_result_uploading') == false) {
 						$kas_framework->showDangerCallout('<center> Sorry! You can not upload results at the Moment. Please meet the admin if the need arises. </center>'); 
-						print '<center><img src="'.$kas_framework->server_root_dir('img/restricted.png').'" width="60%"/>
-						<img src="'.$kas_framework->server_root_dir('img/sorry.png').'" width="50%"/></center>';
+						print '<center><img src="'.$kas_framework->url_root('img/restricted.png').'" width="60%"/>
+						<img src="'.$kas_framework->url_root('img/sorry.png').'" width="50%"/></center>';
 					} else { ?>				
 				
 				<div style="background-color:none; padding:6px 10px; border:2px solid #CCC; display:none" id="div_msg_warning">You are About to Upload Results for a Class.

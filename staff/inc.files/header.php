@@ -22,7 +22,7 @@ if (file_exists('mytools/calendar/retrieve-task+counter.php')) {
 ?>
  <!-- header logo: style can be found in header.less -->
         <header class="header" style="position:fixed;">
-            <a href="<?php print $kas_framework->server_root_dir('staff/dashpanel/'); ?>" class="logo">
+            <a href="<?php print $kas_framework->url_root('staff/dashpanel/'); ?>" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 KaSP -> Staff
             </a>
@@ -65,19 +65,19 @@ if (file_exists('mytools/calendar/retrieve-task+counter.php')) {
 					<li class="header">What Happened Today?</li>
 					  <li>
 					   <ul class="menu">
-							<li class="click_ult"><a href="<?php print $kas_framework->server_root_dir('staff/dashpanel/social/birthdays/') ?>">
+							<li class="click_ult"><a href="<?php print $kas_framework->url_root('staff/dashpanel/social/birthdays/') ?>">
 									<i class="fa fa-gift bg-red"></i> Total Birthday Today (<?php print $kas_framework->birthdayCountHeader() ?>)
 							</a></li>
 					<!-------------------------------------------------->
-							<li class="click_ult"><a href="<?php print $kas_framework->server_root_dir('staff/dashpanel/social/discussions/') ?>">
+							<li class="click_ult"><a href="<?php print $kas_framework->url_root('staff/dashpanel/social/discussions/') ?>">
 									<i class="fa fa-comments bg-blue"></i> Total Post Today (<?php print $totalPost ?>)
 							</a></li>
 					<!-------------------------------------------------->
-							<li class="click_ult"><a href="<?php print $kas_framework->server_root_dir('staff/dashpanel/#schoolCalendar') ?>">
+							<li class="click_ult"><a href="<?php print $kas_framework->url_root('staff/dashpanel/#schoolCalendar') ?>">
 									<i class="fa fa-calendar-o bg-fuchsia"></i> School Events Today (<?php print $schoolEvents ?>)
 							</a></li>
 					<!-------------------------------------------------->
-					<li class="click_ult"><a href="<?php print $kas_framework->server_root_dir('staff/dashpanel/mailbox?folder=inbox') ?>">
+					<li class="click_ult"><a href="<?php print $kas_framework->url_root('staff/dashpanel/mailbox?folder=inbox') ?>">
 							<i class="fa fa-envelope bg-olive"></i> Mail Transactions Total (<?php print $totalMailTrans ?>)
 					</a></li>
 						</ul>
@@ -107,7 +107,7 @@ if (file_exists('mytools/calendar/retrieve-task+counter.php')) {
 						</ul>
 					</li>
 					<li class="footer click_ult">
-						<a href="<?php print $kas_framework->server_root_dir('staff/dashpanel/mytools/calendar#eventTable') ?>">View all tasks</a>
+						<a href="<?php print $kas_framework->url_root('staff/dashpanel/mytools/calendar#eventTable') ?>">View all tasks</a>
 					</li>
 				</ul>
 			</li>	
@@ -125,7 +125,7 @@ if (file_exists('mytools/calendar/retrieve-task+counter.php')) {
 						<?php print $internalMailEx->getMessageForHeader(); ?>
 						</ul>
 					</li>
-			 <li class="footer click_ult"><a href="<?php print $kas_framework->server_root_dir('staff/dashpanel/mailbox/?folder=inbox') ?>">
+			 <li class="footer click_ult"><a href="<?php print $kas_framework->url_root('staff/dashpanel/mailbox/?folder=inbox') ?>">
 			 See All Messages</a></li>
 				</ul>
 			</li>
@@ -140,7 +140,7 @@ if (file_exists('mytools/calendar/retrieve-task+counter.php')) {
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-custom">
-						   <img src="<?php print $kas_framework->imageDynamic($staff_image, $staff_sex, $kas_framework->server_root_dir('pictures/')) ?>" class="img-circle" alt="User Image" />
+						   <img src="<?php print $kas_framework->imageDynamic($staff_image, $staff_sex, $kas_framework->url_root('pictures/')) ?>" class="img-circle" alt="User Image" />
 							<p>
                             <?php print ucfirst($web_users_flname) ?> - Staff
 							<small>	<?php print date('l\, jS F Y'); ?><br />
@@ -149,11 +149,11 @@ if (file_exists('mytools/calendar/retrieve-task+counter.php')) {
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                         <a href="<?php print $kas_framework->server_root_dir('staff/dashpanel/profile/'); ?>" class="btn btn-default btn-flat click_ult">Profile</a>
+                                         <a href="<?php print $kas_framework->url_root('staff/dashpanel/profile/'); ?>" class="btn btn-default btn-flat click_ult">Profile</a>
                                     </div>
 									<?php if ($staff->checkTeacher($web_users_type) == true){ ?>
 									<div class="pull-left" style="margin-left:5px">
-                                         <a href="<?php print $kas_framework->server_root_dir('staff/dashpanel/mytools/'); ?>" class="btn btn-default btn-flat click_ult">My Tools</a>
+                                         <a href="<?php print $kas_framework->url_root('staff/dashpanel/mytools/'); ?>" class="btn btn-default btn-flat click_ult">My Tools</a>
                                     </div>
 									<?php } ?>
                                     <div class="pull-right">

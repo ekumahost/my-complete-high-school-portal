@@ -164,7 +164,7 @@ function cnfremove(id) {
 <script type="text/javascript" language="JavaScript" src="sms.js"></script>
 </head>
 
-<body><img src="images/<?php echo _LOGO?>" border="0">
+<body><img src="images/logo.png" border="0">
 
 <div id="Header">
 <table width="100%">

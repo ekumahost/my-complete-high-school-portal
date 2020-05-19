@@ -60,6 +60,12 @@ if ($action=="edit"){
 <script language="JavaScript" src="datepicker.js"></script>
 <script type="text/javascript" language="JavaScript" src="sms.js"></script>
 
+<style type="text/css">
+  .btn {
+    margin:2px;
+  }
+</style>
+
 <!-- ADMIN IS EDITING HERE, RE,MEMBER TO CONFIGURE JAVACRIPT, PREVENT NAVIGATION IF FORM IS NOT SAVED. Ben have not done this on may 27 2014 when he built this page. bring back our girls month -->
 <div id="Content" align="center">
 
@@ -70,7 +76,6 @@ if ($action=="edit"){
 <button id="titles" class="btn btn-success btn-sm">Titles</button>
 <button id="relationships" class="btn btn-success btn-sm">Relationships </button>
 <button id="generations" class="btn btn-success btn-sm">Generations</button>
-
 
 <button id="immunization" class="btn btn-info btn-sm">Immunization Codes</button> 
 <button id="medication" class="btn btn-info btn-sm">Medication Codes</button> 

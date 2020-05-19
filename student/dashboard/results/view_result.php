@@ -127,7 +127,7 @@ require (constant('tripple_return').'php.files/classes/attendance.php');
 						</center>
 					</div><!-- /.col -->
 					<div class="col-sm-2 right_col">
-				<?php $dynamicimage = $kas_framework->imageDynamic($stdObj->studentbio_pictures, $stdObj->studentbio_gender, $kas_framework->server_root_dir('pictures/'));
+				<?php $dynamicimage = $kas_framework->imageDynamic($stdObj->studentbio_pictures, $stdObj->studentbio_gender, $kas_framework->url_root('pictures/'));
 						print '<img src="'.$dynamicimage.'" class="" style="width:90px" alt="User Image" />'; ?>
 					</div><!-- /.col -->
 				</div><!-- /.row -->
@@ -233,16 +233,16 @@ require (constant('tripple_return').'php.files/classes/attendance.php');
 				
 				<div class="col-md-6 pull-left">
 					<?php  print 'Director\'s Sign. <br />
-					<img src="'.$kas_framework->server_root_dir('files/signatures/directors_signature.jpg').'" height="55px" />'; ?>
+					<img src="'.$kas_framework->url_root('files/signatures/directors_signature.jpg').'" height="55px" />'; ?>
 				</div>
 				
 				<div class="col-md-6 pull-right">
 					<?php if ($grades_domain_id == '1' or $grades_domain_id == '2' or $grades_domain_id == '3') {
 						print 'Head Master\'s Sign.<br />
-						<img src="'.$kas_framework->server_root_dir('files/signatures/head_masters_signature.jpg').'" height="55px" />';
+						<img src="'.$kas_framework->url_root('files/signatures/head_masters_signature.jpg').'" height="55px" />';
 					} else {
 						print 'Principal\'s Sign.<br />
-						<img src="'.$kas_framework->server_root_dir('files/signatures/principals_signature.jpg').'" height="55px" />';
+						<img src="'.$kas_framework->url_root('files/signatures/principals_signature.jpg').'" height="55px" />';
 					} ?>
 				</div>
 				

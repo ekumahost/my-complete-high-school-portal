@@ -37,7 +37,7 @@ if (!isset($_POST['byepass'])) {
 							$db_query = null;
 							$cmtrPicx = $view_comment->studentbio_pictures;
 							$cmtrSex = $view_comment->studentbio_gender;
-							$cmtrPixLoc = $kas_framework->imageDynamic($cmtrPicx, $cmtrSex, $kas_framework->server_root_dir('pictures/'));
+							$cmtrPixLoc = $kas_framework->imageDynamic($cmtrPicx, $cmtrSex, $kas_framework->url_root('pictures/'));
 							
 						/* printing the text to the screen as it was just posted*/
 								print ' <li>

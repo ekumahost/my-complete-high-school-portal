@@ -67,8 +67,8 @@ require (constant('tripple_return').'php.files/classes/staff.php');
 				/* maKing sure that the user is a teacher */
 				if ($staff->checkTeacher($web_users_type) == false){
 					$kas_framework->showDangerCallout('This Panel is for Teachers Only. Please <a href="'. constant('single_return').'">Visit the Dashboard</a>');
-					print '<center><img src="'.$kas_framework->server_root_dir('img/restricted.png').'" width="60%"/>
-						<img src="'.$kas_framework->server_root_dir('img/sorry.png').'" width="50%"/></center>';
+					print '<center><img src="'.$kas_framework->url_root('img/restricted.png').'" width="60%"/>
+						<img src="'.$kas_framework->url_root('img/sorry.png').'" width="50%"/></center>';
 					//exit();
 				} else { 
 					$getClass = "SELECT * FROM teacher_grade_year WHERE teacher = '".$web_users_relid."'"; 

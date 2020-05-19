@@ -63,9 +63,9 @@
 				<?php
 				if ($staff_health == '0') {
 					print ($kas_framework->showDangerCallout('You dont Have the Priviledge to Manage the The Health of all the Students. Tell the Admin to grant you the Priviledge.
-					<a href="'.$kas_framework->server_root_dir('staff/dashpanel/').'">Visit the DashPanel?</a>'));
-					print '<center><img src="'.$kas_framework->server_root_dir('img/restricted.png').'" width="60%"/>
-					<img src="'.$kas_framework->server_root_dir('img/sorry.png').'" width="50%"/></center>';
+					<a href="'.$kas_framework->url_root('staff/dashpanel/').'">Visit the DashPanel?</a>'));
+					print '<center><img src="'.$kas_framework->url_root('img/restricted.png').'" width="60%"/>
+					<img src="'.$kas_framework->url_root('img/sorry.png').'" width="50%"/></center>';
 				} else {
 				?>
 				 

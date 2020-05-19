@@ -77,7 +77,7 @@ require (constant('tripple_return').'php.files/student_details.php');
 										$sn = 0;
 										while ($receipt_det = $db_receipt->fetch(PDO::FETCH_OBJ)) {
 										$sn = $sn + 1;
-										$printDirCode = $kas_framework->server_root_dir('student/dashboard/payment/receipt/?print=').$kas_framework->saltifyID($receipt_det->tuition_history_id);
+										$printDirCode = $kas_framework->url_root('student/dashboard/payment/receipt/?print=').$kas_framework->saltifyID($receipt_det->tuition_history_id);
 											/*switch between school fees and other school items and hostel*/
 											if ($receipt_det->tution_paid_type == '1') {
 												$custom_display = ($receipt_det->qty == 0)? 'School Fees': $kas_framework->getValue('school_item_name', 'school_item_price', 'id', $receipt_det->school_item_price_relid);

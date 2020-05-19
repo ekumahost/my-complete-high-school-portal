@@ -126,7 +126,7 @@ echo 'Total Teachers: <strong>'.number_format($biototal).'</strong><br><br>';
 		question = window.confirm('Do you want to remove this student from this staff?');	
 			if (question == true) {
 				studentID = $(this).attr('studentID');
-					$.post('pages/modules/academicAdviser_functions.php?delete_Student', {studentID:studentID}, function(dataRet){
+					$.post('pages/modules/academicAdviser_functions?delete_Student', {studentID:studentID}, function(dataRet){
 						$('#unanimousDIV').html(dataRet);	
 					})
 			}
@@ -139,7 +139,7 @@ echo 'Total Teachers: <strong>'.number_format($biototal).'</strong><br><br>';
 		if (studentID == null) {
 			alert('Please Select a Student to add. You can select multiple students');
 		} else {
-			$.post('pages/modules/academicAdviser_functions.php?add_Student', {studentID:studentID, staffID:staffDistinguisher}, function(dataRet){
+			$.post('pages/modules/academicAdviser_functions?add_Student', {studentID:studentID, staffID:staffDistinguisher}, function(dataRet){
 				$('#unanimousDIV').html(dataRet);	
 			})
 		}

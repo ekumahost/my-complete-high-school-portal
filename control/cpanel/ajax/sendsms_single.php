@@ -5,13 +5,15 @@ if(!isset($_SESSION['UserID']) || @$_SESSION['UserType'] != "A")  {
     exit;
 }
 (file_exists('../../php.files/classes/kas-framework.php'))? include ('../../php.files/classes/kas-framework.php'): include ('../../../php.files/classes/kas-framework.php');
-// Include configuration file
-include('../tools/config.php');// custom config to get variables
+
 //Include global functions
 include_once "../../includes/common.php";
 // config
 include_once "../../includes/configuration.php";
+// Include configuration file
+include('../tools/config.php');// custom config to get variables
 ?>
+
 <!doctype html>
 <html>
 <head>

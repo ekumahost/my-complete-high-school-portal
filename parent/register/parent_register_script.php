@@ -87,7 +87,7 @@ if ($kas_framework->strIsEmpty($firstname) or $kas_framework->strIsEmpty($lastna
 		$kas_framework->showsuccesswithGreen('Sign Up Successful. Please Complete your Profile...');
 		$_SESSION['tapp_par_username'] = $web_parents_username;
 		/* redirect to the complete profile panel*/
-		print '<script type="text/javascript"> self.location = "'.$kas_framework->server_root_dir('parent/dashpanel/profile/editprofile?complete').'" </script>';
+		print '<script type="text/javascript"> self.location = "'.$kas_framework->url_root('parent/dashpanel/profile/editprofile?complete').'" </script>';
 		$kas_framework->buttonController('#signup', 'enable');
 		
 	} else {

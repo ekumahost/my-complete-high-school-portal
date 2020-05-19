@@ -71,7 +71,7 @@ require (constant('double_return').'inc.files/handleFixedFormat.php');
 								while ($viewMyStds = $db_querySQL->fetch(PDO::FETCH_OBJ)) {
 									$stdImage = $viewMyStds->studentbio_pictures;
 									$stdSex = $viewMyStds->studentbio_gender;
-									$imgUrl = $kas_framework->imageDynamic($stdImage, $stdSex, $kas_framework->server_root_dir('pictures/'));
+									$imgUrl = $kas_framework->imageDynamic($stdImage, $stdSex, $kas_framework->url_root('pictures/'));
 										print '<tr>
 												<td><p style="height:60px; width: 35%; float:left">
 												<img src="'.$imgUrl.'" href="'.$imgUrl.'" style="cursor:pointer; width:50px; float:left; margin:0 5px 0 0" class="fancybox fancybox.image" /></p>

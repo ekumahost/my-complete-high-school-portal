@@ -18,7 +18,8 @@ $current_sessname= $kas_framework->getValue('school_years_desc', 'school_years',
 <?php 
 //collect room to edit
 $roomeditid = $_GET['id'];
-$edit_roomname =$db->get_var("SELECT school_rooms_desc FROM school_rooms WHERE school_rooms_id='$roomeditid'");//
+$edit_roomname = $kas_framework->getValue('school_rooms_desc', 'school_rooms', 'school_rooms_id', $roomeditid);
+//$edit_roomname =$db->get_var("SELECT school_rooms_desc FROM school_rooms WHERE school_rooms_id='$roomeditid'");//
 
 
 ?>
@@ -95,8 +96,9 @@ $editroomname = $_POST['editroomname'];
   <br />
   Grade:   <select name="roomgrade" id="label" style="width:250px">
 	  <?php 
-	   $loopmygd = mysql_query("SELECT * FROM grades ORDER BY grades_id");
-	   while ($gdlist = mysql_fetch_array($loopmygd, MYSQL_ASSOC)) {?>
+	  $loopmygd = $dbh->prepare("SELECT * FROM grades ORDER BY grades_id");
+	  $loopmygd->execute();
+	   while ($gdlist = $loopmygd->fetch(PDO::FETCH_ASSOC)) {?>
 		  <option value="<?php echo $gdlist['grades_id'];?>"><?php echo $gdlist['grades_desc'];?> </option>
 		  <?php
    
@@ -143,8 +145,8 @@ $editroomname = $_POST['editroomname'];
 			} else {
 			$cardgrade = $_GET['gid'];
 			}
-		
-		$gradename= $db->get_var("SELECT grades_desc FROM grades WHERE grades_id='$cardgrade'");//		
+			
+			$gradename = $kas_framework->getValue('grades_desc', 'grades', 'grades_id', $cardgrade);		
 	  	  	//upgraded by Ultimate Kelvin C - Kastech
 			
 		  $queryj = "select * from grades";

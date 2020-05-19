@@ -27,7 +27,7 @@ include_once "../includes/configuration.php";
 			 $querylr = $dbh->prepare("select * from std_report_cards WHERE session = '$current_year' AND term = '$cardterm'");
 			$querylr->execute(); $ckecker = $querylr->rowCount();
 							if($ckecker > 0){echo '<div class="alert alert-error">
-							<button type="button" class="close" data-dismiss="alert">�</button>
+							<button type="button" class="close" data-dismiss="alert"> </button>
 							<strong>Something is wrong!</strong> What are you doing, click on logo above.
 						</div>';}else{
 			 

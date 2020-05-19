@@ -184,7 +184,7 @@ require (constant('tripple_return').'php.files/classes/prospectStudent.php');
 									
 									</style>
 									<div class="col-md-4" id="picture_message_preview">	
-									 <?php $dynamicimage = $kas_framework->imageDynamic($userpicturepath, $usergender, $kas_framework->server_root_dir('pictures/'));
+									 <?php $dynamicimage = $kas_framework->imageDynamic($userpicturepath, $usergender, $kas_framework->url_root('pictures/'));
 										print '<img href="'.$dynamicimage.'" src="'.$dynamicimage.'" class="fancybox fancybox.image" alt="User Image" style="border:1px solid #000; height:100px; cursor:pointer" />'; ?>
 									</div>
 								</div>

@@ -10,7 +10,7 @@
 			<?php $kas_framework->showInfoCallout('<b>Note:</b> Please Use this Panel to View Your Class Note'); ?>
 			
 			<p style="font-size:15px; margin:0 0 12px 8px; width:80%"> 
-			<a href="<?php print $kas_framework->server_root_dir('staff/dashpanel/academicTools/classnote/') ?>" class="click_ult"><button class="btn btn-default btn-block">
+			<a href="<?php print $kas_framework->url_root('staff/dashpanel/academicTools/classnote/') ?>" class="click_ult"><button class="btn btn-default btn-block">
 				<i class="fa fa-plus"></i> Add Class Note </button></a></p>
 				
 					<form role="form" action="myClassnotes" method="post" id="addEventForm">

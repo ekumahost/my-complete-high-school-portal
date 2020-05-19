@@ -3,7 +3,7 @@
 			<div class="header">
 				<div class="wrap">
 				<div class="logo">
-					<a href="<?php print $kas_framework->server_root_dir('') ?>"><?php $kas_framework->displaySchoolLogo('60', 'square', '-10px 0'); ?> </a>
+					<a href="<?php print $kas_framework->url_root('') ?>"><?php $kas_framework->displaySchoolLogo('60', 'square', '-10px 0'); ?> </a>
 				</div>
 				<div class="nav-icon">
 					 <a href="#" class="right_bt" id="activator"><span> </span> </a>

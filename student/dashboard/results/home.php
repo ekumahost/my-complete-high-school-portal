@@ -65,8 +65,8 @@ exit;
 				<?php //$student->authConfirm($useradmitStatus); 
 					if ($kas_framework->app_config_setting('student_result_checking') == false) {
 						$kas_framework->showDangerCallout('<center> Sorry! You cannot check your result at the moment. There are some operations going on here that are harmful to your data. Please check later!. </center>'); 
-						print '<center><img src="'.$kas_framework->server_root_dir('img/restricted.png').'" width="60%"/>
-						<img src="'.$kas_framework->server_root_dir('img/sorry.png').'" width="50%"/></center>';
+						print '<center><img src="'.$kas_framework->url_root('img/restricted.png').'" width="60%"/>
+						<img src="'.$kas_framework->url_root('img/sorry.png').'" width="50%"/></center>';
 					} else { ?>
 				 
 					<div class="row no-print">

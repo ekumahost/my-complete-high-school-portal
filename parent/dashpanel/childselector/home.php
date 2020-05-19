@@ -88,7 +88,7 @@ require (constant('tripple_return').'php.files/classes/students.php');
 									<p>'.$message.'</p>
 								</div>
 								<div class="icon">';
-								$myChildImg = $student->imageDynamic($paramObj->studentbio_pictures, $paramObj->studentbio_gender, $kas_framework->server_root_dir('pictures/'));
+								$myChildImg = $student->imageDynamic($paramObj->studentbio_pictures, $paramObj->studentbio_gender, $kas_framework->url_root('pictures/'));
 									print '<img src="'.$myChildImg.'"  href="'.$myChildImg.'" class="fancybox fancybox.image img-circle" width="80" style="margin:-25px 0 0 0; cursor:pointer" />									
 									</div>
 								<a href="#" class="small-box-footer">
@@ -176,7 +176,7 @@ require (constant('tripple_return').'php.files/classes/students.php');
 					$autoMobile = $exeComplx->std_bio_mobile;
 					$autoTribe = $kas_framework->getValue('ethnicity_desc', 'ethnicity', 'ethnicity_id', $exeComplx->studentbio_ethnicity);
 					/******************* $get_the_student_id = $myProspectChild->studentcontact_studentid ******************/ 
-					$myChildImage = $student->imageDynamic($autoImage, $autoSex, $kas_framework->server_root_dir('pictures/'));
+					$myChildImage = $student->imageDynamic($autoImage, $autoSex, $kas_framework->url_root('pictures/'));
 					print '<tr>
 							<td>Name: '. $autofname .' '. $autolname .'<br /> Gender: '.$autogender.', and Hails from '.$autoTribe.' Tribe 
 							<br /> Date Of Birth: '.$autodob.'<br />School ID Number: '.$autoStdId.'<br />Mobile: '.$autoMobile.'</td>

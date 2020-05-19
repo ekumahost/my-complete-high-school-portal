@@ -91,7 +91,7 @@ require (constant('quad_return').'php.files/student_details.php');
 										echo $kas_framework->showDangerCallout('Fatal Error: Could not Deduce from your Balance. Please Try Again. <a href="'.$kas_framework->help_url('?topic=query-failed').'" target="blank">&raquo;Explanation?</a>');
 									} else { //do the main download now.
 										$dbh->commit();
-										$file_loc = $kas_framework->server_root_dir('files/classnote_files/'). base64_decode($_GET['dd']);
+										$file_loc = $kas_framework->url_root('files/classnote_files/'). base64_decode($_GET['dd']);
 										$kas_framework->showInfoCallout("The sum of N".classnote_download_fee." has been deducted from your account. Please download note here <a class='btn btn-default btn-sm' href='".$file_loc."'><i class='fa fa-cloud-download text-blue'></i> Download</a>");
 									}
 							}
@@ -131,7 +131,7 @@ require (constant('quad_return').'php.files/student_details.php');
 										$serial = 0;
 									while ($obj__TT = $db_handle->fetch(PDO::FETCH_OBJ)) {
 										$serial = $serial + 1;
-										$file_loc = $kas_framework->server_root_dir('files/classnote_files/'). $obj__TT->classnote_file;
+										$file_loc = $kas_framework->url_root('files/classnote_files/'). $obj__TT->classnote_file;
 									print '<tr>
 											<td>'.$serial.'</td>
 											<td>'.$kas_framework->getValue('grade_subject_desc', 'grade_subjects', 'grade_subject_id', $obj__TT->subject).'</td>

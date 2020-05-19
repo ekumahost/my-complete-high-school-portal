@@ -1,9 +1,5 @@
 <?php
-/**********************************************/
-/*				Coded by Chinello
-/**********************************************/
-//v1.5 by Ben, 121305, display terms and subjects as readable
-
+/*
 include 'pdfclass.php';
 
 session_start();
@@ -48,11 +44,9 @@ if ($_POST['genrep']) {
 		while ($r=mysql_fetch_array($q)) {
 		//grab and display the term names, so much prettier
 		$shemp=$r['grade_history_quarter'];
-		$term_n = "SELECT grade_terms_desc FROM 
-grade_terms WHERE grade_terms_id=$shemp";
+		$term_n = "SELECT grade_terms_desc FROM grade_terms WHERE grade_terms_id=$shemp";
 		$term_names=$db->get_var($term_n);
-		echo "<a 
-href='generatereportcard.php?act=1&studentid=".$_POST['studentid']."&reportid=".$r['grade_history_quarter']."'>$term_names</a><br 
+		echo "<a href='generatereportcard.php?act=1&studentid=".$_POST['studentid']."&reportid=".$r['grade_history_quarter']."'>$term_names</a><br 
 /><br />";
 		}
 	} else {
@@ -67,14 +61,14 @@ if ($act && $studentid) {
 	$r1 = mysql_fetch_array($q1);
 	$q2 = mysql_query("select * from school_names where school_names_id = $r[grade_history_school]");
 	$r2 = mysql_fetch_array($q2);
-/*
-	print_r($r);
-	echo "<br><br>";
-	print_r($r1);
-	echo "<br><br>";
-	print_r($r2);
-	echo "<br><br>";
-*/
+
+	//print_r($r);
+	//echo "<br><br>";
+	//print_r($r1);
+	//echo "<br><br>";
+	//print_r($r2);
+	//echo "<br><br>";
+
 	$name = $r1['studentbio_fname'] . " " . $r1['studentbio_lname'];
 	$school = $r2['school_names_desc'];
 	$q5 = mysql_query("select * from studentcontact where studentcontact_id = $r1[studentbio_id]");
@@ -170,4 +164,9 @@ if (!$_POST['genrep']) {
 <?php
 }
 //include "admin_menu.inc.php";
+
+*/
+echo 'If you are seeing this page, please call +2348166555624. You have wandered farther than I imagined.';
+
 ?>
+

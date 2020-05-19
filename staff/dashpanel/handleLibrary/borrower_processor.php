@@ -27,7 +27,7 @@ class library_processor extends kas_framework {
 				$get_db_insertQuery_rows = $db_insertQuery->rowCount();
 				$db_insertQuery = null;
 			if ($get_db_insertQuery_rows == 1) {
-				$this->showInfoCallout('Record Inserted Succesfully. <a href="'.$this->server_root_dir('staff/dashpanel/handleLibrary/manageStudent').'">Refresh</a> to See Changes..');
+				$this->showInfoCallout('Record Inserted Succesfully. <a href="'.$this->url_root('staff/dashpanel/handleLibrary/manageStudent').'">Refresh</a> to See Changes..');
 				$this->formReset('#addStudentRecordForm');
 			} else {
 				$this->showWarningCallout('Could not Create Record. <a href="'.$this->help_url('?topic=query-failed').'" target="blank">Explanation?</a>');
@@ -50,7 +50,7 @@ class library_processor extends kas_framework {
 			$get_insertQuery_rows = $db_insertQuery->rowCount();
 			$db_insertQuery = null;
 			if ($get_insertQuery_rows == 1) {
-				$this->showInfoCallout('Record Inserted Succesfully. <a href="'.$this->server_root_dir('staff/dashpanel/handleLibrary/manageStaff').'">Refresh</a> to See Changes..');
+				$this->showInfoCallout('Record Inserted Succesfully. <a href="'.$this->url_root('staff/dashpanel/handleLibrary/manageStaff').'">Refresh</a> to See Changes..');
 				$this->formReset('#addStaffRecordForm');
 			} else {
 				$this->showDangerCallout('Could not Create Record. <a href="'.$this->help_url('?topic=query-failed').'" target="blank">Explanation?</a>');
@@ -77,13 +77,14 @@ class library_processor extends kas_framework {
 	}
 	
 	public function deleteBorrowerRecord($id) {
+		global $dbh;
 		$delQ = "DELETE FROM media_history WHERE media_history_id = '".$id."' LIMIT 1";
 		$db_delQ = $dbh->prepare($delQ);
 		$db_delQ->execute();
 		$get_delQ_rows = $db_delQ->rowCount();
 		$db_delQ = null;
 			if ($get_delQ_rows == 1) {
-				$this->showInfoCallout('Record Deleted Successfully. Please <a href="'.$this->server_root_dir('staff/dashpanel/handleLibrary/manageStudent#example1').'">Click Here</a> to See Changes...');
+				$this->showInfoCallout('Record Deleted Successfully. Please <a href="'.$this->url_root('staff/dashpanel/handleLibrary/manageStudent#example1').'">Click Here</a> to See Changes...');
 			} else {
 				$this->showDangerCallout('Delete Failed. <a href="'.$this->help_url('?topic=query-failed').'" target="new">Explanation?</a>');
 				//print mysql_error();

@@ -102,7 +102,7 @@ $receipt_query = "SELECT * FROM payment_receipts  WHERE tution_paid_sch_years LI
 	<script type="text/javascript">
 		
 		$('.cleared_button').click(function(e){
-			$(this).html('<?php print '<img src="'.$kas_framework->server_root_dir('/img/ajax-loader.gif').'" width="20" />'; ?>');
+			$(this).html('<?php print '<img src="'.$kas_framework->url_root('/img/ajax-loader.gif').'" width="20" />'; ?>');
 			passing_id = $(this).attr('id');
 			byepass = 'oiyuv54ce5676908787';
 			$.post('cleared_processing', {passing_id:passing_id, byepass:byepass}, function(data) {

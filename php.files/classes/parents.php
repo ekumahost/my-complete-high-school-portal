@@ -14,13 +14,13 @@ class parents extends kas_framework {
 		
 		if ($paramGetFields->status == '0') {
 			unset($_SESSION['tapp_par_username']); //destroy the prospective student session
-			print '<script> self.location = "'.$this->server_root_dir('').'" </script>';
+			print '<script> self.location = "'.$this->url_root('').'" </script>';
 		}
 	}
 	
 	public function authConfirm($status) {
 		($status != '1')?$this->showdangerwithRed('Alert: The School has not Confirmed you as a Parent. Advanced Modules have been Hidden from you. 
-			Please <a href="'.$this->server_root_dir('parent/dashpanel/profile/editprofile').'">Complete Your Profile</a> so that the admin can approve your account
+			Please <a href="'.$this->url_root('parent/dashpanel/profile/editprofile').'">Complete Your Profile</a> so that the admin can approve your account
 			<a href="'.$this->help_url('?topic=not-yet-authenticated-yet').'" target="_blank">Explanation?</a>'): '';	
 	}
 		
@@ -39,7 +39,7 @@ class parents extends kas_framework {
 	public function checkBasicPlanParent() {
 		if ($this->BasicPlanParent() === true) { 
 			exit($this->showWarningCallout('For Premium Plans Only. Please Wait so that your Account will be confirmed by the Admin...
-			<a href="'.$this->server_root_dir('parent/dashpanel/profile/editprofile').'">complete your profile</a> for easy confirmation.'));
+			<a href="'.$this->url_root('parent/dashpanel/profile/editprofile').'">complete your profile</a> for easy confirmation.'));
 		}
 	}
 }

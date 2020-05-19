@@ -25,7 +25,7 @@ if (!isset($_POST['byepass'])) {
 			
 				if ($get_checkDuplicate_rows > 0) {
 					$kas_framework->showDangerCallout('A Record has been Added for this Child Missing Attendance today. Please Check the Table below. Someone else updated this.
-					If the Record Updated for this Child is Wrong, <a href="'.$kas_framework->server_root_dir('staff/dashpanel/mailbox?folder=indox&&report=admin').'">Drop a Query to the Admin?</a>');
+					If the Record Updated for this Child is Wrong, <a href="'.$kas_framework->url_root('staff/dashpanel/mailbox?folder=indox&&report=admin').'">Drop a Query to the Admin?</a>');
 					$kas_framework->buttonController('.btn-primary', 'enable');
 				} else {
 					$insertQ = "INSERT INTO attendance_history (attendance_history_student, attendance_history_school, attendance_history_term, attendance_history_grade, attendance_history_year, attendance_history_date, attendance_history_code, attendance_history_notes, attendance_history_user)

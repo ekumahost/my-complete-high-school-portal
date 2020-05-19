@@ -59,8 +59,8 @@ require ('discussion_delimeter_function.php');
 				<div class="row"> 
 					<?php	if ($kas_framework->app_config_setting('student_discussion') == false) {
 			$kas_framework->showDangerCallout('<center> Sorry! Discussion has been Closed has been closed due to some reasons the Admin dim fit.');
-			print '<center><img src="'.$kas_framework->server_root_dir('img/restricted.png').'" width="60%"/>
-					<img src="'.$kas_framework->server_root_dir('img/sorry.png').'" width="50%"/></center>';
+			print '<center><img src="'.$kas_framework->url_root('img/restricted.png').'" width="60%"/>
+					<img src="'.$kas_framework->url_root('img/sorry.png').'" width="50%"/></center>';
 				} else { ?>
 				
 					<style type="text/css">
@@ -84,7 +84,7 @@ require ('discussion_delimeter_function.php');
 				<div id="nothing"></div>
 <!------- all the posts both image and text ---><span id="allPostHolder">
 	
-		<?php $dynamicimage = $kas_framework->imageDynamic($userpicturepath, $usergender, $kas_framework->server_root_dir('pictures/'));
+		<?php $dynamicimage = $kas_framework->imageDynamic($userpicturepath, $usergender, $kas_framework->url_root('pictures/'));
 					print '<img src="'.$dynamicimage.'" href="'.$dynamicimage.'" style="cursor:pointer" class="fancybox fancybox.image" height="50px" alt="..." />';  ?>
 				
 				<span id="writeText">

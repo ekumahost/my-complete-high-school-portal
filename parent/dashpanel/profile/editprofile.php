@@ -169,7 +169,7 @@
 										
 										</style>
 										<div class="col-md-4" id="picture_message_preview">	
-											<?php $dynamicimage = $parent->imageDynamic($student_parents_image, $student_parents_sex, $kas_framework->server_root_dir('pictures/'));
+											<?php $dynamicimage = $parent->imageDynamic($student_parents_image, $student_parents_sex, $kas_framework->url_root('pictures/'));
 											print '<img src="'.$dynamicimage.'" href="'.$dynamicimage.'" class="fancybox fancybox.image" alt="User Image" style="border:1px solid #000; cursor:pointer; height:100px;" />'; ?>
 										</div>
 									</div>

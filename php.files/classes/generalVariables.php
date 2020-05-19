@@ -21,7 +21,7 @@
 	
 	/* maintenance mode redirect security*/
 	if ($kas_framework->app_config_setting('maintenance_mode') == true) {
-		print '<script type="text/javascript"> self.location = "'. $kas_framework->server_root_dir('maintenance') .'"</script>';
+		print '<script type="text/javascript"> self.location = "'. $kas_framework->url_root('maintenance') .'"</script>';
 	}
 	
 	/* making sure that there is no get variable in the url for the deducing of parameters passed to the table */

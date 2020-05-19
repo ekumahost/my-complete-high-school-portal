@@ -10,7 +10,7 @@ if (file_exists(constant('single_return').'php.files/mailbox_handlers/retrieve-m
 ?>
  <!-- header logo: style can be found in header.less -->
         <header class="header" style="position:fixed;">
-            <a href="<?php print $kas_framework->server_root_dir('prospectStudent/dashboard'); ?>" class="logo">
+            <a href="<?php print $kas_framework->url_root('prospectStudent/dashboard'); ?>" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
               KaSP -> Prospect 
             </a>
@@ -36,7 +36,7 @@ if (file_exists(constant('single_return').'php.files/mailbox_handlers/retrieve-m
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-custom">
-							<?php $dynamicimage = $kas_framework->imageDynamic($userpicturepath, $usergender, $kas_framework->server_root_dir('pictures/'));
+							<?php $dynamicimage = $kas_framework->imageDynamic($userpicturepath, $usergender, $kas_framework->url_root('pictures/'));
 								print '<img src="'.$dynamicimage.'" class="img-circle" alt="User Image" />'; ?>
 								 <p>
                             <?php print ucfirst($userfirstname) ?> - Pros-Student
@@ -46,8 +46,8 @@ if (file_exists(constant('single_return').'php.files/mailbox_handlers/retrieve-m
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                         <a href="<?php print $kas_framework->server_root_dir('prospectStudent/dashboard/profile/'); ?>" class="btn btn-default btn-flat click_ult">Profile</a>
-                                         <a href="<?php print $kas_framework->server_root_dir('prospectStudent/dashboard/photocard/'); ?>" class="btn btn-default btn-flat click_ult">PhotoCard</a>
+                                         <a href="<?php print $kas_framework->url_root('prospectStudent/dashboard/profile/'); ?>" class="btn btn-default btn-flat click_ult">Profile</a>
+                                         <a href="<?php print $kas_framework->url_root('prospectStudent/dashboard/photocard/'); ?>" class="btn btn-default btn-flat click_ult">PhotoCard</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="#sign_out" class="btn btn-default btn-flat" id="signout_prosStd">Check Out</a>

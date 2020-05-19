@@ -145,7 +145,7 @@
 												<h3 class="box-title">My Library</h3>
 											</div>
 											 <div class="box-body">
-											  <center><img src="'.$kas_framework->server_root_dir('img/school_library.jpg').'" width="60%" style="border:1px solid #999" </center></div>
+											  <center><img src="'.$kas_framework->url_root('img/school_library.jpg').'" width="60%" style="border:1px solid #999" </center></div>
 									 </div></form>
 									</div>';
 						}

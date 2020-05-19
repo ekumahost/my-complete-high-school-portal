@@ -42,7 +42,7 @@ class internalMail extends kas_framework {
 				$sender_sex = $paramGetFields->student_parents_sex;
 				// get the image from the staff table
 				$getStoredImage = $paramGetFields->student_parents_image;
-				$respective_image = $this->imageDynamic($getStoredImage, $sender_sex, $this->server_root_dir('pictures/'));
+				$respective_image = $this->imageDynamic($getStoredImage, $sender_sex, $this->url_root('pictures/'));
 				
 		} else if ($category == 'staff') {
 			//print 'staff';
@@ -57,7 +57,7 @@ class internalMail extends kas_framework {
 			$sender_sex = $paramGetFields->staff_sex;
 			// get the image from the staff table
 			$getStoredImage = $paramGetFields->staff_image;				
-			$respective_image = $this->imageDynamic($getStoredImage, $sender_sex, $this->server_root_dir('pictures/'));
+			$respective_image = $this->imageDynamic($getStoredImage, $sender_sex, $this->url_root('pictures/'));
 		
 		} else if ($category = 'student') {
 			global $fileURL;
@@ -71,7 +71,7 @@ class internalMail extends kas_framework {
 			$sender_sex = $paramGetFields->studentbio_gender;
 			/*get the image from the studentbio table*/
 			$getStoredImage = $paramGetFields->studentbio_pictures;
-			$respective_image = $this->imageDynamic($getStoredImage, $sender_sex, $this->server_root_dir('pictures/'));
+			$respective_image = $this->imageDynamic($getStoredImage, $sender_sex, $this->url_root('pictures/'));
 		}
 	return $respective_image;
 	}
@@ -181,7 +181,7 @@ class internalMail extends kas_framework {
 			}
 				while ($new_Msg = $db_handle->fetch(PDO::FETCH_OBJ)) {
 					print '<li class="click_ult">';
-						print '<a href="'.$this->server_root_dir($this->getClickFolderForHeader($new_Msg->to_cat). '/mailbox/?rf=inbox&&rid=').$this->saltifyID($new_Msg->id).'">';
+						print '<a href="'.$this->url_root($this->getClickFolderForHeader($new_Msg->to_cat). '/mailbox/?rf=inbox&&rid=').$this->saltifyID($new_Msg->id).'">';
 						print '<div class="pull-left">
 				<img src="'.$this->getImageForHeader($new_Msg->from, $new_Msg->from_cat).'" class="img-circle" alt="User Image"/>
 								</div>
@@ -199,7 +199,7 @@ class internalMail extends kas_framework {
 		$newMessageCount = $db_handle->rowCount();		
 			while ($new_Msg = $db_handle->fetch(PDO::FETCH_OBJ)) {
 				print '<li>
-						<a href="'.$this->server_root_dir($this->getClickFolderForHeader($new_Msg->to_cat). '/mailbox/?rf=inbox&&rid=').$this->saltifyID($new_Msg->id).'">
+						<a href="'.$this->url_root($this->getClickFolderForHeader($new_Msg->to_cat). '/mailbox/?rf=inbox&&rid=').$this->saltifyID($new_Msg->id).'">
 							<div class="pull-left">
 			<img src="'.$this->getImageForHeader($new_Msg->from, $new_Msg->from_cat).'" class="img-circle" alt="User Image"/>
 							</div>
