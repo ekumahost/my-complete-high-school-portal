@@ -21,35 +21,24 @@ $(document).ajaxSend(function(){
    $('#loading').hide();
   }); 
   $("#SendSMSLink").click(function(){
-    $("#changer").load("ajax/admin_send_sms.php");
+    $("#changer").load("ajax/admin_send_sms");
   });
   
   
    $("#last").click(function(){
-    $("#changer").load("ajax/admin_send_sms.php");
+    $("#changer").load("ajax/admin_send_sms");
 	 //$("#changer").load("ajax/school_config.php");
 
   });
   
   
-  $("#summary_student").click(function(){
-    $("#changer").load("ajax/summary.php");
+  $("#summary_student, #summary_fees, #summary_message, #summary_staff").click(function(){
+    $("#changer").load("ajax/summary");
   });
-  
-   $("#summary_fees").click(function(){
-    $("#changer").load("ajax/summary.php");
-  });
-   $("#summary_message").click(function(){
-    $("#changer").load("ajax/summary.php");
-  });
-   $("#summary_staff").click(function(){
-    $("#changer").load("ajax/summary.php");
-  });
-  
   
   
   $("#ajaxconfig").click(function(){
-    $("#changer").load("ajax/school_config.php");
+    $("#changer").load("ajax/school_config");
     //$("#changer").load("ajax/admin_send_sms.php");
 
   });

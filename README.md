@@ -23,7 +23,7 @@ We have tested on PHP 7.3.7 Apache web server. Follow these 9 Instructions
     6. Edit your webserver and set home.php as directory Index (google it if you dont know) -- you see we did not have that index.php thing, its home.php here, we already did this .htaccess but just incase
     7. edit /home.php for the Tawk.to Script
     8. run the sql in /TOOLS/sql_fix.txt in your database: that is run the code inside. It as a fix.
-    9. SET YOUR SMTP DETAILS FOR MAIL SENDING and Hacking Report Email: /php.files/classes/mailing_list.php
+    9. SET YOUR SMTP details for mail sending and Hacking Report Email: /php.files/classes/mailing_list.php
 
 I think you can see some of the features here: https://hisp.kastechnet.com/features BOOM you are done, open the site and visit http://yourwebportalurl.com/control to login to admin as username = admin, password=cejine and start playing around.
 
@@ -31,7 +31,7 @@ I think you can see some of the features here: https://hisp.kastechnet.com/featu
 we may have written powered by us. do not remove it.. never on earth should you change it to powered by you because you did not write this code. unless you buy us coffee first then you can use it as you like..
 
 # Have a problem?
-please feel free to contact us for help and questions.. but please just be a php developer and do not bother us, look around and fix your issue, this portal was build to be very simple to use the datbase already have some dummy data: you will need to shine your eyes and know the ones to remove before running a live production portal trying to login to admin and you cannot find the password, you can easily change the password in the database oo table = web_users, the password is just MD5 -- git push origin master
+please feel free to contact us for help and questions.. but please just be a php developer and do not bother us, look around and fix your issue, this portal was build to be very simple to use the datbase already have some dummy data: you will need to shine your eyes and know the ones to remove before running a live production portal trying to login to admin and you cannot find the password, you can easily change the password in the database oo table = web_users, the password is just MD5 -- git push origin master.
 
 # Are we awesome please donate?
 BITCOINS :)

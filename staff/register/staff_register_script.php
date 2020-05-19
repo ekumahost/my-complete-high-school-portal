@@ -111,16 +111,20 @@ if ($kas_framework->strIsEmpty($firstname) or $kas_framework->strIsEmpty($lastna
 	}
 		
 	//the mailing sequence.
-	 $school_mail = $kas_framework->getValue('email', 'tbl_school_profile', 'id', '1');
+	$school_mail = $kas_framework->getValue('email', 'tbl_school_profile', 'id', '1');
 	$send_mail = $mailing_list->SendUserConfirmationEmail($email, $web_users_username, $school_mail, $confirmation_code, $kas_framework->returnUserSchool(''), 'staff');
+	
+	$send_mail = true; //Remove this on Production
+
 	if ($send_mail == false) {
 		$kas_framework->buttonController('#signup', 'enable');
 	  exit($kas_framework->showDangerCallout('Could not Send Mail <a href="'.$kas_framework->help_url('?topic=query-failed').'" target="blank">&raquo;Explanation?</a>'));
-	 }
-	
+	 } 
+
 	if ($get_db_insert_into_tea_grade_year_rows > 0 and $get_db_insert_into_staff_role_rows > 0 and $get_insert_into_web_users_rows > 0 and ($send_mail == true)) {
 	//at this point, we try commit
 		$dbh->commit();
+		
 		$kas_framework->showsuccesswithGreen('Sign Up Successful. Please Complete your Profile now... Loading...');
 		$_SESSION['tapp_staff_username'] = $web_users_username;
 		// redirect to the complete profile panel 
@@ -129,6 +133,7 @@ if ($kas_framework->strIsEmpty($firstname) or $kas_framework->strIsEmpty($lastna
 		
 	} else {
 		$dbh->rollBack();
+		$kas_framework->showDangerCallout('Error. Could not create account. Please contact admin.');
 		$kas_framework->buttonController('#signup', 'enable');	
 	}	
 }

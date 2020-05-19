@@ -1,4 +1,5 @@
 <?php
+
 	$current_year_id = $kas_framework->getValue('current_year', 'tbl_config', 'id', '1');
 	$current_year_full = $kas_framework->getValue('school_years_desc', 'school_years', 'school_years_id', $current_year_id);
 	

@@ -108,8 +108,7 @@ class kas_framework extends configurations {
 				} else {
 					$fetch_obj = $db_handle->fetch(PDO::FETCH_OBJ);
 					$data = $fetch_obj->$field; 
-				} 
-			$db_handle = null;
+				}  
 			return $data;	
 		} catch (PDOException $error_log) {
 			echo $error_log->getMessage();
@@ -213,7 +212,7 @@ class kas_framework extends configurations {
 	
 	public function countRestrict1(string $table, string $datafieldname, $value) : string {
 		global $dbh;
-		$db_handle = $dbh->prepare("SELECT COUNT(*) AS cnt FROM {$table} WHERE {$datafieldname} = ?");
+		$db_handle = $dbh->prepare("SELECT COUNT(*) AS cnt FROM {$table} WHERE `$datafieldname` = ?");
 		$db_handle->execute([$value]);
 		$fetch_obj = $db_handle->fetch(PDO::FETCH_OBJ);
 		$cnt = $fetch_obj->cnt;
@@ -223,7 +222,7 @@ class kas_framework extends configurations {
 	
 	public function countRestrict2(string $table, string $datafield1, $val1, string $datafield2, $val2) : string {
 		global $dbh;
-		$db_handle = $dbh->prepare("SELECT COUNT(*) AS cnt FROM {$table} WHERE {$datafield1} = ? AND {$datafield2} = ?");
+		$db_handle = $dbh->prepare("SELECT COUNT(*) AS cnt FROM $table WHERE `$datafield1` = ? AND `$datafield2` = ?");
 		$db_handle->execute([$val1, $val2]);
 		$fetch_obj = $db_handle->fetch(PDO::FETCH_OBJ);
 		$cnt = $fetch_obj->cnt;
@@ -233,7 +232,7 @@ class kas_framework extends configurations {
 	
 	public function countRestrict3(string $table, string $datafield1, $val1, string $datafield2, $val2, string $datafield3, $val3) : string {
 		global $dbh;
-		$db_handle = $dbh->prepare("SELECT COUNT(*) AS cnt FROM {$table} WHERE {$datafield1} = ? AND {$datafield2} = ? AND {$datafield3} = ?");
+		$db_handle = $dbh->prepare("SELECT COUNT(*) AS cnt FROM {$table} WHERE `$datafield1` = ? AND `$datafield2` = ? AND `$datafield3` = ?");
 		$db_handle->execute([$val1, $val2, $val3]);
 		//return $db_handle->rowCount();
 		$fetch_obj = $db_handle->fetch(PDO::FETCH_OBJ);

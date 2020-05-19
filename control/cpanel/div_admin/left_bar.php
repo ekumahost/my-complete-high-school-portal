@@ -21,7 +21,7 @@
 <li><a class="ajax-link" href="fees?page=defaultfees#mainsetting"><i class="icon icon-color icon-cart"></i><span class="hidden-tablet"> Default School Fee</span></a></li>
 <li><a class="ajax-link" href="main?page=library"><i class="icon icon-color icon-book"></i><span class="hidden-tablet"> Library Catalogue</span></a></li>
 <li><a class="ajax-link" href="modules?controller=hostels"><i class="icon icon-color icon-home"></i><span class="hidden-tablet"> Manage Hostels </span></a></li>
-<li><a class="ajax-link" href="modules?controller=mails"><i class="icon icon-color icon-inbox"></i><span class="hidden-tablet"> Portal Mails (<?php //print mysql_num_rows(mysql_query("SELECT * FROM tbl_portal_emails WHERE status ='0'")) ?>)</span></a></li>
+<li><a class="ajax-link" href="modules?controller=mails"><i class="icon icon-color icon-inbox"></i><span class="hidden-tablet"> Portal Mails (<?= $kas_framework->countRestrict1('tbl_portal_emails', 'status', 0) ?>)</span></a></li>
 <li><a class="ajax-link" href="modules?controller=payments&tool=fees"><i class="icon icon-color icon-sent"></i><span class="hidden-tablet"> Payments Viewer</span></a></li>
 <li id=""><a class="ajax-link" href="main?page=addresults#mainsetting"><i class="icon icon-color icon-doc"></i><span class="hidden-tablet"> Manage Results</span></a></li>
 <li id=""><a class="ajax-link" href="results?page=report_cards"><i class="icon icon-color icon-pdf"></i><span class="hidden-tablet"> Reports Cards</span></a></li>

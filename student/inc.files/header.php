@@ -42,11 +42,12 @@
 	<!---- if the plan of the logged in user is the basic plan, then somethings should no be made visible-->
 	<?php if ($student->basicPlanStudent() === false) { 			
 		/*Process all the Calculations for the Drop down*/
-			
+
 			$totalPost = $kas_framework->countRestrict1('student_post', 'post_date', date('d/m/Y'));
 			$myEventsToday = $kas_framework->countRestrict2('student_calendar', 'start_date', date('d/m/Y'), 'creator_id', $student_id_original);
 			$schoolEvents = $kas_framework->countRestrict1('school_calendar', 'start_date', date('d/m/Y'));
 			
+			//$mailFromCountToday = 0; 
 			$mailFromCountToday = $kas_framework->countRestrict2('general_mailing', 'time', date('d/m/Y'), 'from', $_SESSION['tapp_std_username']);
 			$mailToCountToday = $kas_framework->countRestrict2('general_mailing', 'time', date('d/m/Y'), 'to', $_SESSION['tapp_std_username']);
 			$totalMailTrans = $mailFromCountToday + $mailToCountToday;

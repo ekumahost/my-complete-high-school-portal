@@ -1,5 +1,6 @@
 <?php 
 require ('../../../php.files/classes/kas-framework.php');
+require ('../../../php.files/classes/pdoDB.php');
 $kas_framework->safesession();
 $kas_framework->checkAuthStudent();
 require (constant('tripple_return').'php.files/classes/generalVariables.php');
@@ -14,8 +15,8 @@ if (!isset($_POST['byepass'])) {
 class update_profile extends kas_framework {
 	
 	public function updatePersonalInfo($student_id_original) {
-		extract($_POST);
-		require ('../../../php.files/classes/pdoDB.php');	
+		global $dbh;
+		extract($_POST);	
 		$updatePIQuery = "UPDATE studentbio SET studentbio_title = '".$title."', studentbio_fname = :fname, studentbio_mname = :mname, 
 					studentbio_generation = :generation, studentbio_ethnicity = :ethnicity, studentbio_dob = :dob, studentbio_birthcity = :birthcity, 
 					studentbio_birthstate = :birthstate, studentbio_birthcountry = '".$birthcountry."', std_bio_mobile = '".$usermobile."', 
@@ -40,8 +41,7 @@ class update_profile extends kas_framework {
 	}
 	
 	public function updatePassword($useridentify) {
-		extract($_POST);
-		require ('../../../php.files/classes/pdoDB.php');
+		extract($_POST); global $dbh;
 		if (strcmp($password1, $password2) == 0) {
 			$qaff = "UPDATE web_students SET pass = '".md5($password1)."' WHERE identify = '".$useridentify."' AND `pass` = '".md5($password0)."' LIMIT 1";
 			$db_qaff = $dbh->prepare($qaff);
@@ -64,8 +64,7 @@ class update_profile extends kas_framework {
 	}
 	
 	public function updatePreviousSchoolInfo($student_id_original) {
-	extract($_POST);
-	require ('../../../php.files/classes/pdoDB.php');
+	extract($_POST); global $dbh;
 	$updatePIQuery = "UPDATE studentbio SET studentbio_prevschoolname =:prev_sch_name, studentbio_prevschooladdress = :prev_sch_address, studentbio_prevschoolcity = :prev_sch_city, 
 			studentbio_prevschoolstate = :prev_sch_state, studentbio_prevschoolzip = :prev_sch_zip, studentbio_prevschoolcountry = '".$prev_sch_country."'  WHERE studentbio_id = '".$student_id_original."' LIMIT 1";
 	$db_updatePIQuery = $dbh->prepare($updatePIQuery);
@@ -85,8 +84,7 @@ class update_profile extends kas_framework {
 	}
 	
 	public function updateParGuardInfo($student_id_original) {
-		extract($_POST);
-		require ('../../../php.files/classes/pdoDB.php');
+		extract($_POST); global $dbh;
 	$updatePIQuery = "UPDATE student_contact SET studentcontact_title = :parguard_title, studentcontact_fname = :parguard_fname, studentcontact_lname = :parguard_lname, 
 			studentcontact_relationship = '".$parguard_relationship."', studentcontact_address1 = :parguard_addr1, studentcontact_address2 = :parguard_addr2, studentcontact_city = :parguard_city, 
 			studentcontact_state = :parguard_state, studentcontact_zip = :parguard_zip, studentcontact_phone1 = :phone1, studentcontact_phone2 = :phone2, studentcontact_phone3 = :phone3, studentcontact_email = :parguard_email  WHERE studentcontact_studentid = '".$student_id_original."' LIMIT 1";

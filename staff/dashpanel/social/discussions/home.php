@@ -113,7 +113,7 @@ require ('discussion_delimeter_function.php');
 		<?php 
 				$total_shit = $kas_framework->countAll('staff_post');
 				//gotten from the previous clicks of the load more......
-				$queryLoader = ($_SESSION['loadDiscussionData'] + 1) * 20;
+				$queryLoader = (@$_SESSION['loadDiscussionData'] + 1) * 20;
 				
 				$loadRawQuery = "SELECT * FROM staff_post WHERE status = '1' ORDER BY id DESC LIMIT 0, ".$queryLoader."";
 				$db_loadRawQuery = $dbh->prepare($loadRawQuery);
