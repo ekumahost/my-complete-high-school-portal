@@ -81,7 +81,7 @@
 				
 				<div style="background-color:none; padding:6px 10px; border:2px solid #CCC; display:none" id="div_msg_warning">You are About to Upload Results for a Class.
 					Only two test scores and an Exam score will be Uploaded, the portal will do the rest.</div>
-					
+			
 					<div class="row">
 						<div class="col-xs-12">
                             <div class="box">
@@ -160,7 +160,7 @@
 					$('#proceed_div1').html(data).show();	
 					$('#proceed_div2').html('');
 					$('#proceed_div1_2').html('');
-					$('#div_msg_warning').html('Please put dash(-) for any student that is not offering this Subject.').slideDown(1000);
+					$('#div_msg_warning').html('Please leave scores empty for any student that is not offering this subject.').slideDown(1000);
 				});
 				
 				return false;

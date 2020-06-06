@@ -110,10 +110,10 @@ if (!isset($byepass)) {
 							<td>'.$viewMyStds->studentbio_internalid.' <br />'.$newGeneral->getValue('title_desc', 'tbl_titles', 'title_id', $viewMyStds->studentbio_title).' 
 								'.$viewMyStds->studentbio_lname.' '.$viewMyStds->studentbio_fname.'&nbsp;&nbsp;<a href="'.$imgUrl.'" class="fancybox fancybox.image no-print" width="50" title="Picture"><i class="fa fa-picture-o"></i></a></td>
 								<td>DOB: '.$viewMyStds->studentbio_dob.'<br />Sex: '.$stdSex.'</td>';
-							print '<td><input type="text" required="required" class="ca" name="ca1[]" placeholder="20" maxlength="2" /></td>
-							<td><input type="text" required="required" class="ca" name="ca2[]" placeholder="20" maxlength="2" /></td>
-							<td><input type="text" required="required" class="exam" name="exam[]" placeholder="60" maxlength="3" /></td>
-							<td><textarea name="comment[]" maxlength="60" required="required"  placeholder="Your Comment..."></textarea></td>
+							print '<td><input type="text" class="ca" name="ca1[]" placeholder="20" maxlength="2" /></td>
+							<td><input type="text" class="ca" name="ca2[]" placeholder="20" maxlength="2" /></td>
+							<td><input type="text" class="exam" name="exam[]" placeholder="60" maxlength="3" /></td>
+							<td><textarea name="comment[]" maxlength="60"  placeholder="Your Comment..."></textarea></td>
 							<input type="hidden" name="student_id[]" value="'.$viewMyStds->studentbio_id.'" />
 							</tr>';
 						}
@@ -151,15 +151,16 @@ if (!isset($byepass)) {
 		/* looping for the total student in the class */
 		for ($i=0; $i < $total_ret; $i++) {
 			/* checking if any student score was empty */
-			if ($newGeneral->strIsEmpty($ca1[$i]) or $newGeneral->strIsEmpty($ca2[$i]) or $newGeneral->strIsEmpty($exam[$i]) or $newGeneral->strIsEmpty($comment[$i])) {
+			/* if ($newGeneral->strIsEmpty($ca1[$i]) or $newGeneral->strIsEmpty($ca2[$i]) or $newGeneral->strIsEmpty($exam[$i]) or $newGeneral->strIsEmpty($comment[$i])) {
 				$error_log = $i + 1;
 				$newGeneral->showDangerCallout('One Field is Empty. Check around Serial Number "<b>'.$error_log.'</b>". Result Upload Failed.');
 				exit;
-			} else if ($ca1[$i] > 20 or $ca2[$i] > 20 or $exam[$i] > 60) {
+			} else */ 
+			if ($ca1[$i] > FIRST_CA or $ca2[$i] > SECOND_CA or $exam[$i] > EXAM_CA) {
 				$error_log = $i + 1;
 				$newGeneral->showDangerCallout('An Abnormal Score was Detected. Check around Serial Number "<b>'.$error_log.'</b>". CA or Exam Score Exceeds Maximum Score Allowed. Result Upload Failed.');
 				exit;
-			} else if ((!is_numeric($ca1[$i]) and $ca1[$i] != '-') or (!is_numeric($ca2[$i])  and $ca2[$i] != '-') or (!is_numeric($exam[$i])  and $exam[$i] != '-')) {
+			} else if ((!is_numeric($ca1[$i]) and $ca1[$i] != '') or (!is_numeric($ca2[$i]) and $ca2[$i] != '') or (!is_numeric($exam[$i]) and $exam[$i] != '')) {
 				$error_log = $i + 1;
 				$newGeneral->showDangerCallout('A Non Numeric Input was Detected. Check around Serial Number "<b>'.$error_log.'</b>". Result Upload Failed.');
 				exit;
@@ -167,7 +168,7 @@ if (!isset($byepass)) {
 				/* making sure tha the subject has not been uploaded for the student before */
 				if (check_if_result_is_uploaded_before_for_student($current_year_id, $currentTerm_id, $subject, $student_id[$i], $level_taken) == false){
 					/* checking if dash was put in the students ca and exam and comment.... meaning that the student is not offering the subject*/
-						if ($ca1[$i] == '-' and $ca2[$i] == '-' and $exam[$i] == '-' and $comment[$i] == '-') {
+						if ($ca1[$i] == '' and $ca2[$i] == '' and $exam[$i] == '' and $comment[$i] == '') {
 							/* meaning that the student is not offering the subject */
 							/* just skip this student and then add the skipped and unskipped */
 							$skipped_and_unskipped = $skipped_and_unskipped + 1; /* increment the total queries encountered */
@@ -246,12 +247,12 @@ if (!isset($byepass)) {
 									<td>'.$reproduceResult->studentbio_internalid.' <br />'.$newGeneral->getValue('title_desc', 'tbl_titles', 'title_id', $reproduceResult->studentbio_title).' 
 										'.$reproduceResult->studentbio_lname.' '.$reproduceResult->studentbio_fname.'&nbsp;&nbsp;<a href="'.$imgUrl.'" class="fancybox fancybox.image no-print" width="50" title="Picture"><i class="fa fa-picture-o"></i></a></td>
 										<td>DOB: '.$reproduceResult->studentbio_dob.'<br />Sex: '.$stdSex.'</td>';
-									print '<td><input type="text" required="required" class="ca" name="ca1[]" value="'.$reproduceResult->ca_score1.'" maxlength="2" /></td>
-									<td><input type="text" required="required" class="ca" name="ca2[]" value="'.$reproduceResult->ca_score2.'" maxlength="2" /></td>
-									<td><input type="text" required="required" class="exam" name="exam[]" value="'.$reproduceResult->exam_score.'" maxlength="3" /></td>
-									<td><textarea name="comment[]" maxlength="60" required="required">'.$reproduceResult->notes.'</textarea></td>
-									<input type="hidden" name="student_id[]" value="'.$reproduceResult->studentbio_id.'" />
-									</tr>';
+									print '<td><input type="text" class="ca" name="ca1[]" value="'.$reproduceResult->ca_score1.'" maxlength="2" /></td>
+											<td><input type="text" class="ca" name="ca2[]" value="'.$reproduceResult->ca_score2.'" maxlength="2" /></td>
+											<td><input type="text" class="exam" name="exam[]" value="'.$reproduceResult->exam_score.'" maxlength="3" /></td>
+											<td><textarea name="comment[]" maxlength="60">'.$reproduceResult->notes.'</textarea></td>
+											<input type="hidden" name="student_id[]" value="'.$reproduceResult->studentbio_id.'" />
+										</tr>';
 								}
 								$db_dripQuery = null;
 							print '</tbody>
@@ -290,7 +291,7 @@ if (!isset($byepass)) {
 				$error_log = $i + 1;
 				$newGeneral->showDangerCallout('One Field is Empty. Check around Serial Number "<b>'.$error_log.'</b>". Result Upload Failed.');
 				exit;
-			} else if ($ca1[$i] > 20 or $ca2[$i] > 20 or $exam[$i] > 60) {
+			} else if ($ca1[$i] > FIRST_CA or $ca2[$i] > SECOND_CA or $exam[$i] > EXAM_CA) {
 				$error_log = $i + 1;
 				$newGeneral->showDangerCallout('An Abnormal Score was Detected. Check around Serial Number "<b>'.$error_log.'</b>". CA or Exam Score Exceeds Maximum Score Allowed. Result Upload Failed.');
 				exit;
