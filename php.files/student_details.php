@@ -88,9 +88,9 @@
 
 	if ($db_handle->rowCount() == 0) {
 		//Student is now a Graduate. Alumi in progress.
-		$user_student_grade_year_year_id = 0;
-		$user_student_grade_year_grade_id = 0;
-		$user_student_grade_year_class_room_id = 0;
+		$user_student_grade_year_year_id = -1;
+		$user_student_grade_year_grade_id = -1;
+		$user_student_grade_year_class_room_id = -1;
 	} else {
 		
 		$stdGradeObj = $db_handle->fetch(PDO::FETCH_OBJ);
