@@ -34,6 +34,13 @@ I think you can see some of the features here: https://hisp.kastechnet.com/featu
 # Warning
 we may have written powered by us. do not remove it.. never on earth should you change it to powered by you because you did not write this code. unless you buy us coffee first then you can use it as you like..
 
+# DEMO DATA
+If you have imported the demo sql data, here are some logins for you.
+Staff ===>                      staff: open
+Student ===>                    student: open
+Parent ====>                    parent: open
+Admin (PORTAL_URL/control)      admin: open
+
 # Have a problem?
 please feel free to contact us for help and questions.. but please just be a php developer and do not bother us, look around and fix your issue, this portal was build to be very simple to use the datbase already have some dummy data: you will need to shine your eyes and know the ones to remove before running a live production portal trying to login to admin and you cannot find the password, you can easily change the password in the database oo table = web_users, the password is just MD5 -- git push origin master.
 
