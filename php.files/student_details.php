@@ -82,16 +82,23 @@
 	$userparguardrel = $getContactObj->studentcontact_relationship;
 		
 	/*details from the student grade year which will tell us the particular year of the student and the class he/she belongs */
-	
-	$student_grade_year = "SELECT * FROM student_grade_year WHERE student_grade_year_student = '".$student_id_original."' AND student_grade_year_year = '".$current_year_id."' LIMIT 1";
+	$student_grade_year = "SELECT * FROM student_grade_year WHERE student_grade_year_student = ? AND student_grade_year_year = ? LIMIT 1";
 	$db_handle = $dbh->prepare($student_grade_year);
-	$db_handle->execute();
-	$stdGradeObj = $db_handle->fetch(PDO::FETCH_OBJ);
-	$db_handle = null;	
-	
-	$user_student_grade_year_year_id = $stdGradeObj->student_grade_year_year;
-	$user_student_grade_year_grade_id = $stdGradeObj->student_grade_year_grade;
-	$user_student_grade_year_class_room_id = $stdGradeObj->student_grade_year_class_room;
+	$db_handle->execute([ $student_id_original, $current_year_id ]);
+
+	if ($db_handle->rowCount() == 0) {
+		//Student is now a Graduate. Alumi in progress.
+		$user_student_grade_year_year_id = 0;
+		$user_student_grade_year_grade_id = 0;
+		$user_student_grade_year_class_room_id = 0;
+	} else {
+		
+		$stdGradeObj = $db_handle->fetch(PDO::FETCH_OBJ);
+		$db_handle = null;
+		$user_student_grade_year_year_id = $stdGradeObj->student_grade_year_year;
+		$user_student_grade_year_grade_id = $stdGradeObj->student_grade_year_grade;
+		$user_student_grade_year_class_room_id = $stdGradeObj->student_grade_year_class_room;
+	}
 	
 	/*details from the students wallet*/
 	
