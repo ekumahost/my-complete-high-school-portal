@@ -1,123 +1,219 @@
-<?php require ('../php.files/classes/pdoDB.php');
-		require ('../php.files/classes/kas-framework.php');
-		$kas_framework->safesession();
-	if (isset($_SESSION['tapp_std_username'])) {
-		print '<script type="text/javascript"> self.location = "dashboard/" </script>';
-	} else if (isset($_SESSION['tapp_prostd_username'])) {
-		print '<script type="text/javascript"> self.location = "'.$kas_framework->url_root('prospectStudent/dashboard/').'" </script>';
-	}
-	
-	if (($kas_framework->getCookie('hold_username') != '') and ($kas_framework->getCookie('hold_image') != '')) {
-		print '<script type="text/javascript"> self.location = "welcomeback" </script>';
-	}
+<?php
+require ('../../php.files/classes/pdoDB.php');
+require ('../../php.files/classes/kas-framework.php');
+$kas_framework->safesession();
+//$kas_framework->checkAuthStudent();
+require (constant('double_return').'php.files/classes/students.php');
+require (constant('double_return').'php.files/classes/generalVariables.php');
+require (constant('double_return').'php.files/student_details.php');
 
+require (constant('single_return').'inc.files/cookieWriter.php');
  ?>
 <!DOCTYPE html>
-<html class="bg-black">
-<style type="text/css">
-.bg-black {background: url(../img/user_bg.jpg) repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;}
-</style>
+<html>
     <head>
         <meta charset="UTF-8">
-        <title>Student | Check In</title>
+        <title>Dashboard</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 		<link rel="shortcut icon" type="image/x-icon" href="<?php print $kas_framework->school_utility_image('badge') ?>" />
         <!-- bootstrap 3.0.2 -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php print constant('double_return') ?>css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
-        <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php print constant('double_return') ?>css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- Ionicons -->
+        <link href="<?php print constant('double_return') ?>css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <!-- fullCalendar -->
+        <link href="<?php print constant('double_return') ?>css/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
+         <!-- bootstrap wysihtml5 - text editor -->
+        <link href="<?php print constant('double_return') ?>css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
-        <link href="../css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <link href="<?php print constant('double_return') ?>css/AdminLTE.css" rel="stylesheet" type="text/css" />
+		<!-- fancybox -->
+		<link href="<?php print constant('double_return') ?>fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css" />
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+          <script src="../myjs/html5shiv.js"></script>
+          <script src="../myjs/respond.min.js"></script>
         <![endif]-->
-
     </head>
-    <body class="bg-black">
+    <body class="skin-blue">
+	
+	<?php require (constant('single_return').'inc.files/header.php') ?>
+	<p style="margin-top:18px">&nbsp;</p>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+	<?php require (constant('single_return').'inc.files/sidebar.php') ?>
 
-        <div class="form-box" id="login-box">
-		<?php if (@$_GET['ref'] == 'bounce') {
-			$kas_framework->showWarningCallout('Please Log In');
-		} ?>
-		
-		<noscript>
-			<?php $kas_framework->showDangerCallout('If you are Seeing this, Please Enable <b>Javascript.</b> <a href="'.$kas_framework->help_url('?topic=jquery-not-detected').'" target="_blank">Explanation?</a>'); ?>
-		</noscript>
-		
-		<div class="header"> <a href="../"><?php $kas_framework->displaySchoolLogo('60', 'circle', '0 5px 0 -10px'); ?></a>Students Check In</div>
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1><i class="fa fa-dashboard text-green"></i> Students Dashboard <?php $student->display_accessLevel(); ?> </h1>
+                    <ol class="breadcrumb">
+                        <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+                    </ol>
+                </section>
 
-		<?php if ($kas_framework->app_config_setting('student_login') == false) {
-		$kas_framework->showDangerCallout('<font color="black"><center> Sorry! Student Login has been closed. See the School Administrator for this.  But Teranig have a question for you... How did you get here? Your IP has been Logged. </font></center>
-					<br /><br /><center><a href="'.$kas_framework->url_root('').'" class="btn bg-custom text-white btn-block" style="width:50%">
-						<i class="fa fa-dashboard text-white"></i> Go Home </a></center>');
+			 <!-- Main content -->
+                <section class="content">
+			<?php //$student->authConfirm($useradmitStatus); ?>
+			
+			<h2> <?php $kas_framework->displaySchoolLogo('50', 'circle', '0 5px 0 0');
+					print $kas_framework->displayUserSchool($userschool) ?> </h2>
+			<?php
+                if ($user_student_grade_year_class_room_id == -1 and $user_student_grade_year_grade_id == -1) {
+                    print '<h3>GRADUATE >> <small>If this Information is false, contact your admin. </small> </h3>';
+                } else {
+                    print '<h4>Currrent Year: '. $current_year_full; 
+                    print ' &raquo; '. $kas_framework->userGradeClass($user_student_grade_year_class_room_id, $user_student_grade_year_grade_id);
+                    print ' &raquo; '. $currentTerm .'</h4>'; 
+                }
+		
+
+			(isset($_SESSION['tapp_par_username']))? $kas_framework->getMessageforUser('parent'): $kas_framework->getMessageforUser('student'); ?>	
+			<!-- Small boxes (Stat box) $user_student_grade_year_grade_id -->
+                 
+			<?php include (constant('single_return').'inc.files/student_teacher_pane.php') ?>
+				  <div class="row">
 					
-					require (constant('single_return').'php.files/classes/PHPMailer/PHPMailerAutoload.php');
-					require (constant('single_return').'php.files/classes/mailing_list.php');
-						$mailing_list->mailHackingReport($kas_framework->returnUserSchool(''), 'A hacking attempt was just made on the portal of the schools name which appear above.
-						<br />Destination: Student Portal. <br />Location: Login. <br />User IP: '.$kas_framework->getUserIP().'<br />Please Respond.');
-						
-			} else { ?>		
+					<div class="ultimrap">
+                            <!-- small box -->
+                            <div class="small-box bg-blue">
+                                <div class="inner">
+                                    <h2>Teachers</h2>
+                                    <p>View My Teachers</p>
+                                </div>
+                                <div class="icon"><i class="fa fa-male"></i> </div>
+                                <a href="#reveal_teacher" id="strapPanel" class="small-box-footer">Reveal <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="ultimrap">
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h2><a href="#registration"> <font color='white'>Registration</font></a></h2>
+                                    <p>WAEC, JAMB, NECO and GCE</p>
+                                </div>
+                                <div class="icon"><i class="fa fa-pencil"></i> </div>
+                                <a href="#" class="small-box-footer click_ult">   Open Help <i class="fa fa-arrow-circle-right"></i> </a>
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="ultimrap">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h2>My Results</h2>
+                                    <p>View and Print Your Results</p>
+                                </div>
+                                <div class="icon"> <i class="fa fa-file-text"></i> </div>
+                                <a href="results/" class="small-box-footer click_ult">Open Content <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="ultimrap">
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h2>Academic </h2>
+                                    <p> Timetable, Homework, Library</p>
+                                </div>
+                                <div class="icon"><i class="fa fa-book"></i> </div>
+                                <a href="academics/" class="small-box-footer click_ult"> Open Content <i class="fa fa-arrow-circle-right"></i> </a>
+                            </div>
+                        </div><!-- ./col -->
+						<div class="ultimrap">
+                            <!-- small box -->
+                            <div class="small-box bg-navy">
+                                <div class="inner">
+                                    <h2> Mailing</h2>
+                                    <p>Send Messages to your Colleagues</p>
+                                </div>
+                                <div class="icon"><i class="fa fa-envelope"></i> </div>
+                                <a href="mailbox/" class="small-box-footer click_ult"> Open Content <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div><!-- ./col -->
+						<div class="ultimrap">
+                            <!-- small box -->
+                            <div class="small-box bg-maroon">
+                                <div class="inner">
+                                    <h2> My Tools</h2>
+                                    <p>Calendar, Notepad, Timeline, SMS </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-th-large"></i>
+                                </div>
+                                <a href="mytools/" class="small-box-footer click_ult"> Open Content <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div><!-- ./col -->
+                    </div><!-- /.row -->
 
-		   <form action="" method="post" id="loginForm">
-                <div class="body bg-gray">
-                    <div class="form-group">
-					Username or Email
-                        <input type="text" required name="username" class="form-control" placeholder="Username or Email Adress"/>
+                    <!-- top row -->
+                    <div class="row">
+                        <div class="col-xs-12 connectedSortable">
+                            
+                        </div><!-- /.col -->
                     </div>
-                    <div class="form-group">
-					Password
-                        <input type="password" required name="password" class="form-control" placeholder="Password"/>
-						<input type="hidden" name="byepass" value="g6TB5g5byY5Byg5gbYBBG5G" />
-                    </div>          
-                    <div class="form-group">
-                        <input type="checkbox" name="remember_me"/> Remember me
-                    </div>
-                </div>
-                <div class="footer" align="center">                                                               
-                    <button type="submit" class="btn bg-custom text-white btn-block" name="signin" id="signin">Check me in</button>  
-                    <p><a href="resetpwd">Forgot Password</a> &laquo; &raquo; <a href="../" class="text-center">Navigate Away</a></p>
-                    </form>
-                     <br />
-                 <span id="loginMessage"></span>
+                    <!-- /.row -->
 
-				 <?php if (isset($_POST['signin'])) {
-						$kas_framework->showinfowithBlue('This Portal Cannot run on this Browser. <a href="'.$kas_framework->help_url('?topic=jquery-not-detected').'" target="_blank">Explanation?</a>');
-					}				 ?>
-                </div>
-		<div class="margin text-center"></div>
-		<?php } ?>
-        </div>
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- Left col -->
+                        <section style="margin:16px"> 
+                            <!-- Box (with bar chart removed) -->
+							
+							<!-- Custom tabs (Charts with tabs removed)-->
+                                                
+                            <!-- Calendar -->
+                            <div class="box box-warning" id="schoolCalendar">
+                                <div class="box-header">
+                                    <i class="fa fa-calendar"></i>
+                                    <div class="box-title">School Calendar</div>
+                                    
+                                    <!-- tools box -->
+                                    <div class="pull-right box-tools">
+                                        <!-- button with a dropdown -->
 
+                                    </div><!-- /. tools -->                                    
+                                </div><!-- /.box-header -->
+                                <div class="box-body no-padding">
+                                    <!--The calendar -->
+                                    <div id="calendar"></div>
+                                </div><!-- /.box-body -->
+							</div><!-- /.box -->
 
+                            <!-- quick email widget removed -->
+                        </section><!-- /.Left col -->
+                        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+                        <section class="col-lg-6 connectedSortable">
+                            <!-- Map box removed -->
+							<!-- Chat box removed -->
+							<!-- TO DO List removed -->
+						</section><!-- right col -->
+                    </div><!-- /.row (main row) -->
+
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+        </div><!-- ./wrapper -->
+
+      
         <!-- jQuery 2.0.2 -->
-        <script type="text/javascript" src="../myjs/jquery.min.js"></script>
-		 <!-- feccukcontroller -->
-        <script type="text/javascript" src="../myjs/feccukcontroller.js"></script>
-		<script type="text/javascript">
-
-		/* login sending function */
-		$('#signin').click(function(e) {
-			$(this).attr('disabled', 'disabled');
-			$('#loginMessage').html(' <?php $kas_framework->loading_h('center'); ?>');
-			
-			loginVals = $('#loginForm :input').serializeArray();
-			$.post('../php.files/student_login_script', loginVals, function(data) {
-				$('#loginMessage').html(data);
-			});
-			
-			return false;
-		});
-		</script>
+        <script src="<?php print constant('double_return') ?>myjs/jquery.min.js"></script>
+        <!---- my javascript controller -->
+        <script src="<?php print constant('double_return') ?>myjs/feccukcontroller.js" type="text/javascript"></script>
+	     <!-- AdminLTE App -->
+        <script src="<?php print constant('double_return') ?>js/AdminLTE/app.js" type="text/javascript"></script>
         <!-- Bootstrap -->
-        <script src="../js/bootstrap.min.js" type="text/javascript"></script>  
-		<?php include ('../inc.files/fixedfooter.php') ?>		
+        <script src="<?php print constant('double_return') ?>js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- fullCalendar -->
+        <script src="<?php print constant('double_return') ?>js/plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+        <script type="text/javascript">
+			$('#strapPanel').click(function(e){
+				$('#teacher_student_pane').slideDown(1000);
+				return false;
+			})
+		</script> 
+	<?php include (constant('double_return').'inc.files/schoolCalendarPlugin.php') ?>
+	<?php include (constant('double_return').'inc.files/fixedfooter.php') ?>
     </body>
 </html>
