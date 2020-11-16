@@ -20,7 +20,7 @@ We have tested on PHP 7.3.7 Apache web server. Follow these 10 Instructions one 
     3. edit /php.files/classes/private-config.php and put your portal url
     4. edit /control/includes/configuration.php for your database configurations again and others in the config files 
     5. edit /myjs/feccukcontroller.js for server_root_dir and put your portal url)
-    6. Edit your webserver and set home.php as directory Index (google it if you dont know) -- you see we did not have that index.php thing, its home.php here, we already did this .htaccess but just incase
+    6. Edit your webserver and set home.php as directory Index (google it if you dont know) -- we already did this .htaccess but just incase the file is missing
     7. edit /home.php for the Tawk.to Script
     8. run the sql in /TOOLS/sql_fix.txt in your database: that is run the code inside. It as a fix.
     9. SET YOUR SMTP details for mail sending and Hacking Report Email: /php.files/classes/mailing_list.php
