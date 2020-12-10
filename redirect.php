@@ -11,7 +11,7 @@ require ('php.files/classes/kas-framework.php');
 		<link rel="shortcut icon" type="image/x-icon" href="<?php print $kas_framework->school_utility_image('badge') ?>" />
      </head>  
 	<body>
-	<center><br />Getting Things Ready for you. Please Wait... <br /><br />
+	<center><br />Preparing Portal. Please wait. This will not take long... <br /><br />
 	</center>
 	<?php 
 		/* for parents */
