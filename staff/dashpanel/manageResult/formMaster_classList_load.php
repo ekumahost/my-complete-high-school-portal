@@ -11,9 +11,9 @@ require (constant('double_return').'inc.files/handleFixedFormat.php');
 	function getCognitiveDomain($student_id, $cog_domain_id) {
 		global $currentTerm_id;  global $current_year_id;  global $teacher_grade_class;
 		require ('../../../php.files/classes/pdoDB.php');
-		  $deduce_query = "SELECT * FROM std_report_cards WHERE student = '".$student_id."' AND session = '".$current_year_id."' AND term = '".$currentTerm_id."' AND grade = '".$teacher_grade_class."'";
+		  $deduce_query = "SELECT * FROM std_report_cards WHERE student = ? AND session = ? AND term = ? AND grade = ? ";
 		  $db_deduce_query = $dbh->prepare($deduce_query);
-			$db_deduce_query->execute();
+			$db_deduce_query->execute([ $student_id, $current_year_id, $currentTerm_id, $teacher_grade_class ]);
 			$get_deduce_query_rows = $db_deduce_query->rowCount();
 			$deduce_obj = $db_deduce_query->fetch(PDO::FETCH_OBJ);
 			$db_deduce_query = null;	
@@ -34,9 +34,9 @@ require (constant('double_return').'inc.files/handleFixedFormat.php');
 				print '</select>';
 	}
 
-	$check_principals_request = "SELECT * FROM std_report_cards WHERE term = '".$currentTerm_id."' AND session = '".$current_year_id."' AND grade = '".$teacher_grade_class."'";
+	$check_principals_request = "SELECT * FROM std_report_cards WHERE term = ? AND session = ? AND grade = ?";
 	$db_check_principals_request = $dbh->prepare($check_principals_request);
-	$db_check_principals_request->execute();
+	$db_check_principals_request->execute([ $currentTerm_id, $current_year_id, $teacher_grade_class ]);
 	$get_check_principals_request_rows = $db_check_principals_request->rowCount();
 	$paramObj = $db_check_principals_request->fetch(PDO::FETCH_OBJ);
 	$db_check_principals_request = null;
@@ -48,10 +48,10 @@ require (constant('double_return').'inc.files/handleFixedFormat.php');
 						WHERE stdb.studentbio_id = sgy.student_grade_year_student
 						AND tgy.grade_class = sgy.student_grade_year_grade AND tgy.grade_class_room = sgy.student_grade_year_class_room
 						AND tgy.grade_class != '0' AND stf.staff_school = stdb.studentbio_school
-						AND sgy.student_grade_year_grade = '".$teacher_grade_class."' AND sgy.student_grade_year_year = '".$current_year_id."'
-						AND tgy.session = '".$current_year_id."' AND stf.staff_id = '".$web_users_relid."' AND tgy.teacher = '".$web_users_relid."'";
+						AND sgy.student_grade_year_grade = ? AND sgy.student_grade_year_year = ?
+						AND tgy.session = ? AND stf.staff_id = ? AND tgy.teacher = ?";
 						$db_querySQL = $dbh->prepare($complxQ);
-						$db_querySQL->execute();
+						$db_querySQL->execute([ $teacher_grade_class, $current_year_id, $current_year_id, $web_users_relid, $web_users_relid ]);
 						//$myStdQuery = mysql_query($complxQ);
 		
 	  print '<div class="row">
@@ -99,10 +99,9 @@ require (constant('double_return').'inc.files/handleFixedFormat.php');
 												<td>';
 												//for the loading if ready or not
 													$check_principal_comment_query = "SELECT * FROM std_report_cards
-														WHERE term = '".$currentTerm_id."' AND session = '".$current_year_id."' 
-															AND grade = '".$teacher_grade_class."' AND student = '".$viewMyStds->studentbio_id."' ";
+														WHERE term = ? AND session = ? AND grade = ? AND student = ? ";
 															$db_check_principal_comment_query = $dbh->prepare($check_principal_comment_query);
-																$db_check_principal_comment_query->execute();
+																$db_check_principal_comment_query->execute([ $currentTerm_id, $current_year_id, $teacher_grade_class, $viewMyStds->studentbio_id ]);
 																$get_check_principal_comment_query_rows = $db_check_principal_comment_query->rowCount();
 																$query_obj = $db_check_principal_comment_query->fetch(PDO::FETCH_OBJ);
 																$db_check_principal_comment_query = null;	

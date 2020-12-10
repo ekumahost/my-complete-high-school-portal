@@ -16,10 +16,9 @@ if ($action == 'update_comment') {
 	if ($kas_framework->strIsEmpty($comment_text) == true or strlen($comment_text) < 10) {
 		print '<font color="red">At least 10 Characters required!!!</font>';
 	} else {
-		$updateQ = "UPDATE std_report_cards SET c_form_teacher = :comment_text WHERE grade = '".$grade_taken."' AND session = '".$current_year_id."' AND term = '".$currentTerm_id."' AND student = '".$std_id."'";
-			$db_updateQ = $dbh->prepare($updateQ);
-			$db_updateQ->bindParam(':comment_text', $comment_text);
-			$db_updateQ->execute();
+		$updateQ = "UPDATE std_report_cards SET c_form_teacher = ? WHERE grade = ? AND session = ? AND term = ? AND student = ?";
+			$db_updateQ = $dbh->prepare($updateQ); 
+			$db_updateQ->execute([ $comment_text, $grade_taken, $current_year_id, $currentTerm_id, $std_id ]);
 			$get_updateQ_rows = $db_updateQ->rowCount();
 			$db_updateQ = null;	
 			
@@ -35,10 +34,10 @@ if ($action == 'update_comment') {
 	}
 } else if ($action == 'update_cog_domain') {
 	//Array ( [std_id] => 1 [cog_1] => 3 [cog_2] => 5 [cog_3] => -- [cog_4] => -- grade_taken)
-	$updateQ = "UPDATE std_report_cards SET cog_1 = '".$cog_1."', cog_2 = '".$cog_2."', cog_3 = '".$cog_3."', cog_4 = '".$cog_4."'
-			WHERE grade = '".$grade_taken."' AND session = '".$current_year_id."' AND term = '".$currentTerm_id."'	AND student = '".$std_id."'";
+	$updateQ = "UPDATE std_report_cards SET cog_1 = ?, cog_2 = ?, cog_3 = ?, cog_4 = ?
+			WHERE grade = ? AND session = ? AND term = ?	AND student = ?";
 			$db_updateQ = $dbh->prepare($updateQ);
-			$db_updateQ->execute();
+			$db_updateQ->execute([ $cog_1, $cog_2, $cog_3, $cog_4, $grade_taken, $current_year_id, $currentTerm_id, $std_id ]);
 			$get_updateQ_rows = $db_updateQ->rowCount();
 			$db_updateQ = null;	
 			
@@ -48,6 +47,3 @@ if ($action == 'update_comment') {
 					print '<font color="red" style="font-size:12px">&#10007 No Changes Effected.</font>';
 				}
 }
-	
-
-?>

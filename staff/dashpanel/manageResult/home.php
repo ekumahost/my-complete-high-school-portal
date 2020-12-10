@@ -52,7 +52,7 @@ require (constant('tripple_return').'php.files/classes/staff.php');
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        <i class="fa fa-tag text-green"></i> My Uploads
+                        <i class="fa fa-tag text-green"></i> My Result Uploads
                     </h1>
                     <ol class="breadcrumb">
                         <li class="click_ult"><a href="<?php print constant('single_return') ?>"><i class="fa fa-dashboard"></i>Dashboard</a></li>

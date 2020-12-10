@@ -77,21 +77,21 @@ require (constant('tripple_return').'php.files/classes/staff.php');
 						</div><!-- /.box-header -->
                     <?php
                         //php is going to get a little bit crazy here
-                    $get_broadsheet_courses = "SELECT DISTINCT course_code FROM grade_history_primary WHERE exam_type = '1' AND year = '".$grade_year."' AND quarter = '".$grade_term."'
-                        AND level_taken = '".$grade_to_view."' ORDER BY course_code DESC"; // don't know why you cant get a while loop from the same query twice
-                     $get_broadsheet_student = "SELECT DISTINCT student FROM grade_history_primary WHERE exam_type = '1' AND year = '".$grade_year."' AND quarter = '".$grade_term."'
-                        AND level_taken = '".$grade_to_view."' ORDER BY course_code DESC";
+                    $get_broadsheet_courses = "SELECT DISTINCT course_code FROM grade_history_primary WHERE exam_type = '1' AND year = ? AND quarter = ?
+                        AND level_taken = ? ORDER BY course_code DESC"; // don't know why you cant get a while loop from the same query twice
+                     $get_broadsheet_student = "SELECT DISTINCT student FROM grade_history_primary WHERE exam_type = '1' AND year = ? AND quarter = ?
+                        AND level_taken = ? ORDER BY course_code DESC";
 							$db_get_broadsheet_courses = $dbh->prepare($get_broadsheet_courses); $db_get_broadsheet_student = $dbh->prepare($get_broadsheet_student);
-							$db_get_broadsheet_courses->execute(); $db_get_broadsheet_student->execute();
+							$db_get_broadsheet_courses->execute([ $grade_year, $grade_term, $grade_to_view ]); $db_get_broadsheet_student->execute([ $grade_year, $grade_term, $grade_to_view ]);
 							$get_get_broadsheet_courses_rows = $db_get_broadsheet_courses->rowCount();	$get_get_broadsheet_student_rows = $db_get_broadsheet_student->rowCount();
 							$get_get_broadsheet_courses_rows = null;
 
                     function getScoreforStudent($student, $course) {
 						require ('../../../php.files/classes/pdoDB.php');
-                       $getScore = "SELECT * FROM grade_history_primary WHERE student = '".$student."' AND course_code = '".$course."'
-                        AND exam_type = '1' AND year = '".$_GET['year']."' AND quarter = '".$_GET['term']."' AND level_taken = '".$_GET['grade']."'";
+                       $getScore = "SELECT * FROM grade_history_primary WHERE student = ? AND course_code = ?
+                        AND exam_type = '1' AND year = ? AND quarter = ? AND level_taken = ? ";
 						$db_getScore = $dbh->prepare($getScore);
-							$db_getScore->execute();
+							$db_getScore->execute([$student, $course, $_GET['year'], $_GET['term'], $_GET['grade'] ]);
 							$get_rows = $db_getScore->rowCount();
 							//$db_getScore = null;	
 							$getScoreObj = $db_getScore->fetch(PDO::FETCH_OBJ);
@@ -127,10 +127,10 @@ require (constant('tripple_return').'php.files/classes/staff.php');
                                              //here, we have to start checking the name of the student with the course in the header since they are following thesame pattern
                                             //so we get another query for the deduction loop so that we can start smiling at each other
 											
-                                            $get_broadsheet_courses_for_std = "SELECT DISTINCT course_code FROM grade_history_primary WHERE exam_type = '1' AND year = '".$grade_year."' AND quarter = '".$grade_term."'
-                                                  AND level_taken = '".$grade_to_view."' ORDER BY course_code DESC"; // for the courses
+                                            $get_broadsheet_courses_for_std = "SELECT DISTINCT course_code FROM grade_history_primary WHERE exam_type = '1' AND year = ? AND quarter = ?
+                                                  AND level_taken = ? ORDER BY course_code DESC"; // for the courses
 												  $db_get_broadsheet_courses_for_std = $dbh->prepare($get_broadsheet_courses_for_std);
-													$db_get_broadsheet_courses_for_std->execute();
+													$db_get_broadsheet_courses_for_std->execute([ $grade_year, $grade_term, $grade_to_view ]);
                                                 //initialize the values for the addition and the divider
                                                  $total_subject_Scores = 0;
                                                   $divisor_for_average = 0;

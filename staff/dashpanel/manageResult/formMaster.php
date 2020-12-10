@@ -71,9 +71,9 @@ require (constant('tripple_return').'php.files/classes/staff.php');
 						<img src="'.$kas_framework->url_root('img/sorry.png').'" width="50%"/></center>';
 					//exit();
 				} else { 
-					$getClass = "SELECT * FROM teacher_grade_year WHERE teacher = '".$web_users_relid."'"; 
+					$getClass = "SELECT * FROM teacher_grade_year WHERE teacher = ?"; 
 					$db_getClass = $dbh->prepare($getClass);
-					$db_getClass->execute();
+					$db_getClass->execute([ $web_users_relid ]);
 					$get_getClass_rows = $db_getClass->rowCount();
 					$paramObj = $db_getClass->fetch(PDO::FETCH_OBJ);
 					$db_getClass = null;	

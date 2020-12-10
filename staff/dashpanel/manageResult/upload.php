@@ -93,7 +93,7 @@
 									<?php $kas_framework->getallFieldinDropdownOption('grade_subjects', 'grade_subject_desc', 'grade_subject_id')  ?>
 									</select>
 									
-									<label for="grade"><font color="red">*</font> Grade</label>
+									<label for="grade"><font color="red">*</font> Grade/Class</label>
 									<select id="grade" name="grade"><option value="<?php print $kas_framework->getValue('grades_id', 'grades', 'grades_id', @$_POST['grade']) ?>">
 									<?php print $kas_framework->getValue('grades_desc', 'grades', 'grades_id', @$_POST['grade']) ?></option>
 									<?php $kas_framework->getallFieldinDropdownOption('grades', 'grades_desc', 'grades_id')  ?>
@@ -160,7 +160,7 @@
 					$('#proceed_div1').html(data).show();	
 					$('#proceed_div2').html('');
 					$('#proceed_div1_2').html('');
-					$('#div_msg_warning').html('Please leave scores empty for any student that is not offering this subject.').slideDown(1000);
+					$('#div_msg_warning').html('Please input the # symbol for any student that is not offering this subject. Add the # in the comment section also.').slideDown(1000);
 				});
 				
 				return false;

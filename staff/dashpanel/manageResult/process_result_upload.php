@@ -47,8 +47,7 @@ if (!isset($byepass)) {
 	function generate_result() {
 		$newGeneral = new kas_framework();
 		extract($_POST);
-		global $currentTerm_id;
-		global $current_year_id;
+		global $currentTerm_id, $current_year_id;
 		require ('../../../php.files/classes/pdoDB.php');
 		
 		if ($newGeneral->strIsEmpty($subject) or $newGeneral->strIsEmpty($grade) or $newGeneral->strIsEmpty($grade_room)) {
@@ -82,7 +81,10 @@ if (!isset($byepass)) {
 							<div class="box">
 								<form action="" method="post" id="insert_result_form">
 								<div class="box-header">
-									<h3 class="box-title">All Students in the Selected Class ('.$total_rows_gotten.')</h3>                                    
+									<h3 class="box-title">All Students in the Selected Class ('.$total_rows_gotten.'). 
+										<small><font color="red"> ( ==> Enter # if student is not offering this subject. This applies to the comment section also. ) </font></small>
+									</h3> 
+									                                  
 								</div>
 								<div class="box-body table-responsive">
 									<table id="example1" class="table table-bordered table-striped">
@@ -150,43 +152,44 @@ if (!isset($byepass)) {
 		$count_insert = 0; 	$skipped_and_unskipped = 0;
 		/* looping for the total student in the class */
 		for ($i=0; $i < $total_ret; $i++) {
-			/* checking if any student score was empty */
-			/* if ($newGeneral->strIsEmpty($ca1[$i]) or $newGeneral->strIsEmpty($ca2[$i]) or $newGeneral->strIsEmpty($exam[$i]) or $newGeneral->strIsEmpty($comment[$i])) {
-				$error_log = $i + 1;
-				$newGeneral->showDangerCallout('One Field is Empty. Check around Serial Number "<b>'.$error_log.'</b>". Result Upload Failed.');
-				exit;
-			} else */ 
-			if ($ca1[$i] > FIRST_CA or $ca2[$i] > SECOND_CA or $exam[$i] > EXAM_CA) {
-				$error_log = $i + 1;
-				$newGeneral->showDangerCallout('An Abnormal Score was Detected. Check around Serial Number "<b>'.$error_log.'</b>". CA or Exam Score Exceeds Maximum Score Allowed. Result Upload Failed.');
-				exit;
-			} else if ((!is_numeric($ca1[$i]) and $ca1[$i] != '') or (!is_numeric($ca2[$i]) and $ca2[$i] != '') or (!is_numeric($exam[$i]) and $exam[$i] != '')) {
-				$error_log = $i + 1;
-				$newGeneral->showDangerCallout('A Non Numeric Input was Detected. Check around Serial Number "<b>'.$error_log.'</b>". Result Upload Failed.');
-				exit;
+
+			if ($ca1[$i] == '#' and $ca2[$i] == '#' and $exam[$i] == '#') {
+				/* meaning that the student is not offering the subject */
+				/* just skip this student and then add the skipped and unskipped */
+				$skipped_and_unskipped = $skipped_and_unskipped + 1; /* increment the total queries encountered */
 			} else {
-				/* making sure tha the subject has not been uploaded for the student before */
-				if (check_if_result_is_uploaded_before_for_student($current_year_id, $currentTerm_id, $subject, $student_id[$i], $level_taken) == false){
-					/* checking if dash was put in the students ca and exam and comment.... meaning that the student is not offering the subject*/
-						if ($ca1[$i] == '' and $ca2[$i] == '' and $exam[$i] == '' and $comment[$i] == '') {
-							/* meaning that the student is not offering the subject */
-							/* just skip this student and then add the skipped and unskipped */
-							$skipped_and_unskipped = $skipped_and_unskipped + 1; /* increment the total queries encountered */
-						} else {
+				if ($newGeneral->strIsEmpty($ca1[$i]) or $newGeneral->strIsEmpty($ca2[$i]) or $newGeneral->strIsEmpty($exam[$i]) or $newGeneral->strIsEmpty($comment[$i])) {
+					$error_log = $i + 1;
+					$newGeneral->showDangerCallout('One Field is Empty. Check around Serial Number "<b>'.$error_log.'</b>". Please check your comments. Result Upload Failed.');
+					exit;
+				} else if ($ca1[$i] > FIRST_CA or $ca2[$i] > SECOND_CA or $exam[$i] > EXAM_CA) {
+					$error_log = $i + 1;
+					$newGeneral->showDangerCallout('An Abnormal Score was Detected. Check around Serial Number "<b>'.$error_log.'</b>". CA or Exam Score Exceeds Maximum Score Allowed. Result Upload Failed.');
+					exit;
+				} else if ( !is_numeric($ca1[$i]) or !is_numeric($ca2[$i]) or !is_numeric($exam[$i]) ) {
+					$error_log = $i + 1;
+					$newGeneral->showDangerCallout('A Non Numeric Input was Detected. Check around Serial Number "<b>'.$error_log.'</b>". Result Upload Failed.');
+					exit;
+				} else {
+					/* making sure the the subject has not been uploaded for the student before */
+						if (check_if_result_is_uploaded_before_for_student($current_year_id, $currentTerm_id, $subject, $student_id[$i], $level_taken) == false) {
 							/* otherwise, insert into the database */
-						$insert = "INSERT INTO grade_history_primary (exam_type, student, year, quarter, course_code, ca_score1, ca_score2, exam_score, level_taken, `date`, aprove, notes, user) VALUES ('1', '".$student_id[$i]."', '".$current_year_id."', 
-							'".$currentTerm_id."', '".$subject."', '".$ca1[$i]."', '".$ca2[$i]."', '".$exam[$i]."', '".$level_taken."', '".date('d/m/Y')."', '1', '".$comment[$i]."', '".$web_users_relid."')";
-								$db_insert = $dbh->prepare($insert);
-								$db_insert->execute();
-								$get_rows = $db_insert->rowCount();								
-									if ($get_rows == 1) {
-										$count_insert = $count_insert + 1; /* increment the total uploaded*/
-										$skipped_and_unskipped = $skipped_and_unskipped + 1; /* increment the total queries encountered */
-									}
-						}
-					} /* making sure that the result is not uploaded beforte loop ends */
-			}/* checking for empty strings ends */			
+							$insert = "INSERT INTO grade_history_primary (exam_type, student, year, quarter, course_code, ca_score1, ca_score2, exam_score, level_taken, `date`, aprove, notes, user) VALUES ('1', '".$student_id[$i]."', '".$current_year_id."', 
+								'".$currentTerm_id."', '".$subject."', '".$ca1[$i]."', '".$ca2[$i]."', '".$exam[$i]."', '".$level_taken."', '".date('d/m/Y')."', '1', '".$comment[$i]."', '".$web_users_relid."')";
+									$db_insert = $dbh->prepare($insert);
+									$db_insert->execute();
+									$get_rows = $db_insert->rowCount();								
+										if ($get_rows == 1) {
+											$count_insert = $count_insert + 1; /* increment the total uploaded*/
+											$skipped_and_unskipped = $skipped_and_unskipped + 1; /* increment the total queries encountered */
+										}
+						
+						} /* making sure that the result is not uploaded beforte loop ends */
+				}
+
+			}
 		} /* for loop initiation ends */	
+
 		$db_insert = null;
 		if ($total_ret == $skipped_and_unskipped) {
 			$newGeneral->showInfoCallout($count_insert. ' of '.$total_ret.' Student(s) Result Uploaded Succesfully');
@@ -196,7 +199,7 @@ if (!isset($byepass)) {
 			$newGeneral->showDangerCallout('Result Upload Failed. Maybe Result already Exist in the database Already');
 			$dbh->rollBack(); exit;
 		}	
-	}	
+	}
 
 /***********************************************************************************/
 	function generate_result_for_edit() {
