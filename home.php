@@ -85,7 +85,7 @@ require ('php.files/tbl_app_config_home.php')
 				<center> <?php print $kas_framework->getValue('messageto_all', 'tbl_config', 'id', '1') ?> </center>		 
 			
 				<noscript>
-					<?php $kas_framework->showDangerCallout('<center>please you need to enable <b>Javascript</b> on this browser. <a href="'.$kas_framework->help_url('?topic=jquery-not-detected').'" target="_blank">Explanation?</a></center>'); ?>
+					<?php $kas_framework->showDangerCallout('<center> <b>Javascript</b> is not enabled on this browser. Please enable Javascript. <a href="'.$kas_framework->help_url('?topic=jquery-not-detected').'" target="_blank">Explanation?</a></center>'); ?>
 				</noscript>
 		</div>
 			
