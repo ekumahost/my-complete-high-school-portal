@@ -137,6 +137,7 @@ require (constant('tripple_return').'php.files/classes/students.php');
 											OR studentcontact_lname = '".$student_parents_lastname."') ";
 							}
 			$selQuery .= "AND (studentcontact_phone1 != '' OR studentcontact_phone2 != '' OR studentcontact_phone3 != '')";
+
 			$db_selQuery = $dbh->prepare($selQuery);
 			$db_selQuery->execute();
 			$get_selQuery_rows = $db_selQuery->rowCount();
@@ -151,15 +152,16 @@ require (constant('tripple_return').'php.files/classes/students.php');
 				<h4>Child Suggestion. Select Yours. If the List is Empty, Use the Search</h4>
 				<thead><tr><th>Child Details</th><th>Picture</th><th>Action</th></tr></thead><tbody>';
 					while ($myProspectChild = $db_selQuery->fetch(PDO::FETCH_OBJ)) {
-	/******************* Complex for getting the child details from studentbio and also student_pictures *******/
+					/******************* Complex for getting the child details from studentbio and also student_pictures *******/
 					$complx = "SELECT * FROM studentbio WHERE studentbio_id = '".$myProspectChild->studentcontact_studentid."'";
+					$complx_prep = $dbh->prepare($complx);  $complx_prep->execute();
+					$exeComplx = $complx_prep->fetch(PDO::FETCH_OBJ);
 							
 				/*Making sure that you have not already selected the child ... i.e from the parent_to_kids table*/
-			$checkPar_Kid = "SELECT * FROM parent_to_kids WHERE parent_id = '".$web_parents_relid."' AND student_id = '".$myProspectChild->studentcontact_studentid."' LIMIT 1";
+				$checkPar_Kid = "SELECT * FROM parent_to_kids WHERE parent_id = '".$web_parents_relid."' AND student_id = '".$myProspectChild->studentcontact_studentid."' LIMIT 1";
 					$db_checkPar_Kid = $dbh->prepare($checkPar_Kid);
 					$db_checkPar_Kid->execute();
-					$get_checkPar_Kid_rows = $db_checkPar_Kid->rowCount();
-					$exeComplx = $db_checkPar_Kid->fetch(PDO::FETCH_OBJ);
+					$get_checkPar_Kid_rows = $db_checkPar_Kid->rowCount();					
 					$db_checkPar_Kid = null;
 										
 					if ($get_checkPar_Kid_rows >= 1) {
