@@ -60,7 +60,7 @@ if ($kas_framework->strIsEmpty($pin) or $kas_framework->strIsEmpty($serial)) {
 						$db_update_wallet_pin = $dbh->prepare($update_wallet_pin); 
 						$db_update_wallet_pin->execute([ $student_id_original, $pin, $serial ]);
 						$get_rowsWallet = $db_update_wallet_pin->rowCount();
-						$db_update_wallet_pin = null;	
+						$db_update_wallet_pin = null;
 							
 					if ($get_rowsWallet == 0) {
 						$kas_framework->buttonController('#creditWalletButton', 'enable');

@@ -87,13 +87,13 @@ require (constant('tripple_return').'php.files/student_details.php');
                                   <div class="box-body">
 										<!-- Date dd/mm/yyyy -->
 										<div class="form-group">
+											<label> Card Serial Number </label>
+											<input type="text" required="required" name="serial" class="form-control" placeholder="Card Serial" />
+											</div>
+										<div class="form-group">
 											<label> Card Pin </label>
 											<input type="password" required="required" name="pin" class="form-control" placeholder="Card Pin" />
-										</div>
-										<div class="form-group">
-											<label> Card Serial </label>
-											<input type="text" required="required" name="serial" class="form-control" placeholder="Card Serial" />
-											<input type="hidden" name="byepass" value="gHJ5n6TN7tvgG5F6bg6gb6G6" />
+                                            <input type="hidden" name="byepass" value="gHJ5n6TN7tvgG5F6bg6gb6G6" />										
 										</div>
 									</div><!-- /.box-body -->
 								<button type="submit" class="btn btn-primary flr-left" id="creditWalletButton">
