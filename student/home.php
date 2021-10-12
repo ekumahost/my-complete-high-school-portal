@@ -1,6 +1,6 @@
 <?php
-require ('../../php.files/classes/pdoDB.php');
-require ('../../php.files/classes/kas-framework.php');
+require ('../php.files/classes/pdoDB.php');
+require ('../php.files/classes/kas-framework.php');
 $kas_framework->safesession();
 //$kas_framework->checkAuthStudent();
 require (constant('double_return').'php.files/classes/students.php');
