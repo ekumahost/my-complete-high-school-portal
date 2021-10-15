@@ -1,14 +1,14 @@
 <?php
 
 	/*Defining my links back */
-	define ('single_return', 	'../', TRUE);
-	define ('double_return', 	'../../', TRUE);
-	define ('tripple_return', '../../../', TRUE);
-	define ('quad_return', 	'../../../../', TRUE);
-	define ('primary_result_check_fees', 	'700', TRUE);
-	define ('junior_sec_result_check_fees', 	'700', TRUE);
-	define ('senior_sec_result_check_fees', 	'1000', TRUE);
-	define ('classnote_download_fee', 	'100', TRUE);
+	define ('single_return', 	'../');
+	define ('double_return', 	'../../');
+	define ('tripple_return', '../../../');
+	define ('quad_return', 	'../../../../');
+	define ('primary_result_check_fees', 	'700');
+	define ('junior_sec_result_check_fees', 	'700');
+	define ('senior_sec_result_check_fees', 	'1000');
+	define ('classnote_download_fee', 	'100');
 	
 	define ('FIRST_CA', '20'); // Maximum first CA score
 	define ('SECOND_CA', '20'); // Maximum Second CA score
