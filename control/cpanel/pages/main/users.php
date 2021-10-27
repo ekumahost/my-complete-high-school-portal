@@ -118,7 +118,8 @@ if(isset($_GET['graduates'])){
             <th>S/N<i class="icon icon-color icon-arrow-n-s"></i></th>
             <th>Username</th>
             <th>Name</th>
-            <th>Class</th>
+            <th>Entry Class</th>
+            <th>Current Class</th>
             <th>Parent</th>
             <th><a href="#" title="Active means student can log in">Status</a></th>
             <th> Sex </th>
@@ -145,8 +146,16 @@ if(isset($_GET['graduates'])){
 
 			$username = $kas_framework->getValue('user_n', 'web_students', 'identify', $regno);
 			$regdate = $kas_framework->getValue('reg_date', 'web_students', 'identify', $regno);
-			$std_grade_yr = $kas_framework->getValue('student_grade_year_grade', 'student_grade_year', 'student_grade_year_student', $stdbio_id);
+
+			$dbh_gee = $dbh->prepare("SELECT student_grade_year_grade FROM student_grade_year WHERE student_grade_year_student = ? ORDER BY student_grade_year_id DESC LIMIT 1");
+			$dbh_gee->execute([ $stdbio_id ]);
+			$GET_OBJ = $dbh_gee->fetch(PDO::FETCH_OBJ);
+			$std_grade_yr = $GET_OBJ->student_grade_year_grade;
+
+			$std_grade_yr_entry = $kas_framework->getValue('student_grade_year_grade', 'student_grade_year', 'student_grade_year_student', $stdbio_id);
+			
 			$std_grade = $kas_framework->getValue('grades_desc', 'grades', 'grades_id', $std_grade_yr);
+			$std_grade_entry = $kas_framework->getValue('grades_desc', 'grades', 'grades_id', $std_grade_yr_entry);
 		
 		if($std_grade==NULL){ $std_grade='<u>Graduate</u>'; }
 
@@ -222,7 +231,8 @@ if(isset($_GET['graduates'])){
 			<td><?php echo $sn;?></td>
             <td><i class="icon icon-color icon-user"></i><?php echo $username;?></td>
             <td class="center"><?php echo $mylastn.', '.$mymiddlen.' '.$myfirstn.'<br />('.$regno.')';?></td>
-            <td class="center"><?php echo $std_grade;?> </td>
+            <td class="center" style="color:blue"><?php echo $std_grade_entry;?> </td>
+            <td class="center" style="color:green"><?php echo $std_grade;?> </td>
             <td class="center"><?php echo $parent;?> </td>
             <td class="center"> <?php echo $mystatus .'<br /><br /> '. $std_status;?></td>
             <td class="center"><?php echo $gender;?> <?php echo $dob.'yrs';?></td>
