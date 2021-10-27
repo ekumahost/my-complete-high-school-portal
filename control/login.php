@@ -13,13 +13,15 @@
 	$username= $_POST['username']; //get_param("username");
 	$password= $_POST['password']; //get_param("password");
 
-//Check if uname/pwd match
-//$sSQL="SELECT * FROM web_users WHERE web_users_username =" . tosql($username, "Text") . " AND web_users_password=" . tosql($password, "Text")." and active = 1";
-	$sSQL = "SELECT * FROM web_users WHERE web_users_username =".$dbh->quote($username)." AND web_users_password=md5(".$dbh->quote($password).") and web_users_active = 1";
+	//Check if uname/pwd match
+	//$sSQL="SELECT * FROM web_users WHERE web_users_username =" . tosql($username, "Text") . " AND web_users_password=" . tosql($password, "Text")." and active = 1";
+	$sSQL = "SELECT * FROM web_users WHERE web_users_username = '".$username."' AND web_users_password = '".md5($password)."' and web_users_active = 1";
+	
 	$dbh_sSQL = $dbh->prepare($sSQL);
 	$dbh_sSQL->execute();
 
-	if ($isuser = $dbh_sSQL->fetch(PDO::FETCH_OBJ)) {
+	if ($dbh_sSQL->rowCount() == 1) {
+		$isuser = $dbh_sSQL->fetch(PDO::FETCH_OBJ);
 		$current_y = $kas_framework->getValue('current_year', 'tbl_config', 'id', '1');
 		$current_t = $kas_framework->getValue('grade_terms_id', 'grade_terms', 'current', '1'); 
 
@@ -47,13 +49,13 @@
 		$redirurl="index?action=errlog&message= Sorry, the portal is not ready yet, let admin log in and set it";// the portal is not launched yet
 	} else {
 	
-			  set_session("UserType", "X");
-			  set_session("UserID", $user_id);
-			  set_session("CurrentYear", $current_y);
-			  set_session("CurrentTerm", $current_t);
+		set_session("UserType", "X");
+		set_session("UserID", $user_id);
+		set_session("CurrentYear", $current_y);
+		set_session("CurrentTerm", $current_t);
 
-			 // set_session("YearName", $year_name);// are we using this
-              $_SESSION['LAST_ACTIVITY'] = time(); 
+		// set_session("YearName", $year_name);// are we using this
+		$_SESSION['LAST_ACTIVITY'] = time(); 
 
 
 	$redirurl="cpanel/home";// new admin folder
