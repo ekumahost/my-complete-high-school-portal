@@ -3,5 +3,3 @@
 
 SET GLOBAL sql_mode='';
 SET GLOBAL sql_mode='NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
-ALTER TABLE `staff` CHANGE `staff_status` `staff_status` INT(2) NOT NULL DEFAULT '0' COMMENT '0= not aproved, 1 = approved, 2 = Retired';
-ALTER TABLE `std_report_cards` CHANGE `c_form_teacher` `c_form_teacher` VARCHAR(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '-', CHANGE `c_principal` `c_principal` VARCHAR(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '-';
