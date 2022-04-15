@@ -13,11 +13,11 @@
 				
 */
 
-declare(strict_types=1);
 require 'private-config.php';
 require 'AntiXSS.php';
 require 'csrf.class.php';
 require 'constants.php';
+
 
 // Tell PHP that we're using UTF-8 strings until the end of the script
 mb_internal_encoding('UTF-8');
@@ -97,7 +97,7 @@ class kas_framework extends configurations {
 		return (strlen(trim($str)) <=> 0) === 0 ? true: false;
 	} 
 	
-	public function getValue(string $field, string $table, string $priKeyField, $priKeyValue) {
+	public function getValue($field, $table, $priKeyField, $priKeyValue) {
 		global $dbh;	
 		try {
 			$db_handle = $dbh->prepare("SELECT * FROM {$table} WHERE {$priKeyField} = ? LIMIT 1");
@@ -195,7 +195,7 @@ class kas_framework extends configurations {
 	}
 
 	
-	public function countAll(string $table) : string {
+	public function countAll(string $table) {
 		global $dbh;
 		if (USE_MEMCACHE) {
 			if (($mc = mc_get('count-' . $table)) !== false)
@@ -210,7 +210,7 @@ class kas_framework extends configurations {
 		return $cnt;
 	}
 	
-	public function countRestrict1(string $table, string $datafieldname, $value) : string {
+	public function countRestrict1(string $table, string $datafieldname, $value) {
 		global $dbh;
 		$db_handle = $dbh->prepare("SELECT COUNT(*) AS cnt FROM {$table} WHERE `$datafieldname` = ?");
 		$db_handle->execute([$value]);
@@ -220,7 +220,7 @@ class kas_framework extends configurations {
 		return $cnt;
 	}
 	
-	public function countRestrict2(string $table, string $datafield1, $val1, string $datafield2, $val2) : string {
+	public function countRestrict2(string $table, string $datafield1, $val1, string $datafield2, $val2) {
 		global $dbh;
 		$db_handle = $dbh->prepare("SELECT COUNT(*) AS cnt FROM $table WHERE `$datafield1` = ? AND `$datafield2` = ?");
 		$db_handle->execute([$val1, $val2]);
@@ -230,7 +230,7 @@ class kas_framework extends configurations {
 		return $cnt;
 	}
 	
-	public function countRestrict3(string $table, string $datafield1, $val1, string $datafield2, $val2, string $datafield3, $val3) : string {
+	public function countRestrict3(string $table, string $datafield1, $val1, string $datafield2, $val2, string $datafield3, $val3) {
 		global $dbh;
 		$db_handle = $dbh->prepare("SELECT COUNT(*) AS cnt FROM {$table} WHERE `$datafield1` = ? AND `$datafield2` = ? AND `$datafield3` = ?");
 		$db_handle->execute([$val1, $val2, $val3]);
@@ -266,12 +266,12 @@ class kas_framework extends configurations {
 		</script>';	
 	}
 	
-	public function saltifyID($string): string {
-		return urlencode(base64_encode($string));
+	public function saltifyID($string) {
+		return ($string);
 	}
 	
-	public function unsaltifyID($string): string {
-		return base64_decode(urldecode($string));
+	public function unsaltifyID($string) {
+		return ($string);
 	}
 	
 	public function generateRandomString($length=16) {
@@ -591,6 +591,37 @@ class kas_framework extends configurations {
 		if ($shape == 'circle') { $plug = 'class="img-circle"';	} else if ($shape == 'square') { $plug = ''; }
 		$img_location = $this->school_utility_image('logo');
 		print '<img src="'.$img_location.'" width="'.$width.'" '.$plug.' style="margin:'.$margin.'" />';
+	}
+
+	public function int_to_month($monthNo) {
+		switch ($monthNo) {
+			case 1:
+				return "January"; break; 
+			case 2:
+				return "February"; break; 
+			case 3:
+				return "March"; break; 
+			case 4:
+				return "April"; break; 
+			case 5:
+				return "May"; break; 
+			case 6:
+				return "June"; break; 
+			case 7:
+				return "July"; break; 
+			case 8:
+				return "August"; break; 
+			case 9: 
+				return "September"; break;
+			case 10:
+				return "October"; break;
+			case 11:
+				return "November"; break;
+			case 12:
+				return "December"; break;
+			default:
+				return "No Month Selected";
+		}
 	}
 
 	//************************************ DO NOT UPDATE FUNCTIONS ************************************** */
