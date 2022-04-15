@@ -61,10 +61,15 @@ OR USDT (ERC20)
 For Installation and use of this version, please contact Kastech Network Limited or Visit https://hisp.kastechnet.com/v3 for more Information.
 
 To update the current version, do the following update:
+
     1. /php.files/classes/kas-framework.php
+    
     2. /php.files/classes/encoder.php
+    
     3. /control/cpanel/switch_session.php
+    
     4. control/cpanel/installer.php
+    
 This will fix the switch forward issues. 
 Feel free to request for the demo of the new version v3 at any time.
 
