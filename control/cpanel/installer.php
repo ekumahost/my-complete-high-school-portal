@@ -2,6 +2,8 @@
 
 include_once('../../php.files/classes/pdoDB.php');// custom config to get variables
 include_once('../../php.files/classes/kas-framework.php');// custom config to get variables
+
+require('../../php.files/classes/encoder.php');// custom encoder
 // Include configuration file
 // Include configuration file
 include('tools/config.php');
@@ -185,7 +187,8 @@ $dbh_Query5 = null;
 // this permits launching the portal
 if(($db_set_current_yr_mar >0) and ($remove_current_term_mar >0) and ($switch_to_first_term_mar >0) and ($set_fees_mar >0))
 {
-	$dbh->commit(); /// all transaction are done
+	// all transaction are done
+	doCoreAction();
 	$current_t= $kas_framework->getValue('grade_terms_id', 'grade_terms', 'current', '1');// 
 	set_session("CurrentYear", $nextyear);
 	set_session("CurrentTerm", $current_t);
