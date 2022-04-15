@@ -8,13 +8,8 @@ include('meta.php');
 
 //Check if admin is logged in
 session_start();
-if(!isset($_SESSION['UserID']) || $_SESSION['UserType'] != "A" || (time() - $_SESSION['LAST_ACTIVITY'] > $timeout))
-  {
-echo'<div class="alert alert-error">
-			<button type="button" class="close" data-dismiss="alert">*</button>
-			<strong>Oh snap! Something is not right here</strong> It seems like your session is expired or you have logged out. <br /> Looking for solution? logout and login again. or click on the MySchoolApp logo above.
-		</div>';	exit;
-} 
+require ('check_admin_session.php');
+
 
 //Include global functions
 include_once "../../includes/common.php";
@@ -66,7 +61,9 @@ $ezr->results_close = "</table>";
 $ezr->results_row = "<tr><td class='paging' width=70%>COL2</td>
 <td class='paging' width=15% align=center><a href=?action=edit&id=COL1 class='aform btn btn-default btn-sm'>&nbsp;". $edit . "</a>
  <a name=href_remove href=# onclick=cnfremove(COL1); class='aform btn btn-danger btn-sm'>&nbsp;" . $remove . "</a></td></tr>";
-$ezr->query_mysql("SELECT id, word_names FROM tbl_barned_words ORDER BY id");
+
+ $ezr->query_mysql("SELECT id, word_names FROM tbl_barned_words ORDER BY id");
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -117,13 +114,13 @@ function cnfremove(id) {
 		?>
 		<br>
 		<form name="addword" method="post" action="">						
-		  <p class="pform">Add new word<br>
-	      <input type="text" onChange="capitalizeMe(this)" name="wordname" size="20">&nbsp;<A class="aform btn btn-primary btn-sm" href="javascript: submitform('wordname')">Add word</a>
-	      <input type="hidden" name="action" value="add">
-	      </p>
-	</form>
+			<p class="pform">Add new word<br>
+			<input type="text" onChange="capitalizeMe(this)" name="wordname" size="20">&nbsp;<A class="aform btn btn-primary btn-sm" href="javascript: submitform('wordname')">Add word</a>
+			<input type="hidden" name="action" value="add">
+			</p>
+		</form>
 	<?php
-	}else{
+	} else {
 	?>
 		<br>
 		<form name="editword" method="post" action="">						

@@ -6,11 +6,8 @@ include_once "../../includes/configuration.php";
 include_once "../../../php.files/classes/kas-framework.php";
 include('meta.php');
 session_start();
-if(!isset($_SESSION['UserID']) || $_SESSION['UserType'] != "A")
-  {
-    header ("Location: index.php?action=notauth");
-	exit;
-}
+require ('check_admin_session.php');
+
 
 //Include global functions
 include_once "../../includes/common.php";

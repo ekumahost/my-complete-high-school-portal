@@ -25,7 +25,7 @@ $title ="Upload badge";
 <center><table width="100%" border="0" style="box-shadow:10px 10px 60px #999">
   <tr>
     <th scope="col" align="left">&nbsp;&nbsp;&nbsp;Current Badge</th>
-    <th scope="col" align="right">Current Logo&nbsp;&nbsp;&nbsp;</th>
+    <th scope="col" align="right">Current Logo &nbsp;&nbsp;&nbsp;</th>
   </tr>
   <tr>
     <td><img id="badge" title="Badge" alt="Badge" src="../../../files/images/<?php echo $mybadge;?>" width="180px" /></td>

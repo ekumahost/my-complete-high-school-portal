@@ -8,11 +8,9 @@ include('meta.php');
 
 //Check if Admin is logged in, and his session has not time out
 session_start();
-if(!isset($_SESSION['UserID']) || $_SESSION['UserType'] != "A" || (time() - $_SESSION['LAST_ACTIVITY'] > $timeout))
-  {
-    header ("Location: index.php?action=notauth");
-	exit;
-}
+
+require ('check_admin_session.php');
+
 
 //Include global functions
 include_once "../../includes/common.php";

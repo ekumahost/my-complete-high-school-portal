@@ -8,14 +8,8 @@ include_once "../../../php.files/classes/kas-framework.php";
 include('meta.php');
 
 session_start();
-if(!isset($_SESSION['UserID']) || $_SESSION['UserType'] != "A" || (time() - $_SESSION['LAST_ACTIVITY'] > $timeout))
-  {
-echo'<div class="alert alert-error">
-			<button type="button" class="close" data-dismiss="alert">*</button>
-			<strong>Oh snap! Something is not right here</strong> It seems like your session is expired or you have logged out. <br /> Looking for solution? logout and login again. or click on the MySchoolApp logo above.
-		</div>';
-	exit;
-}
+require ('check_admin_session.php');
+
 
 //Include global functions
 include_once "../../includes/common.php";
@@ -70,7 +64,9 @@ $ezr->results_close = "</table>";
 $ezr->results_row = "<tr><td class='paging' width='70%'>COL2</td><td 
 class='paging' align=center><a href=admin_subjects.php?action=edit&id=COL1 class='aform btn btn-default btn-sm'>&nbsp;" . _ADMIN_SUBJECTS_EDIT . "</a>
 <a name=href_remove href=# onclick=cnfremove(COL1); class='aform btn btn-danger btn-sm'>&nbsp;" . _ADMIN_SUBJECTS_REMOVE . "</a></td></tr>";
+
 $ezr->query_mysql("SELECT grade_subject_id, grade_subject_desc FROM grade_subjects ORDER BY grade_subject_desc");
+
 ?>
 
 <!DOCTYPE html>

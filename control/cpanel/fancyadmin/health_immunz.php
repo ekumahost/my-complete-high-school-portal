@@ -7,15 +7,7 @@ include_once "../../../php.files/classes/kas-framework.php";
 include('meta.php');
 //Check if nurse is logged in
 session_start();
-if(!isset($_SESSION['UserID']) || $_SESSION['UserType'] != "N" && 
-$_SESSION['UserType'] != "A" || (time() - $_SESSION['LAST_ACTIVITY'] > $timeout))
-  {
-echo '<div class="alert alert-error">
-			<button type="button" class="close" data-dismiss="alert">*</button>
-			<strong>Oh snap! Something is not right here</strong> It seems like your session is expired or you have logged out. <br /> Looking for solution? logout and login again. or click on the MySchoolApp logo above.
-		</div>';	exit;
-}
-
+require ('check_admin_session.php');
 
 //Include global functions
 include_once "../../includes/common.php";

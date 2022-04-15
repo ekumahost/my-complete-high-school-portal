@@ -7,14 +7,7 @@ include_once "../../../php.files/classes/kas-framework.php";
 include('meta.php');
 
 session_start();
-if(!isset($_SESSION['UserID']) || $_SESSION['UserType'] != "A" || (time() - $_SESSION['LAST_ACTIVITY'] > $timeout))
-  {
-
-echo'<div class="alert alert-error">
-		<button type="button" class="close" data-dismiss="alert">*</button>
-		<strong>Oh snap! Something is not right here</strong> It seems like your session is expired or you have logged out. <br /> Looking for solution? logout and login again. or click on the MySchoolApp logo above.
-	</div>';	exit;
-}
+require ('check_admin_session.php');
 
 //Include global functions
 include_once "../../includes/common.php";
@@ -133,7 +126,8 @@ function cnfremove(id) {
 
 <div id="Content" class="mycontent" style="padding:10px; box-shadow:10px 10px 80px #CCC;">
 	<h1><?php echo _ADMIN_SCHOOL_YEARS_TITLE?></h1>
-	<br>
+	School Year reprensent Session. Eg, the Current Session may be <?php echo date('Y') .'/'. (date('Y') + 1) ?>
+	<br>	<br>
 	<?php
 	if ($action!="edit"){
 		//Dislay results with paging options
@@ -141,7 +135,7 @@ function cnfremove(id) {
 		?>
 		<br>
 		<form name="addyear" method="post" action="admin_school_years.php">						
-		  <p class="pform"><?php echo _ADMIN_SCHOOL_YEARS_ADD_NEW?><br>
+		  <p class="pform"><?php echo _ADMIN_SCHOOL_YEARS_ADD_NEW?> <br>
 	      <input type="text" onChange="capitalizeMe(this)" name="schoolyear" size="20">&nbsp;<A class="aform btn btn-primary btn-sm" href="javascript: submitform('schoolyear');"><?php echo _ADMIN_SCHOOL_YEARS_ADD?></a>
 	      <input type="hidden" name="action" value="add">
 	      </p>

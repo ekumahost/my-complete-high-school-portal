@@ -8,13 +8,7 @@ include('meta.php');
 
 //Check if admin is logged in
 session_start();
-if(!isset($_SESSION['UserID']) || $_SESSION['UserType'] != "A" || (time() - $_SESSION['LAST_ACTIVITY'] > $timeout))
-  {
-echo'<div class="alert alert-error">
-		<button type="button" class="close" data-dismiss="alert">*</button>
-		<strong>Oh snap! Something is not right here</strong> It seems like your session is expired or you have logged out. <br /> Looking for solution? logout and login again. or click on the MySchoolApp logo above.
-	</div>';	exit;
-}
+require ('check_admin_session.php');
 
 
 //Include global functions
@@ -72,6 +66,8 @@ switch ($action){
 			$dbh_sSQL = $dbh->prepare($sSQL); $dbh_sSQL->execute(); $dbh_sSQL = null;
 		}
 		break;
+	case "none":
+		break;
 };
 
 
@@ -81,7 +77,10 @@ $ezr->results_close = "</table>";
 $ezr->results_row = "<tr><td class='paging' width='70%'>COL2</td><td 
 class='paging' align='center'><a href='admin_terms.php?action=edit&id=COL1' class='aform btn btn-default btn-sm'>&nbsp;" . _ADMIN_TERMS_EDIT . "</a>
 <a name='href_remove' href='admin_terms.php?action=remove&id=COL1' class='aform btn btn-danger btn-sm'>&nbsp;" . _ADMIN_TERMS_REMOVE . "</a></td></tr>";
+
 $ezr->query_mysql("SELECT grade_terms_id, grade_terms_desc FROM grade_terms ORDER BY grade_terms_desc");
+
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -100,12 +99,12 @@ function submitform(fldName)
   if (t.value!="") 
     f.submit();
   else
-    alert("<?php echo _ADMIN_TERMS_ENTER_VALUE?>");
+    alert("<?php echo _ADMIN_TERMS_SURE ?>");
 }
 /* Javascript function to ask confirmation before removing record */
 function cnfremove(id) {
 	var answer;	
-	answer = window.confirm("<?php echo _ADMIN_TERMS_SURE?>");
+	answer = window.confirm("<?php echo _ADMIN_TERMS_SURE ?>");
 	if (answer == 1) {
 		var url;
 		url = "admin_terms.php?action=remove&id=" + id;
@@ -116,6 +115,7 @@ function cnfremove(id) {
 }
 
 </SCRIPT>
+
 <link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
 <script type="text/javascript" language="JavaScript" src="../sms.js"></script>
@@ -128,7 +128,7 @@ function cnfremove(id) {
 	<h1><?php echo _ADMIN_TERMS_TITLE?></h1>
 	<br>
 	<?php
-	if ($action!="edit"){
+	if ($action != "edit"){
 		//Dislay results with paging options
 		$ezr->display();
 		?>
@@ -141,22 +141,21 @@ function cnfremove(id) {
 	      </p>
 	    </form>
 	<?php
-	}else{
+	} else { 
 	?>
 		<br>
-		<form name="editethnicity" method="post" 
-action="admin_terms.php">						
+		<form name="editethnicity" method="post" action="admin_terms.php">						
 		  <p class="pform"><?php echo _ADMIN_TERMS_UPDATE_TERM?><br>
 	      <input type="text" onChange="capitalizeMe(this)" name="termname" size="20" value="<?php echo $term_desc; ?>">&nbsp;
 		  <A class="aform" href="javascript: submitform('termname');"><button type="submit" class="btn btn-primary">Update</button></a>
 	      <input type="hidden" name="action" value="update">
-		  <input type="hidden" name="id" value="<?php echo $term_id; 
-?>">
+		  <input type="hidden" name="id" value="<?php echo $term_id; ?>">
 	      </p>
 	    </form>
 	<?php
 	};
 	?>
+
 	<h4><font color="red"><?php echo $msgFormErr; ?></font></h4>
 </div>
 </body>

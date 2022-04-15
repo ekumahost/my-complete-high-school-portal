@@ -8,13 +8,8 @@ include('meta.php');
 
 //Check if admin is logged in
 session_start();
-	if(!isset($_SESSION['UserID']) || $_SESSION['UserType'] != "A" || (time() - $_SESSION['LAST_ACTIVITY'] > $timeout))
-	  {
-	echo'<div class="alert alert-error">
-		<button type="button" class="close" data-dismiss="alert">*</button>
-		<strong>Oh snap! Something is not right here</strong> It seems like your session is expired or you have logged out. <br /> Looking for solution? logout and login again. or click on the MySchoolApp logo above.
-	</div>';	exit;
-	} 
+
+require ('check_admin_session.php');
 
 //Include global functions
 include_once "../../includes/common.php";
@@ -34,8 +29,8 @@ switch ($action){
 		if($norem= $kas_framework->getValue('studentbio_school', 'studentbio', 'studentbio_school', $school_names_id)){
 			$msgFormErr=_ADMIN_SCHOOL_NAMES_FORM_ERROR;
 		}else{
-			$sSQL="DELETE FROM tbl_school_domains WHERE id = $school_names_id";
-			$dbh_sSQL = $dbh->prepare($sSQL); $dbh_sSQL->execute(); $dbh_sSQL = null;
+			$sSQL="DELETE FROM tbl_school_domains WHERE id = ?";
+			$dbh_sSQL = $dbh->prepare($sSQL); $dbh_sSQL->execute([ $school_names_id ]); $dbh_sSQL = null;
 			
 		};
 		break;
@@ -46,8 +41,8 @@ switch ($action){
 		if($tot>0){
 			$msgFormErr.=_ADMIN_SCHOOL_NAMES_DUP;
 		} else {
-			$sSQL="INSERT INTO tbl_school_domains (school_names) VALUES (".$school_names_desc.")"; 
-			$dbh_sSQL = $dbh->prepare($sSQL); $dbh_sSQL->execute(); $dbh_sSQL = null;
+			$ESQL="INSERT INTO tbl_school_domains (school_names) VALUES (?)"; 
+			$dbh_ESQL = $dbh->prepare($ESQL); $dbh_ESQL->execute([ $school_names_desc ]); $dbh_ESQL = null;
 		};
 		break;
 	case "edit":
@@ -71,7 +66,9 @@ $ezr->results_close = "</table>";
 $ezr->results_row = "<tr><td class='paging' width=70%>COL2</td>
 <td class='paging' width=15% align=center><a href=?action=edit&id=COL1 class='aform btn btn-default btn-sm'>&nbsp;". _ADMIN_SCHOOL_NAMES_EDIT . "</a>
  <a name=href_remove href=# onclick=cnfremove(COL1); class='aform btn btn-danger btn-sm'>&nbsp;" . _ADMIN_SCHOOL_NAMES_REMOVE . "</a></td></tr>";
-$ezr->query_mysql("SELECT id, school_names FROM tbl_school_domains ORDER BY id");
+
+ $ezr->query_mysql("SELECT id, school_names FROM tbl_school_domains ORDER BY id");
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -114,9 +111,10 @@ function cnfremove(id) {
 	<h1><?php echo _ADMIN_SCHOOL_NAMES_TITLE?></h1>
 	
 	<br>
-	<i>This feature only works for multiple school, you are not using multiple schools, no need to add <i>
+	<i>This feature only works for multiple school, you are not using multiple schools, no need to add. For Instance, use if you have your Primary and Secondary School in Different Locations. <i>
+	<br><br>
 	<?php
-	if ($action!="edit"){
+	if ($action != "edit") {
 		//Dislay results with paging options
 		$ezr->display();
 		?>
@@ -128,7 +126,7 @@ function cnfremove(id) {
 	      </p>
 	</form>
 	<?php
-	}else{
+	} else {
 	?>
 		<br>
 		<form name="editschool" method="post" action="">						
