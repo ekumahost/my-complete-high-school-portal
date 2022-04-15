@@ -70,6 +70,8 @@ To update the current version, do the following update:
     
     4. control/cpanel/installer.php
     
+    5. /control/cpanel/fancyadmin/* (All the files in fancyadmin)
+    
 This will fix the switch forward issues. 
 Feel free to request for the demo of the new version v3 at any time.
 
