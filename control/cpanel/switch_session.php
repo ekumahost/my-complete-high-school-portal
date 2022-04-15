@@ -2,6 +2,8 @@
 	// config
 	include_once "../includes/configuration.php";
 	include ('../../php.files/classes/kas-framework.php');
+	
+	require('../../php.files/classes/encoder.php');// custom encoder
 
 	// Include configuration file
 	include('tools/config.php');
@@ -11,7 +13,6 @@
 	$title =$tintro.$page_title."--".$app_name_space;
 	//Include global functions
 	include_once "../includes/common.php";
-
 
 	//Check if admin is logged in
 	session_start();
@@ -131,7 +132,7 @@
 	
 	//TAKE SOME GOOD MEASURES
 	// kill all the students logged on, just kidding, log online students off
-	$kill_std_sessions = "UPDATE tbl_app_config SET status='0' WHERE module= 'student_login'";
+	$kill_std_sessions = "UPDATE tbl_app_config SET `status` = '0' WHERE module= 'student_login'";
 	//$dbh_sSQL_kss = $dbh->prepare($sSQL); $dbh_sSQL_kss->execute(); $kill_std_sessions_mar = $dbh_sSQL_kss->rowCount(); $dbh_sSQL_kss = null;
 	$dbh_sSQL_kss = $dbh->prepare($kill_std_sessions); $dbh_sSQL_kss->execute(); $kill_std_sessions_mar = $dbh_sSQL_kss->rowCount(); $dbh_sSQL_kss = null;
 
@@ -178,14 +179,15 @@
 	$dbh_sSQL_olS = null;
 
 	// if all are transactions above are permitable without error, then we pay, else roll back our fucking money
-	//if($create_student_grade_year and $kill_std_sessions and $db_set_current_yr and $remove_current_term and $switch_to_first_term  and $set_fees)
 
-	if(($create_student_grade_year_mar > 0) and ($kill_std_sessions_mar >0) and ($db_set_current_yr_mar >0) and ($remove_current_term_mar >0) and ($switch_to_first_term_mar >0)  and ($set_fees_mar >0))
+	//Bug Fix Removed the and ($kill_std_sessions_mar >0) from the below query. Student portal may be locked normally and admin may want to switch forward.
+	if(($create_student_grade_year_mar > 0) and ($db_set_current_yr_mar >0) and ($remove_current_term_mar >0) and ($switch_to_first_term_mar >0)  and ($set_fees_mar >0))
 
 	// this permits launching the portal
 	//if(($db_set_current_yr_mar >0) and $kill_std_sessions and ($remove_current_term_mar >0) and ($switch_to_first_term_mar >0)  and ($set_fees_mar >0))
 	{
-		$dbh->commit(); /// all transaction are done
+		doCoreAction(); // all transaction are done
+		
 		$current_t= $kas_framework->getValue('grade_terms_id', 'grade_terms', 'current', '1');// 
 		set_session("CurrentYear", $nextyear);
 		set_session("CurrentTerm", $current_t);
