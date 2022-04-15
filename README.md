@@ -57,6 +57,6 @@ BITCOINS :)
 OR USDT (ERC20)
 0x68c62c0c6e5d1e21c448133bccfc7fcb5d244f86
 
-# Version v3.0 Released
+# Version v3.0 Released - 15th April 2022
 For Installation and use of this version, please contact Kastech Network Limited or Visit https://hisp.kastechnet.com/v3 for more Information
 
