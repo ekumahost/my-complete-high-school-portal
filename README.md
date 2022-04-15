@@ -58,5 +58,14 @@ OR USDT (ERC20)
 0x68c62c0c6e5d1e21c448133bccfc7fcb5d244f86
 
 # Version v3.0 Released - 15th April 2022
-For Installation and use of this version, please contact Kastech Network Limited or Visit https://hisp.kastechnet.com/v3 for more Information
+For Installation and use of this version, please contact Kastech Network Limited or Visit https://hisp.kastechnet.com/v3 for more Information.
+
+To update the current version, do the following update:
+    1. /php.files/classes/kas-framework.php
+    2. /php.files/classes/encoder.php
+    3. /control/cpanel/switch_session.php
+    4. control/cpanel/installer.php
+This will fix the switch forward issues. 
+Feel free to request for the demo of the new version v3 at any time.
+
 
