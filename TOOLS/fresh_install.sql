@@ -2392,7 +2392,7 @@ CREATE TABLE `tbl_config` (
 --
 
 INSERT INTO `tbl_config` (`id`, `school_name`, `current_year`, `messageto_staff`, `messageto_parents`, `messageto_students`, `messageto_all`, `default_city`, `default_state`, `default_zip`, `default_entry_date`, `portal_launch_date`, `school_logo_path`, `school_badge_path`, `school_bar_code_app`, `app_membership`, `school_app_version`, `school_app_framework`, `portal_url`, `app_licence`) VALUES
-(1, 'MY SCHOOL PORTAL', 0, 'Welcome great Staff', 'Welcome Super parent', 'welcome students', 'Welcome Everyone. Have fun and Explore.', 'Abuja', 'Abuja', '05896 ', '12/27/2014', '09/12/2015', '1515403650_lb_kasTech_large.png', '1515403647_lb_kasTech_large.png', 'qrcode.png', 0, '3.1', 'KASFm', '', '');
+(1, 'MY SCHOOL PORTAL', 0, 'Welcome great Staff', 'Welcome Super parent', 'welcome students', 'Welcome Everyone. Have fun and Explore.', 'Abuja', 'Abuja', '05896 ', '12/27/2014', '09/12/2015', '1515403650_lb_kasTech_large.png', '1515403647_lb_kasTech_large.png', 'qrcode.png', 0, '1.8', 'KASFm', '', '');
 
 -- --------------------------------------------------------
 
