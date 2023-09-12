@@ -53,7 +53,7 @@ please feel free to contact us for help and questions.. but please just be a php
 # Version v3.4 Released - 12th Sptember 2023
 For Installation and use of this version, please contact Kastech Network Limited or Visit https://hisp.kastechnet.com/v3 for more information.
 
-To update the current version v1.0 (if you are using this free version), update the following files from this repo to your current installation. :
+To update the current version v1.8 (if you are using this free version), update the following files from this repo to your current installation. :
     1. /php.files/classes/kas-framework.php
     2. /php.files/classes/encoder.php
     3. /control/cpanel/switch_session.php
@@ -62,6 +62,6 @@ To update the current version v1.0 (if you are using this free version), update 
     
 This will fix the switch-forward issues. 
 
-Feel free to request for the demo of the new version v3 at any time.
+Feel free to request for the demo of the new version v3.4 at any time.
 
 
