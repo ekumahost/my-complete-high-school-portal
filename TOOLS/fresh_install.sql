@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2022 at 11:13 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.25
+-- Generation Time: Sep 12, 2023 at 05:50 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `school_portal`
+-- Database: `hisp.com`
 --
 
 -- --------------------------------------------------------
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `attendance_codes` (
   `attendance_codes_id` int(8) UNSIGNED NOT NULL,
   `attendance_codes_desc` varchar(50) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `attendance_codes`
@@ -72,7 +72,7 @@ CREATE TABLE `attendance_history` (
   `attendance_history_code` int(8) UNSIGNED DEFAULT NULL,
   `attendance_history_notes` tinytext DEFAULT NULL,
   `attendance_history_user` int(8) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -86,7 +86,7 @@ CREATE TABLE `bank` (
   `name` varchar(50) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `location` char(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `bank`
@@ -126,7 +126,7 @@ CREATE TABLE `bulk_sms_store` (
   `others` varchar(50) NOT NULL,
   `message_body` text NOT NULL,
   `date_sent` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -145,7 +145,7 @@ CREATE TABLE `classnote` (
   `date_uploaded` varchar(30) NOT NULL,
   `classnote_file` text NOT NULL,
   `added_info` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -156,7 +156,7 @@ CREATE TABLE `classnote` (
 CREATE TABLE `cognitive_domain` (
   `id` int(3) NOT NULL,
   `value` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `cognitive_domain`
@@ -177,7 +177,7 @@ INSERT INTO `cognitive_domain` (`id`, `value`) VALUES
 CREATE TABLE `country` (
   `id` char(2) NOT NULL,
   `name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `country`
@@ -225,7 +225,7 @@ INSERT INTO `country` (`id`, `name`) VALUES
 ('CF', 'Central African Republic'),
 ('CG', 'Congo'),
 ('CH', 'Switzerland'),
-('CI', 'Cote D\'Ivoire'),
+('CI', 'Cote DIvoire'),
 ('CK', 'Cook Islands'),
 ('CL', 'Chile'),
 ('CM', 'Cameroon'),
@@ -450,7 +450,7 @@ CREATE TABLE `discipline_history` (
   `discipline_history_notes` tinytext DEFAULT NULL,
   `discipline_history_reporter` varchar(40) DEFAULT NULL,
   `discipline_history_user` int(10) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -461,7 +461,7 @@ CREATE TABLE `discipline_history` (
 CREATE TABLE `ethnicity` (
   `ethnicity_id` int(3) NOT NULL,
   `ethnicity_desc` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `ethnicity`
@@ -586,7 +586,7 @@ INSERT INTO `ethnicity` (`ethnicity_id`, `ethnicity_desc`) VALUES
 CREATE TABLE `exams_types` (
   `exams_types_id` int(11) UNSIGNED NOT NULL,
   `exams_types_desc` varchar(50) DEFAULT NULL COMMENT 'good boy'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `exams_types`
@@ -594,11 +594,11 @@ CREATE TABLE `exams_types` (
 
 INSERT INTO `exams_types` (`exams_types_id`, `exams_types_desc`) VALUES
 (1, 'Examination'),
-(7, 'JAMB'),
-(6, 'NECO'),
+(7, 'Project'),
 (2, 'Test 1'),
 (3, 'Test 2'),
-(5, 'WAEC');
+(5, 'Test 3'),
+(6, 'Test 4');
 
 -- --------------------------------------------------------
 
@@ -609,10 +609,10 @@ INSERT INTO `exams_types` (`exams_types_id`, `exams_types_desc`) VALUES
 CREATE TABLE `forum_answer` (
   `question_id` int(4) NOT NULL DEFAULT 0,
   `a_id` int(4) NOT NULL DEFAULT 0,
-  `a_name` varchar(65) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `a_email` varchar(65) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `a_answer` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `a_datetime` varchar(25) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '03/11/10 20:12:16'
+  `a_name` varchar(65) NOT NULL DEFAULT '',
+  `a_email` varchar(65) NOT NULL DEFAULT '',
+  `a_answer` longtext NOT NULL,
+  `a_datetime` varchar(25) NOT NULL DEFAULT '' COMMENT '03/11/10 20:12:16'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -623,11 +623,11 @@ CREATE TABLE `forum_answer` (
 
 CREATE TABLE `forum_question` (
   `id` int(4) NOT NULL,
-  `topic` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `detail` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(65) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `email` varchar(65) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `datetime` varchar(25) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `topic` varchar(255) NOT NULL DEFAULT '',
+  `detail` longtext NOT NULL,
+  `name` varchar(65) NOT NULL DEFAULT '',
+  `email` varchar(65) NOT NULL DEFAULT '',
+  `datetime` varchar(25) NOT NULL DEFAULT '',
   `view` int(4) NOT NULL DEFAULT 0,
   `reply` int(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -652,7 +652,7 @@ CREATE TABLE `general_mailing` (
   `attachment` text NOT NULL,
   `from_status` tinyint(1) NOT NULL,
   `to_status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -663,17 +663,15 @@ CREATE TABLE `general_mailing` (
 CREATE TABLE `generations` (
   `generations_id` int(8) UNSIGNED NOT NULL,
   `generations_desc` varchar(10) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `generations`
 --
 
 INSERT INTO `generations` (`generations_id`, `generations_desc`) VALUES
-(1, 'III'),
-(2, 'Sr.'),
-(3, 'Jr.'),
-(4, '--');
+(1, 'Junior'),
+(2, 'Senior');
 
 -- --------------------------------------------------------
 
@@ -686,7 +684,7 @@ CREATE TABLE `grades` (
   `grades_desc` varchar(20) NOT NULL DEFAULT '',
   `grades_active` tinyint(1) NOT NULL DEFAULT 1,
   `grades_domain` int(3) NOT NULL COMMENT 'connnect to grade_domain'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='static table';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci COMMENT='static table';
 
 --
 -- Dumping data for table `grades`
@@ -697,7 +695,7 @@ INSERT INTO `grades` (`grades_id`, `grades_desc`, `grades_active`, `grades_domai
 (2, 'NURSERY 1', 1, 2),
 (3, 'NURSERY 2', 1, 2),
 (4, 'NURSERY 3', 1, 2),
-(5, 'PRIMARY 1 ', 1, 3),
+(5, 'GRADE 1 ', 1, 3),
 (6, 'GRADE 2', 1, 3),
 (7, 'GRADE 3', 1, 3),
 (8, 'GRADE 4', 1, 3),
@@ -719,19 +717,20 @@ INSERT INTO `grades` (`grades_id`, `grades_desc`, `grades_active`, `grades_domai
 CREATE TABLE `grades_domain` (
   `grades_domain_id` tinyint(1) NOT NULL,
   `grades_domain_desc` varchar(20) NOT NULL,
+  `term_result_fee` varchar(4) NOT NULL DEFAULT '0',
   `grades_domain_status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `grades_domain`
 --
 
-INSERT INTO `grades_domain` (`grades_domain_id`, `grades_domain_desc`, `grades_domain_status`) VALUES
-(4, 'Junior Secondary', 1),
-(2, 'Nursery', 1),
-(1, 'Pre Nursery', 1),
-(3, 'Primary', 1),
-(5, 'Senior Secondary', 1);
+INSERT INTO `grades_domain` (`grades_domain_id`, `grades_domain_desc`, `term_result_fee`, `grades_domain_status`) VALUES
+(4, 'Junior Secondary', '1500', 1),
+(2, 'Nursery', '1500', 1),
+(1, 'Pre Nursery', '1500', 1),
+(3, 'Primary', '1500', 1),
+(5, 'Senior Secondary', '1500', 1);
 
 -- --------------------------------------------------------
 
@@ -754,7 +753,7 @@ CREATE TABLE `grade_history_primary` (
   `aprove` int(1) NOT NULL COMMENT 'is it aproved by form master',
   `notes` varchar(50) NOT NULL,
   `user` int(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='In this table, grade_history_primary_user is the Teacher name.';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci COMMENT='In this table, grade_history_primary_user is the Teacher name.';
 
 -- --------------------------------------------------------
 
@@ -768,7 +767,7 @@ CREATE TABLE `grade_subjects` (
   `code` varchar(20) NOT NULL,
   `grade` int(3) NOT NULL,
   `describe` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='storing subject names';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci COMMENT='storing subject names';
 
 --
 -- Dumping data for table `grade_subjects`
@@ -813,7 +812,7 @@ CREATE TABLE `grade_terms` (
   `grade_terms_id` int(1) NOT NULL,
   `grade_terms_desc` varchar(40) NOT NULL DEFAULT '',
   `current` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `grade_terms`
@@ -838,7 +837,7 @@ CREATE TABLE `grade_terms_days` (
   `grade_terms_days_no_of_days` int(5) NOT NULL,
   `resumption` varchar(10) NOT NULL,
   `vacation` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -849,7 +848,7 @@ CREATE TABLE `grade_terms_days` (
 CREATE TABLE `health_allergy` (
   `health_allergy_id` int(8) UNSIGNED NOT NULL,
   `health_allergy_desc` varchar(60) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `health_allergy`
@@ -889,7 +888,7 @@ CREATE TABLE `health_allergy_history` (
   `health_allergy_history_date` varchar(30) DEFAULT '0000-00-00',
   `health_allergy_history_notes` varchar(100) DEFAULT NULL,
   `health_allergy_history_user` int(8) UNSIGNED NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -900,7 +899,7 @@ CREATE TABLE `health_allergy_history` (
 CREATE TABLE `health_codes` (
   `health_codes_id` int(8) UNSIGNED NOT NULL,
   `health_codes_desc` varchar(60) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `health_codes`
@@ -972,7 +971,7 @@ CREATE TABLE `health_history` (
   `health_history_date` varchar(30) DEFAULT NULL,
   `health_history_notes` text DEFAULT NULL,
   `health_history_user` varchar(30) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -983,7 +982,7 @@ CREATE TABLE `health_history` (
 CREATE TABLE `health_immunz` (
   `health_immunz_id` int(8) UNSIGNED NOT NULL,
   `health_immunz_desc` varchar(60) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `health_immunz`
@@ -1011,7 +1010,7 @@ CREATE TABLE `health_immunz_history` (
   `health_immunz_history_date` varchar(30) DEFAULT '0000-00-00',
   `health_immunz_history_notes` varchar(100) DEFAULT NULL,
   `health_immunz_history_user` int(8) UNSIGNED NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1022,7 +1021,7 @@ CREATE TABLE `health_immunz_history` (
 CREATE TABLE `health_medicine` (
   `health_medicine_id` int(8) UNSIGNED NOT NULL,
   `health_medicine_desc` varchar(60) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `health_medicine`
@@ -1084,7 +1083,7 @@ CREATE TABLE `homework` (
   `homework_file` text NOT NULL,
   `instruction` varchar(200) NOT NULL,
   `notepad_text` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1103,7 +1102,7 @@ CREATE TABLE `hostels` (
   `hostel_image_url` varchar(50) NOT NULL COMMENT 'uploaded by admin, stored in /files/images.. if empty use /hostels.png',
   `hostel_grade` int(11) NOT NULL DEFAULT 0 COMMENT 'which grade can use this hostel',
   `ability_type` int(11) NOT NULL DEFAULT 1 COMMENT 'from hostels-ability_types.id showing if hostel is for disabled or not. note rooms ability type overrides this'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1120,7 +1119,7 @@ CREATE TABLE `hostels_allocation` (
   `status` int(11) NOT NULL DEFAULT 1 COMMENT '1 active, admin may decide to suspend room after allocation',
   `paid` int(1) NOT NULL DEFAULT 0 COMMENT '1 means the student has paid: when a student apply, student is updated, if he fail to pay after three days, colum is deleted by crone job',
   `date_pd` varchar(20) NOT NULL COMMENT 'payment date, seen as date by which student enters the room'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='this table will be used to know list of available rooms, if std=1 its asigned';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci COMMENT='this table will be used to know list of available rooms, if std=1 its asigned';
 
 -- --------------------------------------------------------
 
@@ -1142,7 +1141,7 @@ CREATE TABLE `hostels_bed_space` (
   `type` int(11) NOT NULL DEFAULT 1 COMMENT 'from hostels_type 1 means normal',
   `override_ability` int(11) NOT NULL DEFAULT 1 COMMENT 'from hostel_ability',
   `asign` int(1) NOT NULL DEFAULT 0 COMMENT '1 means space is asigned, not important, you can know asssigned rooms from hostel allocation table, this one is just for ease of action. update when you asign '
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1156,7 +1155,7 @@ CREATE TABLE `hostels_fees` (
   `term` int(11) NOT NULL,
   `hostel` int(11) NOT NULL,
   `fee` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1167,7 +1166,7 @@ CREATE TABLE `hostels_fees` (
 CREATE TABLE `hostels_tbl_ability` (
   `id` int(11) NOT NULL,
   `description` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='static table';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci COMMENT='static table';
 
 -- --------------------------------------------------------
 
@@ -1178,7 +1177,7 @@ CREATE TABLE `hostels_tbl_ability` (
 CREATE TABLE `hostels_tbl_series` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='static table';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci COMMENT='static table';
 
 -- --------------------------------------------------------
 
@@ -1189,7 +1188,7 @@ CREATE TABLE `hostels_tbl_series` (
 CREATE TABLE `hostels_tbl_types` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `hostels_tbl_types`
@@ -1209,7 +1208,7 @@ INSERT INTO `hostels_tbl_types` (`id`, `name`) VALUES
 CREATE TABLE `infraction_codes` (
   `infraction_codes_id` int(8) UNSIGNED NOT NULL,
   `infraction_codes_desc` varchar(30) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `infraction_codes`
@@ -1251,7 +1250,7 @@ CREATE TABLE `media_codes` (
   `media_codes_desc` varchar(50) NOT NULL,
   `id1` varchar(20) NOT NULL,
   `id2` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `media_codes`
@@ -1280,7 +1279,7 @@ CREATE TABLE `media_history` (
   `media_history_borrower_type` varchar(9) DEFAULT NULL,
   `media_history_action` varchar(50) DEFAULT NULL,
   `media_history_user` int(8) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1293,7 +1292,7 @@ CREATE TABLE `parent_to_kids` (
   `parent_id` int(8) NOT NULL DEFAULT 0,
   `student_id` int(8) NOT NULL DEFAULT 0,
   `confirmation` tinyint(1) NOT NULL COMMENT '0 = requested by parent, 1=approved by admin, 2=parent deleted the child'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1314,7 +1313,7 @@ CREATE TABLE `payment_receipts` (
   `qty` tinyint(1) NOT NULL,
   `tution_paid_date` varchar(30) NOT NULL,
   `cleared` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1332,7 +1331,7 @@ CREATE TABLE `payment_recharge_receipts` (
   `tution_recharge_terms` tinyint(1) NOT NULL,
   `recharge_means` varchar(30) NOT NULL,
   `tution_recharge_date` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1344,12 +1343,12 @@ CREATE TABLE `reg_pins` (
   `id` bigint(20) NOT NULL,
   `codec` varchar(14) NOT NULL,
   `sn` varchar(50) NOT NULL,
-  `used_by` int(8) NOT NULL DEFAULT 0,
+  `used_by` int(8) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 0,
   `amount` int(8) NOT NULL,
   `description` varchar(70) NOT NULL,
   `creation` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1366,7 +1365,7 @@ CREATE TABLE `reg_pins_old` (
   `description` varchar(70) NOT NULL,
   `amount` int(11) NOT NULL,
   `creation` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1378,7 +1377,7 @@ CREATE TABLE `relations_codes` (
   `relation_codes_id` int(8) UNSIGNED NOT NULL,
   `relation_codes_desc` varchar(30) DEFAULT NULL,
   `relation_codes_unique` tinyint(1) UNSIGNED DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `relations_codes`
@@ -1411,6 +1410,23 @@ INSERT INTO `relations_codes` (`relation_codes_id`, `relation_codes_desc`, `rela
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `result_check_pins`
+--
+
+CREATE TABLE `result_check_pins` (
+  `id` int(10) NOT NULL,
+  `codec` varchar(50) NOT NULL,
+  `sn` varchar(50) NOT NULL,
+  `description` varchar(50) NOT NULL,
+  `amount` int(8) NOT NULL,
+  `creation` date NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `used_by` int(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `school_calendar`
 --
 
@@ -1420,7 +1436,7 @@ CREATE TABLE `school_calendar` (
   `start_date` varchar(35) NOT NULL,
   `end_date` varchar(35) NOT NULL,
   `event_color` varchar(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1432,7 +1448,7 @@ CREATE TABLE `school_class_periods` (
   `id` int(4) NOT NULL,
   `periods` varchar(30) NOT NULL,
   `desc` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `school_class_periods`
@@ -1465,7 +1481,7 @@ CREATE TABLE `school_fees` (
   `creator` varchar(40) NOT NULL,
   `comment` text NOT NULL,
   `active` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1484,7 +1500,7 @@ CREATE TABLE `school_fees_default` (
   `creator` varchar(40) NOT NULL,
   `comment` text NOT NULL,
   `active` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `school_fees_default`
@@ -1523,7 +1539,7 @@ INSERT INTO `school_fees_default` (`id`, `component`, `grades`, `grades_term`, `
 (39, 'total', 5, 3, 1, 415000, '0000-00-00', 'Principal', 'Approved', 1),
 (40, 'total', 4, 1, 1, 370000, '0000-00-00', 'Principal', 'Approved', 1),
 (41, 'total', 4, 2, 1, 370000, '0000-00-00', 'Principal', 'Approved', 1),
-(42, 'total', 4, 3, 1, 370000, '0000-00-00', 'Principal', 'Approved', 1),
+(42, 'total', 4, 3, 1, 360000, '0000-00-00', 'Principal', 'Approved', 1),
 (43, 'total', 3, 1, 1, 360000, '0000-00-00', 'Principal', 'Approved', 1),
 (44, 'total', 3, 2, 1, 360000, '0000-00-00', 'Principal', 'Approved', 1),
 (45, 'total', 3, 3, 1, 360000, '0000-00-00', 'Principal', 'Approved', 1),
@@ -1688,7 +1704,7 @@ INSERT INTO `school_fees_default` (`id`, `component`, `grades`, `grades_term`, `
 (204, 'Library', 4, 1, 1, 25000, '0000-00-00', 'Principal', 'Approved', 1),
 (205, 'Examination', 4, 1, 1, 60000, '0000-00-00', 'Principal', 'Approved', 1),
 (206, 'Tuition', 4, 1, 1, 140000, '0000-00-00', 'Principal', 'Approved', 1),
-(207, 'Health Care', 4, 2, 1, 20000, '0000-00-00', 'Principal', 'Approved', 1),
+(207, 'Health Care', 4, 2, 1, 40000, '0000-00-00', 'Principal', 'Approved', 1),
 (208, 'ICT', 4, 2, 1, 25000, '0000-00-00', 'Principal', 'Approved', 1),
 (209, 'Library', 4, 2, 1, 25000, '0000-00-00', 'Principal', 'Approved', 1),
 (210, 'Examination', 4, 2, 1, 60000, '0000-00-00', 'Principal', 'Approved', 1),
@@ -1697,7 +1713,7 @@ INSERT INTO `school_fees_default` (`id`, `component`, `grades`, `grades_term`, `
 (213, 'ICT', 4, 3, 1, 25000, '0000-00-00', 'Principal', 'Approved', 1),
 (214, 'Library', 4, 3, 1, 25000, '0000-00-00', 'Principal', 'Approved', 1),
 (215, 'Examination', 4, 3, 1, 60000, '0000-00-00', 'Principal', 'Approved', 1),
-(216, 'Tuition', 4, 3, 1, 140000, '0000-00-00', 'Principal', 'Approved', 1),
+(216, 'Tuition', 4, 3, 1, 190000, '0000-00-00', 'Principal', 'Approved', 1),
 (217, 'Health Care', 3, 1, 1, 20000, '0000-00-00', 'Principal', 'Approved', 1),
 (218, 'ICT', 3, 1, 1, 25000, '0000-00-00', 'Principal', 'Approved', 1),
 (219, 'Library', 3, 1, 1, 25000, '0000-00-00', 'Principal', 'Approved', 1),
@@ -1795,7 +1811,7 @@ CREATE TABLE `school_item_price` (
   `school_item_price` int(8) NOT NULL,
   `school_item_quantity_left` int(3) NOT NULL,
   `status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1807,7 +1823,14 @@ CREATE TABLE `school_rooms` (
   `school_rooms_id` int(4) UNSIGNED NOT NULL,
   `school_rooms_desc` varchar(35) DEFAULT NULL,
   `room_grade` int(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='every grade only had a hidden rooms, only add multiple rooms';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci COMMENT='every grade only had a hidden rooms, only add multiple rooms';
+
+--
+-- Dumping data for table `school_rooms`
+--
+
+INSERT INTO `school_rooms` (`school_rooms_id`, `school_rooms_desc`, `room_grade`) VALUES
+(1, 'Generic', 0);
 
 -- --------------------------------------------------------
 
@@ -1818,7 +1841,14 @@ CREATE TABLE `school_rooms` (
 CREATE TABLE `school_years` (
   `school_years_id` int(4) UNSIGNED NOT NULL,
   `school_years_desc` varchar(15) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `school_years`
+--
+
+INSERT INTO `school_years` (`school_years_id`, `school_years_desc`) VALUES
+(1, '2019/2020 ');
 
 -- --------------------------------------------------------
 
@@ -1835,7 +1865,7 @@ CREATE TABLE `speak` (
   `speak_note` text NOT NULL,
   `speak_term` tinyint(1) NOT NULL,
   `speak_session` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1878,7 +1908,7 @@ CREATE TABLE `staff` (
   `staff_kin_adress` varchar(100) NOT NULL,
   `staff_kin_relationship` int(11) NOT NULL COMMENT 'from relationship table',
   `staff_biography` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1893,7 +1923,7 @@ CREATE TABLE `staff_calendar` (
   `start_date` varchar(35) NOT NULL,
   `end_date` varchar(35) NOT NULL,
   `event_color` varchar(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1907,7 +1937,7 @@ CREATE TABLE `staff_notepad` (
   `title` varchar(50) NOT NULL,
   `note` text NOT NULL,
   `dateCreated` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1924,7 +1954,7 @@ CREATE TABLE `staff_post` (
   `post_date` varchar(30) NOT NULL,
   `views` int(4) NOT NULL DEFAULT 0,
   `liker_id` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1938,7 +1968,7 @@ CREATE TABLE `staff_post_reply` (
   `post_commenter_id` int(8) NOT NULL,
   `post_comment` text NOT NULL,
   `post_comment_date` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1955,7 +1985,7 @@ CREATE TABLE `staff_role` (
   `health` tinyint(1) NOT NULL DEFAULT 0,
   `receipt` tinyint(1) NOT NULL DEFAULT 0,
   `timetable` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1977,7 +2007,7 @@ CREATE TABLE `std_report_cards` (
   `cog_2` int(3) NOT NULL DEFAULT 0,
   `cog_3` int(3) NOT NULL DEFAULT 0,
   `cog_4` int(3) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2023,7 +2053,7 @@ CREATE TABLE `studentbio` (
   `std_bio_phone` varchar(15) NOT NULL,
   `std_bio_living_with_parent` tinyint(1) NOT NULL DEFAULT 1,
   `admission_badge` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2038,7 +2068,7 @@ CREATE TABLE `student_calendar` (
   `start_date` varchar(35) NOT NULL,
   `end_date` varchar(35) NOT NULL,
   `event_color` varchar(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2065,7 +2095,7 @@ CREATE TABLE `student_contact` (
   `studentcontact_relationship` smallint(5) UNSIGNED DEFAULT NULL,
   `studentcontact_year` int(3) NOT NULL DEFAULT 0,
   `studentcontact_primary` int(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2078,8 +2108,8 @@ CREATE TABLE `student_grade_year` (
   `student_grade_year_student` int(8) DEFAULT NULL,
   `student_grade_year_year` int(3) UNSIGNED DEFAULT NULL,
   `student_grade_year_grade` int(3) UNSIGNED DEFAULT NULL,
-  `student_grade_year_class_room` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `student_grade_year_class_room` int(2) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2093,7 +2123,7 @@ CREATE TABLE `student_notepad` (
   `title` varchar(50) NOT NULL,
   `note` text NOT NULL,
   `dateCreated` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2107,7 +2137,7 @@ CREATE TABLE `student_office` (
   `office` int(11) NOT NULL COMMENT 'using tbl_std_office table',
   `session` int(3) NOT NULL,
   `comment` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2134,7 +2164,7 @@ CREATE TABLE `student_parents` (
   `student_parents_country` varchar(5) NOT NULL,
   `student_parents_school` tinyint(1) NOT NULL,
   `student_parents_status` int(3) NOT NULL DEFAULT 0 COMMENT '1= verified by admin, 0 =pending, 2= no kid in school'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2151,7 +2181,7 @@ CREATE TABLE `student_post` (
   `post_date` varchar(30) NOT NULL,
   `views` int(4) NOT NULL DEFAULT 0,
   `liker_id` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2165,7 +2195,7 @@ CREATE TABLE `student_post_reply` (
   `post_commenter_id` int(8) NOT NULL,
   `post_comment` text NOT NULL,
   `post_comment_date` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2179,7 +2209,7 @@ CREATE TABLE `student_wallet` (
   `balance` int(8) NOT NULL,
   `date_last_used` varchar(30) NOT NULL,
   `status` int(1) NOT NULL DEFAULT 1 COMMENT 'for freezing the wallet, 0 means freezed'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2195,8 +2225,8 @@ CREATE TABLE `student_wallet_pins` (
   `amount` int(8) NOT NULL,
   `creation` date NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 0,
-  `used_by` int(8) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `used_by` int(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2213,7 +2243,7 @@ CREATE TABLE `tbl_admission` (
   `interview_time` varchar(20) NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT 1,
   `instruction` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2224,7 +2254,7 @@ CREATE TABLE `tbl_admission` (
 CREATE TABLE `tbl_admit_code` (
   `id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_admit_code`
@@ -2257,31 +2287,31 @@ CREATE TABLE `tbl_app_config` (
   `api_user` varchar(50) NOT NULL COMMENT 'same as api id',
   `api_pass` varchar(50) NOT NULL COMMENT 'same as api secret',
   `api_def` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_app_config`
 --
 
 INSERT INTO `tbl_app_config` (`id`, `module`, `type`, `description`, `detail`, `status`, `api_user`, `api_pass`, `api_def`) VALUES
-(1, 'student_registration', 'registration', 'Old Student Registration', 'Enabling this Will allow old students to Register ion the portal', 1, '', '', ''),
-(2, 'student_discussion', 'main', 'Student Discussions', 'When enables, students can post and chat with themselves', 1, '', '', ''),
-(3, 'student_login', 'login', 'Student Login', 'When Enabled, students will be allowed to log in', 1, '', '', ''),
-(4, 'staff_registration', 'registration', 'Staff Registration', 'When enabled, new Staff can register him or herself', 1, '', '', ''),
-(5, 'staff_discussion', 'main', 'Staff Discussion', 'When enabled, staff will be allowed to post and chat with themselves', 1, '', '', ''),
-(6, 'staff_login', 'login', 'Staff Login', 'When enabled, staff will be able to log in', 1, '', '', ''),
-(8, 'paypal_api', 'main', 'Paypal API', '', 0, '', '', ''),
-(9, 'sms_api', 'api', 'Bulk SMS API', '<a href=\"http://sms.ifihear.com\">GET API </a>', 1, 'usernamw', 'password', 'sms.ifihear.com'),
-(10, 'google_map', 'api', 'Google Map API', 'API to show your location in your website, copy your map url and paste it inside definitions', 1, '', '', 'http://'),
-(11, 'smtp', 'api', 'SMTP Details', 'Simple Mail Transfer Protocol: enable you to send email: Instruction the API definition = SMTP serve', 1, '', '', ''),
-(13, 'facebook_app', 'api', 'Facebook APP', 'API definition is serving as the app url', 1, '', '', ''),
-(14, 'maintenance_mode', 'main', 'Maintenance Mode', 'When this is turned on, the portal puts itself to maintenence mode', 0, '', '', ''),
-(15, 'parent_login', 'login', 'Parent Login ', 'When this is enabled, parents can log in', 1, '', '', ''),
-(16, 'parent_registration', 'registration', 'Parent Registration', 'When this is Enabled, new Parents can register', 1, '', '', ''),
-(17, 'student_result_checking', 'main', 'Student Result Checking Portal Enable/Disable', 'if this is open, the students can check their result else they cant', 1, '', '', ''),
-(18, 'student_result_uploading', 'main', 'Staff Result Uploading', 'When enabled, Staff have the privilege to upload result', 1, '', '', ''),
-(19, 'result_note', 'main', 'Show result note', 'When enabled, note will show on result', 1, '', '', ''),
-(20, 'result_comment', 'main', 'Result Comment', 'when open, result comment will be shown', 1, '', '', '');
+(1, 'student_registration', 'registration', 'Old Student Registration', 'Enabling this Will allow old students to Register ion the portal', 0, '', '', ''),
+(2, 'student_discussion', 'main', 'Student Discussions', 'When enables, students can post and chat with themselves', 0, '', '', ''),
+(3, 'student_login', 'login', 'Student Login', 'When Enabled, students will be allowed to log in', 0, '', '', ''),
+(4, 'staff_registration', 'registration', 'Staff Registration', 'When enabled, new Staff can register him or herself', 0, '', '', ''),
+(5, 'staff_discussion', 'main', 'Staff Discussion', 'When enabled, staff will be allowed to post and chat with themselves', 0, '', '', ''),
+(6, 'staff_login', 'login', 'Staff Login', 'When enabled, staff will be able to log in', 0, '', '', ''),
+(7, 'pay_result_checking', 'main', 'Payment for Result Checking', 'When open, student will pay for result checking. Amount in tbl_grades_domain', 0, '', '', ''),
+(8, 'sms_api', 'api', 'Bulk SMS API', '<a href=\"http://sms.ifihear.com\" target=\"_new\"> Get API from SMS Server </a>', 0, 'demo123', 'demo123', 'sms.ifihear.com'),
+(9, 'maintenance_mode', 'main', 'Maintenance Mode', 'When this is turned on, the portal puts itself to maintenence mode', 0, '', '', ''),
+(10, 'parent_login', 'login', 'Parent Login ', 'When this is enabled, parents can log in', 0, '', '', ''),
+(11, 'parent_registration', 'registration', 'Parent Registration', 'When this is Enabled, new Parents can register', 0, '', '', ''),
+(12, 'student_result_checking', 'main', 'Student Result Checking', 'if this is open, the students can check their result else they cant', 0, '', '', ''),
+(13, 'student_result_uploading', 'main', 'Staff Result Uploading', 'When enabled, Staff have the privilege to upload result', 0, '', '', ''),
+(14, 'result_note', 'main', 'Show result note', 'When enabled, note will show on result', 0, '', '', ''),
+(15, 'result_comment', 'main', 'Result Comment', 'when open, result comment will be shown', 0, '', '', ''),
+(16, 'schoolfees_warning', 'main', 'School Fees Warning', 'When open, will warn and remind students and parents about terms school fees payment', 0, '', '', ''),
+(17, 'paystack', 'api', 'Paystack Gateway', '<a href=\"https://support.paystack.com/hc/en-us/articles/360011508199\" target=\"_new\"> Get API Key and SECRET from Paystack </a>', 0, 'pk_test_0d2850c3c158383ab3b1a856903d3d44f731ec6a', 'sk_test_0e93ec2a72366c038694992417b6f2edf60fc422', 'paystack.com'),
+(18, 'student_pin_registration', 'main', 'Pin for Student Registration', 'This option allows pin for students registration.', 0, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -2295,19 +2325,19 @@ CREATE TABLE `tbl_automatics` (
   `value` varchar(50) NOT NULL,
   `string` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='defines automation in the portal';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci COMMENT='defines automation in the portal';
 
 --
 -- Dumping data for table `tbl_automatics`
 --
 
 INSERT INTO `tbl_automatics` (`id`, `autoid`, `value`, `string`, `status`) VALUES
-(1, 'principal_comment_f', 'Bad result', '', '1'),
+(1, 'principal_comment_f', 'Failed.', '', '1'),
 (2, 'principal_comment_e', 'Bad results', '', '1'),
-(3, 'principal_comment_d', 'Student needs extra help with homework.', '', ''),
-(4, 'principal_comment_c', 'Student needs extra help with homework.', '', ''),
-(5, 'principal_comment_b', 'Always does quality work.', '', ''),
-(6, 'principal_comment_a', 'A truly excellent student.', '', '');
+(3, 'principal_comment_d', 'Student needs to concentrate more on Studies.', '', '1'),
+(4, 'principal_comment_c', 'Fair Result. Student can do better.', '', '1'),
+(5, 'principal_comment_b', 'Excellent Result Keep it up.', '', '1'),
+(6, 'principal_comment_a', 'A truly Excellent Result.', '', '1');
 
 -- --------------------------------------------------------
 
@@ -2318,7 +2348,7 @@ INSERT INTO `tbl_automatics` (`id`, `autoid`, `value`, `string`, `status`) VALUE
 CREATE TABLE `tbl_barned_words` (
   `id` int(11) NOT NULL,
   `word_names` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_barned_words`
@@ -2355,14 +2385,14 @@ CREATE TABLE `tbl_config` (
   `school_app_framework` varchar(20) NOT NULL,
   `portal_url` varchar(50) NOT NULL,
   `app_licence` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_config`
 --
 
 INSERT INTO `tbl_config` (`id`, `school_name`, `current_year`, `messageto_staff`, `messageto_parents`, `messageto_students`, `messageto_all`, `default_city`, `default_state`, `default_zip`, `default_entry_date`, `portal_launch_date`, `school_logo_path`, `school_badge_path`, `school_bar_code_app`, `app_membership`, `school_app_version`, `school_app_framework`, `portal_url`, `app_licence`) VALUES
-(1, 'MY SCHOOL PORTAL', 0, 'Welcome great Staff', 'Welcome Super parent     ', 'welcome students', 'welcome all', 'Abuja ', 'Abuja', '05896 ', '12/27/2014', '09/12/2015', '1515403650_lb_kasTech_large.png', '1515403647_lb_kasTech_large.png', 'qrcode.png', 0, '1.8.0', 'p7', '', '');
+(1, 'MY SCHOOL PORTAL', 0, 'Welcome great Staff', 'Welcome Super parent', 'welcome students', 'Welcome Everyone. Have fun and Explore.', 'Abuja', 'Abuja', '05896 ', '12/27/2014', '09/12/2015', '1515403650_lb_kasTech_large.png', '1515403647_lb_kasTech_large.png', 'qrcode.png', 0, '3.1', 'KASFm', '', '');
 
 -- --------------------------------------------------------
 
@@ -2373,7 +2403,7 @@ INSERT INTO `tbl_config` (`id`, `school_name`, `current_year`, `messageto_staff`
 CREATE TABLE `tbl_days` (
   `days_id` tinyint(1) UNSIGNED NOT NULL,
   `days_desc` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_days`
@@ -2391,33 +2421,6 @@ INSERT INTO `tbl_days` (`days_id`, `days_desc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_grade_domains`
---
-
-CREATE TABLE `tbl_grade_domains` (
-  `id` tinyint(1) UNSIGNED NOT NULL,
-  `school_names` varchar(100) DEFAULT NULL,
-  `status` tinyint(1) NOT NULL,
-  `school_logo_path` varchar(50) NOT NULL COMMENT '/files/images',
-  `school_badge_path` varchar(50) NOT NULL COMMENT '/files/images',
-  `address` text NOT NULL,
-  `term_result_fee` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_grade_domains`
---
-
-INSERT INTO `tbl_grade_domains` (`id`, `school_names`, `status`, `school_logo_path`, `school_badge_path`, `address`, `term_result_fee`) VALUES
-(1, 'Pre-nursery School', 0, 'terans.png', 'nsbadge.png', 'First Building', 0),
-(2, 'Nursery School', 0, 'terans.png', 'nsbadge.png', 'First Building', 0),
-(3, 'Primary School', 0, 'teraps.png', 'psbadge.png', 'First Floor', 0),
-(4, 'Junior Secondary School', 0, 'terajss.png', 'jssbadge.png', 'Junior Block', 0),
-(5, 'Senior Secondary School', 0, 'terasss.png', 'ssbadge.png', 'Main Building', 0);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_portal_emails`
 --
 
@@ -2430,7 +2433,7 @@ CREATE TABLE `tbl_portal_emails` (
   `message` text NOT NULL,
   `date` varchar(20) NOT NULL,
   `status` int(2) NOT NULL COMMENT '1=read'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2444,7 +2447,16 @@ CREATE TABLE `tbl_salaries` (
   `amount` int(200) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `code` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tbl_salaries`
+--
+
+INSERT INTO `tbl_salaries` (`id`, `staff_type`, `amount`, `status`, `code`) VALUES
+(1, 'Basic Staff', 50000, 1, 'A500B'),
+(2, 'Advanced Staff', 90000, 1, 'C900A'),
+(3, 'Professional Staff', 120000, 1, 'D120A');
 
 -- --------------------------------------------------------
 
@@ -2459,7 +2471,7 @@ CREATE TABLE `tbl_school_domains` (
   `school_logo_path` varchar(50) NOT NULL COMMENT '/files/images',
   `school_badge_path` varchar(50) NOT NULL COMMENT '/files/images',
   `address` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2478,7 +2490,7 @@ CREATE TABLE `tbl_school_profile` (
   `latitude` varchar(50) NOT NULL,
   `longitude` varchar(50) NOT NULL,
   `country` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_school_profile`
@@ -2497,7 +2509,7 @@ CREATE TABLE `tbl_states` (
   `state_code` char(10) NOT NULL DEFAULT '',
   `state_css` varchar(20) NOT NULL,
   `state_name` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_states`
@@ -2553,7 +2565,7 @@ INSERT INTO `tbl_states` (`state_code`, `state_css`, `state_name`) VALUES
 CREATE TABLE `tbl_std_denomination` (
   `id` int(2) NOT NULL,
   `deno` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_std_denomination`
@@ -2576,7 +2588,7 @@ CREATE TABLE `tbl_std_offices` (
   `office_id` int(200) NOT NULL,
   `office_desc` varchar(200) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_std_offices`
@@ -2599,7 +2611,7 @@ INSERT INTO `tbl_std_offices` (`office_id`, `office_desc`, `status`) VALUES
 CREATE TABLE `tbl_titles` (
   `title_id` int(2) UNSIGNED NOT NULL,
   `title_desc` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_titles`
@@ -2660,7 +2672,7 @@ CREATE TABLE `teacher_grade_year` (
   `grade_class` int(3) NOT NULL DEFAULT 0,
   `grade_class_room` int(3) NOT NULL DEFAULT 0,
   `main_teacher` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2679,9 +2691,8 @@ CREATE TABLE `teacher_schedule` (
   `teacher_schedule_days` int(3) NOT NULL DEFAULT 0,
   `teacher_schedule_grade` int(3) NOT NULL DEFAULT 0,
   `teacher_schedule_room` int(3) NOT NULL DEFAULT 0,
-  `teacher_schedule_type` int(2) NOT NULL DEFAULT 0,
-  `teacher_schedule_subject_grade` varchar(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `teacher_schedule_type` int(2) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2692,7 +2703,7 @@ CREATE TABLE `teacher_schedule` (
 CREATE TABLE `tuition_codes` (
   `tuition_codes_id` tinyint(2) NOT NULL,
   `tuition_codes_desc` varchar(25) NOT NULL COMMENT 'icons in /files/images/tuitioncode'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='under no circumstances will this table change, only rows add';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci COMMENT='under no circumstances will this table change, only rows add';
 
 --
 -- Dumping data for table `tuition_codes`
@@ -2720,7 +2731,16 @@ CREATE TABLE `tuition_codes_domain` (
   `tuition_codes_domain_id` int(8) NOT NULL,
   `tuition_codes_domain_name` varchar(30) NOT NULL,
   `tuition_codes_domain_location` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tuition_codes_domain`
+--
+
+INSERT INTO `tuition_codes_domain` (`tuition_codes_domain_id`, `tuition_codes_domain_name`, `tuition_codes_domain_location`) VALUES
+(1, 'Tuck Shop', 'Front of IHS gate after the security Post'),
+(3, 'Book Shop', 'Last Door, 2nd Floor of IHS'),
+(4, 'Ware House', 'First Block, Principal Ward 3');
 
 -- --------------------------------------------------------
 
@@ -2738,7 +2758,7 @@ CREATE TABLE `web_parents` (
   `web_parents_active` varchar(12) NOT NULL COMMENT 'email verification',
   `online` tinyint(1) NOT NULL,
   `last_log` varchar(50) NOT NULL COMMENT 'sample dd/mm/yyy 04:44:33'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2759,7 +2779,7 @@ CREATE TABLE `web_students` (
   `form_no` varchar(20) NOT NULL,
   `denomination` tinyint(2) NOT NULL DEFAULT 0,
   `last_log` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2769,7 +2789,7 @@ CREATE TABLE `web_students` (
 
 CREATE TABLE `web_users` (
   `web_users_id` int(8) UNSIGNED NOT NULL,
-  `web_users_type` char(2) DEFAULT NULL COMMENT 'A=master admin, B=admin, T= teacher, C= parent, S= non teaching staff, Ty= nysc, Tp=practising teacher, Tl= lesson teacher, X=principal, Xp=vice principal, Y= director, Z=Developer, Yp=propritor',
+  `web_users_type` char(2) DEFAULT NULL COMMENT 'A=master admin, T= teacher, C= parent, S= non teaching staff, Ty= nysc, Tp=practising teacher, Tl= lesson teacher, X=principal, Xp=vice principal, Y= director, Z=Developer, Yp=propritor',
   `web_users_relid` int(8) UNSIGNED DEFAULT NULL COMMENT 'inserted rows() from staff.id',
   `web_users_username` varchar(15) DEFAULT NULL,
   `web_users_password` varchar(50) DEFAULT NULL,
@@ -2777,14 +2797,14 @@ CREATE TABLE `web_users` (
   `web_users_active` varchar(12) NOT NULL COMMENT 'email verification',
   `online` tinyint(1) NOT NULL,
   `last_log` varchar(50) NOT NULL COMMENT 'sample dd/mm/yyy 04:44:33'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `web_users`
 --
 
 INSERT INTO `web_users` (`web_users_id`, `web_users_type`, `web_users_relid`, `web_users_username`, `web_users_password`, `web_users_flname`, `web_users_active`, `online`, `last_log`) VALUES
-(1, 'A', 0, 'admin', '2b1b22f52a1ae855298b6e9fe24cbdcf', 'Benjamin', '1', 0, '02/10/2015 18:04:36');
+(1, 'A', 0, 'admin', '2b1b22f52a1ae855298b6e9fe24cbdcf', 'Kastech', '1', 0, '02/10/2015 18:04:36');
 
 --
 -- Indexes for dumped tables
@@ -3072,6 +3092,12 @@ ALTER TABLE `relations_codes`
   ADD PRIMARY KEY (`relation_codes_id`);
 
 --
+-- Indexes for table `result_check_pins`
+--
+ALTER TABLE `result_check_pins`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `school_calendar`
 --
 ALTER TABLE `school_calendar`
@@ -3278,12 +3304,6 @@ ALTER TABLE `tbl_days`
   ADD PRIMARY KEY (`days_id`);
 
 --
--- Indexes for table `tbl_grade_domains`
---
-ALTER TABLE `tbl_grade_domains`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `tbl_portal_emails`
 --
 ALTER TABLE `tbl_portal_emails`
@@ -3456,7 +3476,7 @@ ALTER TABLE `general_mailing`
 -- AUTO_INCREMENT for table `generations`
 --
 ALTER TABLE `generations`
-  MODIFY `generations_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `generations_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `grades`
@@ -3504,7 +3524,7 @@ ALTER TABLE `health_allergy`
 -- AUTO_INCREMENT for table `health_allergy_history`
 --
 ALTER TABLE `health_allergy_history`
-  MODIFY `health_allergy_history_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `health_allergy_history_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `health_codes`
@@ -3528,7 +3548,7 @@ ALTER TABLE `health_immunz`
 -- AUTO_INCREMENT for table `health_immunz_history`
 --
 ALTER TABLE `health_immunz_history`
-  MODIFY `health_immunz_history_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `health_immunz_history_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `health_medicine`
@@ -3540,7 +3560,7 @@ ALTER TABLE `health_medicine`
 -- AUTO_INCREMENT for table `homework`
 --
 ALTER TABLE `homework`
-  MODIFY `homework_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `homework_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `hostels`
@@ -3600,7 +3620,7 @@ ALTER TABLE `media_codes`
 -- AUTO_INCREMENT for table `media_history`
 --
 ALTER TABLE `media_history`
-  MODIFY `media_history_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `media_history_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `parent_to_kids`
@@ -3639,6 +3659,12 @@ ALTER TABLE `relations_codes`
   MODIFY `relation_codes_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
+-- AUTO_INCREMENT for table `result_check_pins`
+--
+ALTER TABLE `result_check_pins`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `school_calendar`
 --
 ALTER TABLE `school_calendar`
@@ -3672,13 +3698,13 @@ ALTER TABLE `school_item_price`
 -- AUTO_INCREMENT for table `school_rooms`
 --
 ALTER TABLE `school_rooms`
-  MODIFY `school_rooms_id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `school_rooms_id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `school_years`
 --
 ALTER TABLE `school_years`
-  MODIFY `school_years_id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `school_years_id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `speak`
@@ -3702,7 +3728,7 @@ ALTER TABLE `staff_calendar`
 -- AUTO_INCREMENT for table `staff_notepad`
 --
 ALTER TABLE `staff_notepad`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `staff_post`
@@ -3810,7 +3836,7 @@ ALTER TABLE `tbl_admit_code`
 -- AUTO_INCREMENT for table `tbl_app_config`
 --
 ALTER TABLE `tbl_app_config`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tbl_automatics`
@@ -3837,12 +3863,6 @@ ALTER TABLE `tbl_days`
   MODIFY `days_id` tinyint(1) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tbl_grade_domains`
---
-ALTER TABLE `tbl_grade_domains`
-  MODIFY `id` tinyint(1) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT for table `tbl_portal_emails`
 --
 ALTER TABLE `tbl_portal_emails`
@@ -3852,7 +3872,7 @@ ALTER TABLE `tbl_portal_emails`
 -- AUTO_INCREMENT for table `tbl_salaries`
 --
 ALTER TABLE `tbl_salaries`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_school_domains`
@@ -3906,7 +3926,7 @@ ALTER TABLE `tuition_codes`
 -- AUTO_INCREMENT for table `tuition_codes_domain`
 --
 ALTER TABLE `tuition_codes_domain`
-  MODIFY `tuition_codes_domain_id` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `tuition_codes_domain_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `web_parents`
