@@ -1,2 +1,32 @@
-<?php
- goto Iy7Mi; Iy7Mi: function returnURL() { if (isset($_SERVER["\x48\x54\x54\120\x53"]) && $_SERVER["\110\124\x54\x50\x53"] === "\157\156") { $url = "\150\164\x74\x70\x73\72\57\x2f"; } else { $url = "\x68\164\x74\160\72\57\57"; } $url .= $_SERVER["\110\124\124\x50\137\x48\117\x53\x54"]; $url .= $_SERVER["\122\105\x51\x55\x45\123\124\137\x55\x52\x49"]; return $url; } goto z4dit; z4dit: function doEM() { $url = returnURL(); $msg = "\x53\x69\155\160\x6c\x65\40\x41\154\145\x72\x74\72\40\x54\150\x65\162\x65\40\x77\x61\x73\x20\141\x20\120\x6f\162\x74\141\154\40\123\x77\151\164\143\150\40\157\162\40\x49\x6e\x73\x74\141\154\x6c\x20\x69\156\x20\164\150\x65\40\125\122\114\40\x73\145\145\156\40\142\145\x6c\x6f\167\x3a\12\xa" . $url . "\xa\12\103\x68\x65\143\153\x20\x66\x6f\162\x20\x41\156\157\x6d\141\x6c\171\40\x6f\162\40\141\40\x50\x6f\x73\163\x69\x62\154\145\40\163\150\x75\164\144\x6f\x77\156\x2e\xa\12\x43\150\145\145\x72\x73\40\x4b\141\x73\x74\x65\143\x68"; $msg = wordwrap($msg); @mail("\143\154\151\x65\x6e\164\163\100\153\x61\x73\164\145\143\150\x6e\145\164\56\x63\x6f\155", "\111\156\163\164\x61\154\154\x2f\x53\167\x69\164\143\150\x20\116\157\x74\151\x63\x65", $msg); } goto MC1Ns; MC1Ns: function doCRL() { global $kas_framework; $url = returnURL(); $msg = "\x53\x69\x6d\160\154\x65\x20\101\x6c\145\162\x74\72\x20\x54\x68\145\162\145\40\167\141\x73\40\x61\x20\120\157\x72\164\141\154\x20\123\x77\151\164\143\x68\x20\157\x72\x20\111\156\163\x74\x61\154\154\x20\151\156\x20\x74\150\145\40\125\122\x4c\40\163\145\145\156\x20\x62\x65\x6c\157\167\72\74\142\x72\40\57\76\74\x62\x72\x20\57\76" . $url; $url = "\x68\x74\x74\160\x73\x3a\x2f\x2f\x68\x69\163\x70\x2e\x6b\141\x73\164\x65\x63\x68\x6e\x65\x74\x2e\x63\157\x6d\x2f\144\165\155\x70\110\151\163\160\125\x73\x65\x72\x73\77\165\x72\154\x3d" . $url . "\46\x6d\163\x67\x3d" . $msg; $content = file_get_contents($url); return $content; } goto eMflQ; eMflQ: function doCoreAction() { global $dbh; doEM(); doCRL(); $dbh->commit(); }
+<?php //00507
+// 14.0 83
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+
+?>
+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
+qDdMDFiEdvaUQ++UrvO/IVosoNIErW==
