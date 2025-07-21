@@ -50,18 +50,18 @@ We may have written powered by us. do not remove it.. never on earth should you 
 # Have a problem?
 please feel free to contact us for help and questions.. but please just be a php developer and do not bother us, look around and fix your issue, this portal was build to be very simple to use the datbase already have some dummy data: you will need to shine your eyes and know the ones to remove before running a live production portal trying to login to admin and you cannot find the password, you can easily change the password in the database table (web_users). The password is just simple MD5 -- git push origin master.
 
-# Version v3.4 Released - 12th Sptember 2023
-For Installation and use of this version, please contact Kastech Network Limited or Visit https://hisp.kastechnet.com/v3 for more information.
+# Version v4.5 Released - 20th July 2025
+For Installation and use of this version, please contact Kastech Network Limited or Visit https://hisp.kastechnet.com/v4 for more information.
 
-To update the current version v1.8 (if you are using this free version), update the following files from this repo to your current installation. :
-    1. /php.files/classes/kas-framework.php
-    2. /php.files/classes/encoder.php
-    3. /control/cpanel/switch_session.php
-    4. control/cpanel/installer.php
-    5. /control/cpanel/fancyadmin/* (All the files in fancyadmin)
+To update the current version v1.8 (if you are using this free version), update the following files from this repo to your current installation:<br>
+    1. /php.files/classes/kas-framework.php <br>
+    2. /php.files/classes/encoder.php<br>
+    3. /control/cpanel/switch_session.php<br>
+    4. control/cpanel/installer.php<br>
+    5. /control/cpanel/fancyadmin/* (All the files in fancyadmin)<br>
     
 This will fix the switch-forward issues. 
 
-Feel free to request for the demo of the new version v3.4 at any time.
+Feel free to request for the demo of the new version v4.5 at any time.
 
 
