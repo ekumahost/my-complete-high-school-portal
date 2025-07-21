@@ -45,7 +45,7 @@ Admin ({PORTAL_URL}/control)      admin: cejine
 This will direct you to the Install list. You should carry out these task before starting use.
 
 # Warning
-We may have written powered by us. do not remove it.. never on earth should you change it to powered by you because you did not write this code. unless you buy us coffee first then you can use it as you like..
+We may have written powered by us. do not remove it.. never on earth should you change it to powered by you because you did not write this code. unless you buy us coffee first then you can use it as you like.. Make sure you have IONCUBE LOADER running on your server.
 
 # Have a problem?
 please feel free to contact us for help and questions.. but please just be a php developer and do not bother us, look around and fix your issue, this portal was build to be very simple to use the datbase already have some dummy data: you will need to shine your eyes and know the ones to remove before running a live production portal trying to login to admin and you cannot find the password, you can easily change the password in the database table (web_users). The password is just simple MD5 -- git push origin master.
